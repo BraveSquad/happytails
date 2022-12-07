@@ -1,7 +1,5 @@
 # Group Project: HappyTails
 
-//
-
 - Discover and stay connected with hiking trails happening near you.
 
 ## Team Members
