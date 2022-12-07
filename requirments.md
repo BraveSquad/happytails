@@ -50,7 +50,7 @@ We are going to aim for the user to be able to search `dogs, cats, and unique` a
 - a user can favorite an animal.
 - user can submit an a form to inquire on a selected animal.
 
-When a user first gets to HappyTails the will see the landing page. Here they will be greeted with a carosel of images and links to donate to a non profit of theor choice. They will also be able to search for an animal. If a user clicks on a specific animal it will lead them to a more detailed page regarding selected choice. This page will also contain a few suggested animals below. A user will be able to navigate to their profile page and update any information about them selves and view the 3 most recent viewed animals.
+When a user first gets to HappyTails the will see the landing page. Here they will be greeted with a carousel of images and links to donate to a non profit of their choice. They will also be able to search for an animal. If a user clicks on a specific animal it will lead them to a more detailed page regarding selected choice. This page will also contain a few suggested animals below. A user will be able to navigate to their profile page and update any information about them selves and view the 3 most recent viewed animals.
 
 ## Non-Functional Requirements (301 & 401 only)
 
