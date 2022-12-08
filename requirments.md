@@ -22,11 +22,17 @@ This product will help streamline the search and adoption process when it comes 
 
 - The web app will allow the user to select the type of animal by category `(breed, size, cat, dog)`.
 
-- The user will be able to create a user profile
+- The user will be able to create a user profile.
 
 - The user will be able to select an animal and add to their favorites.
 
 - The user will be able to add their own pet for adoption, including photo, bio, breed, etc.
+
+- The user will be able to leave reviews and see other reviews posted.
+
+- the user will be able to make appointments and see it on a calendar.
+
+- the user will be able to use `chatBot` to ask basic questions that they may have.
 
 ### OUT - What will your product not do.
 
@@ -35,7 +41,7 @@ This product will help streamline the search and adoption process when it comes 
 ## Minimum Viable Product vs
 
 MVP will be specifically to view dogs with an image and their details.
-The web app will be able to allow a user to create an account, create a profile, and login with there user info. The user can then add favorite to their list and view them when they back check in.
+The web app will be able to allow a user to create an account, create a profile, and login with there user info. The user can then add favorite to their list and view them when they back check in. The user will be able to create, update, and delete a review. The user will be able to use 'ChatBox' to ask basic questions and recieve auto replies.
 
 Stretch goals in mind will allow users to search for animals by category.
 
