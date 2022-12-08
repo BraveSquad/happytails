@@ -12,7 +12,7 @@ This application allows the user to find all information easily and quickly in o
 
 **Why should we care about your product?**
 
-This product will bring like-minded individuals together and help find homes for some happy tails.
+This product will help streamline the search and adoption process when it comes to animals.
 
 ## Scope (In/Out)
 
