@@ -21,7 +21,7 @@
 
 [Wireframe](https://miro.com/app/board/uXjVP84R0cM=/)
 
-![wireframe](./images/wireframe.png)
+![wireframe](./images/wireframe2.png)
 
 ---
 
