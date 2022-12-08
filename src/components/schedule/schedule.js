@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function animals() {
+export default function schedule() {
   return (
     <div>
-      Animal JS
+
     </div>
   )
 }
