@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import { Button } from 'react-bootstrap';
 
-export default function Login() {
-  return (
-    <div>
+const LoginButton = () => {
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
+  if (!isAuthenticated)
+    return <Button id="loginBtn" variant="contained" onClick={() => loginWithRedirect()}> Log In</Button >;
+};
 
-    </div>
-  )
-}
+export default LoginButton;
