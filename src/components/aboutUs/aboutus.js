@@ -8,10 +8,10 @@ import Typography from "@mui/material/Typography";
 import GitHub from "@mui/icons-material/GitHub";
 import Facebook from "@mui/icons-material/Facebook";
 import LinkedIn from "@mui/icons-material/LinkedIn";
-
 import { CardActionArea, Grid } from "@mui/material";
 
-export default function RecipeReviewCard() {
+export default function Aboutus() {
+
   return (
     <div>
       <Typography variant="h1" component="h2">About Us</Typography>

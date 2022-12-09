@@ -1,6 +1,6 @@
 import React from 'react'
 /// ------- REVIEWS  --------//
-export default function reviews() {
+export default function Reviews() {
   return (
     <div>
       Reviews

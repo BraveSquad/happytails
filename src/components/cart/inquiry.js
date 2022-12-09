@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function inquiry() {
+export default function Inquiry() {
   return (
     <div>
 
