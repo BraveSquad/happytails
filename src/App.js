@@ -1,10 +1,13 @@
 import './App.css';
+import AdoptionProcessApt from './components/adoptionAppt/AdoptionProcessApt';
 import Footer from './components/footer/footer';
 function App() {
   return (
-    <div >
+    <div>
       Hello
+      <AdoptionProcessApt />
       <Footer />
+
     </div>
   );
 }
