@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Animals() {
+export default function Logout() {
   return (
     <div>
-      Animal JS
+
     </div>
   )
 }
