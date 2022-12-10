@@ -1,7 +1,11 @@
-import React from 'react'
+import { configureStore } from '@reduxjs/toolkit';
+import animalReducer from './animalSlice';
+import cartReducer from './cartSlice'
 
-export default function store() {
-  return (
-    <div>store</div>
-  )
-}
+export const store = configureStore({
+  reducer: {
+    // counter: counterReducer,
+    animals: animalReducer,
+    cart: cartReducer,
+  },
+});
