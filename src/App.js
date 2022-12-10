@@ -24,7 +24,6 @@ function App() {
         <Route exact path='/about' element={<About />} />
         <Route exact path='/inquiry' element={<Inquiry />} />
 
-
       </Routes>
     </Router>
   );
