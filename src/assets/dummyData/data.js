@@ -9,8 +9,10 @@ export const data = [
     photos: ['https://i.imgur.com/NUcRsOm.jpg'],
     breed: 'Pitbull',
     size: 'small',
+    age: 'puppy',
     color: 'brown',
     sex: 'female',
+    location: 'California',
     cost: 800,
     spayedNeutered: true
   },
@@ -21,8 +23,10 @@ export const data = [
     photos: ['https://i.imgur.com/1h4WiDm.jpg'],
     breed: 'lab',
     size: 'medium',
+    age: 'puppy',
     color: 'black',
     sex: 'Male',
+    location: 'Florida',
     cost: 400,
     spayedNeutered: false
   },
@@ -33,8 +37,10 @@ export const data = [
     photos: ['https://i.imgur.com/RNcsPLe.jpg'],
     breed: 'Pitbull',
     size: 'small',
+    age: 'adult',
     color: 'brown',
     sex: 'female',
+    location: 'California',
     cost: 800,
     spayedNeutered: true
   },
@@ -44,9 +50,11 @@ export const data = [
     species: 'cat',
     photos: ['https://i.imgur.com/XFb8p3S.jpg'],
     breed: 'Cat',
+    age: 'kitten',
     size: 'small',
     color: 'White',
     sex: 'female',
+    location: 'Seattle',
     cost: 8000,
     spayedNeutered: true
   }
