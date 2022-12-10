@@ -4,7 +4,9 @@ import Footer from '../footer/footer'
 import Storefront from '../storefront/storefront'
 import '../../assets/style/home.css'
 
-export default function home() {
+export default function Home() {
+
+
   return (
     <div id='homeBox'>
       <Header />

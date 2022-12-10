@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { animalSlice } from '../../features/animalSlice'
-import { Box, Typography, Tabs, Tab } from '@mui/material';
-import { speciesTabs } from '../../assets/dummyData/data'
+import { Box, Typography, InputLabel, MenuItem, FormControl, Select, Button } from '@mui/material';
+// import { speciesTabs } from '../../assets/dummyData/data'
 
 
 const styles = {
@@ -13,25 +13,88 @@ const styles = {
 
 function Categories() {
   const dispatch = useDispatch();
-  const [currentTabs, setCurrentTabs] = useState('all');
 
-  const handleCategoryPicked = (e, value) => {
-    setCurrentTabs(value);
-    dispatch(animalSlice.actions.selectCategory(value));
+  const [location, setLocation] = useState('');
+  const [age, setAge] = useState('');
+  const [species, setSpecies] = useState('');
+
+  const handleLocation = (event) => {
+    setLocation(event.target.value);
+
+  };
+  const handleAge = (event) => {
+    setAge(event.target.value);
+
+  };
+  const handleSpecies = (event) => {
+    console.log('search called', event.target.value)
+    setSpecies(event.target.value);
+
+  };
+
+
+
+  const handleSearch = () => {
+    let obj = {
+      location: location,
+      age: age,
+      species: species
+    }
+
+    // dispatch(animalSlice.actions.selectAge(age));
+    // dispatch(animalSlice.actions.selectLocation(location));
+    dispatch(animalSlice.actions.selectFilter(obj))
 
   }
+
+
   return (
     <Box >
       <Typography sx={styles.title} variant="h2"> Browse our Animals</Typography>
-      <Tabs textColor="inherit" TabIndicatorProps={{ style: { backgroundColor: 'salmon' } }} sx={{
-        "& button:focus": { color: "salmon" },
-        "& button:active": { color: "black" }
-      }} value={currentTabs} onChange={handleCategoryPicked}>
-
-        {speciesTabs.map((data, key) => (
-          <Tab sx={{ color: 'rgb(60, 201, 226)' }} key={key} label={data.title} value={data.value} />
-        ))}
-      </Tabs>
+      <Box sx={{ minWidth: 120, display: 'flex', justifyContent: 'Row', padding: 10 }}>
+        <FormControl sx={{ width: 120 }}>
+          <InputLabel id="demo-simple-select-label">Location</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={location}
+            label="Location"
+            onChange={handleLocation}
+          >
+            <MenuItem value={'Seattle'}>Seattle</MenuItem>
+            <MenuItem value={'California'}>California</MenuItem>
+            <MenuItem value={'Florida'}>Florida</MenuItem>
+          </Select>
+        </FormControl>
+        <FormControl sx={{ width: 120 }}>
+          <InputLabel id="demo-simple-select-label">Age</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={age}
+            label="Age"
+            onChange={handleAge}
+          >
+            <MenuItem value={'puppy'}>Puppy</MenuItem>
+            <MenuItem value={'kitten'}>Kitten</MenuItem>
+            <MenuItem value={'adult'}>Adult</MenuItem>
+          </Select>
+        </FormControl>
+        <FormControl sx={{ width: 120 }}>
+          <InputLabel id="demo-simple-select-label">Type</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={species}
+            label="species"
+            onChange={handleSpecies}
+          >
+            <MenuItem value={'dog'}>Dog</MenuItem>
+            <MenuItem value={'cat'}>Cat</MenuItem>
+          </Select>
+        </FormControl>
+        <Button onClick={handleSearch} >Search</Button>
+      </Box>
     </Box >
   )
 }
