@@ -1,15 +1,14 @@
 import React from 'react'
 import Box from '@mui/material/Box'
-import Animals from './animals'
-import Categories from './categories'
+import Search from './search'
+
 import '../../assets/style/storeFront.css'
 
 
 export default function Storefront() {
   return (
     <Box className='storeFrontBox' sx={{ position: 'relative' }}>
-      <Categories />
-      <Animals />
+      <Search />
     </Box>
   )
 }
