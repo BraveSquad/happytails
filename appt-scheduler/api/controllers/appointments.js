@@ -21,8 +21,8 @@ const appointmentController = {
       slots: newslot._id
     });
     const nexmo = new Nexmo({
-      apiKey: "YOUR_API_KEY",
-      apiSecret: "YOUR_API_SECRET"
+      apiKey: "Y6c98e8e5",
+      apiSecret: "YEIFoDSY9L7OSsAJ3"
     });
     let msg =
       requestBody.name +
