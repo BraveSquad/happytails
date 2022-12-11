@@ -13,7 +13,6 @@ const styles = {
     borderRadius: '7px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', padding: '20px'
   },
   box: {
-
     padding: '20px'
   },
   card: {
