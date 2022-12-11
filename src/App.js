@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/pages/home'
 import Details from './components/animals/details'
 
-import Reviews from './components/reviews/reviews'
+import Reviews from './components/review/reviews'
 import Animals from './components/storefront/animals'
 
 
@@ -11,7 +11,7 @@ import Animals from './components/storefront/animals'
 // import Schedule from './components/scheduling/getNextFiveDays'
 import Profile from './components/profile/profile'
 import Welcome from './components/pages/welcome'
-import About from './components/aboutUs/aboutus'
+import About from './components/pages/aboutUs'
 import Inquiry from './components/cart/inquiry'
 
 import History from './components/history/history'
@@ -35,7 +35,7 @@ function App() {
         <Route exact path='/profile' element={<Profile />} />
         <Route exact path='/animals' element={<Animals />} />
         <Route exact path='/about' element={<About />} />
-        <Route exact path='/inquiry' element={<Inquiry />} />
+        <Route exact path='/inquire' element={<Inquiry />} />
 
       </Routes>
     </Router>

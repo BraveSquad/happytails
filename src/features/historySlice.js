@@ -1,8 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  animalHistory: []
-
+  animalHistory: [],
 }
 
 export const historySlice = createSlice({
@@ -11,8 +10,10 @@ export const historySlice = createSlice({
   reducers: {
 
     animalHistory(state, action) {
-      console.log('History from detailSlice', action.payload)
-      state.animalHistory.push(action.payload);
+      console.log('History from detailSlice', action.payload.id)
+      if (state.animalHistory.filter(x => x.id !== action.payload.id))
+        console.log('HERE')
+      state.animalHistory.push(action.payload)
     },
   }
 });
