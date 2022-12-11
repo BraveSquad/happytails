@@ -47,3 +47,4 @@ export const getNextFiveDays = () => {
 
   return dateArray;
 };
+export default getNextFiveDays;
