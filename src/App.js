@@ -9,6 +9,7 @@ import Profile from './components/profile/profile'
 import Welcome from './components/pages/welcome'
 import About from './components/aboutUs/aboutus'
 import Inquiry from './components/cart/inquiry'
+import History from './components/history/history'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route exact path='/reviews' element={<Reviews />} />
         <Route exact path='/details' element={<Details />} />
+        <Route exact path='/history' element={<History />} />
         {/* <Route exact path='/schedule' element={<Schedule />} /> */}
         <Route exact path='/profile' element={<Profile />} />
         <Route exact path='/animals' element={<Animals />} />

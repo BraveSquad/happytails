@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, Button, Card, CardMedia, Typography, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+
 import { useSelector } from 'react-redux';
 import Header from '../header/header'
 import Footer from '../footer/footer'

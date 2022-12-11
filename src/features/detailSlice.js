@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   animalDetail: [],
+  animalHistory: []
 
 }
 
@@ -13,8 +14,12 @@ export const detailSlice = createSlice({
       console.log('detailSlice', action.payload)
       state.animalDetail.push(action.payload);
     },
+    animalHistory(state, action) {
+      console.log('History from detailSlice', action.payload)
+      state.animalHistory.push(action.payload);
+    },
   }
 });
-export const { animalDetail } = detailSlice.actions;
+export const { animalDetail, animalHistory } = detailSlice.actions;
 
 export default detailSlice.reducer;

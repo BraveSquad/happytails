@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { cartSlice } from '../../features/cartSlice'
 import { Box, Button, Card, CardMedia, Stack, Typography } from '@mui/material';
 import { animalDetail } from '../../features/detailSlice';
+import { animalHistory } from '../../features/historySlice';
 import Search from './search'
 import Header from '../header/header'
 import Footer from '../footer/footer'
@@ -34,6 +35,8 @@ const styles = {
     justifyContent: 'center'
   }
 }
+const set = new Set();
+let history = [];
 
 
 export default function Animals() {
@@ -45,8 +48,16 @@ export default function Animals() {
   }
 
   function handleDetail(animal) {
+    if (!set.has(animal)) {
+      set.add(animal)
+      history.push(animal)
+      dispatch(animalHistory(animal))
+    }
     dispatch(animalDetail(animal))
   }
+
+
+
 
 
   const animals = useSelector(state => state.animals.animalSelected);

@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { animalSlice } from '../../features/animalSlice'
-import { Box, Typography, InputLabel, MenuItem, FormControl, Select, Button } from '@mui/material';
+import { Box, InputLabel, MenuItem, FormControl, Select, Button } from '@mui/material';
 
 
-const styles = {
-  title: {
-    padding: '10px'
-  }
-}
+
 
 function Categories() {
   const dispatch = useDispatch();
