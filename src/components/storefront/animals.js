@@ -20,7 +20,6 @@ const styles = {
     height: '50vh'
   },
   box: {
-
     padding: '20px'
   },
   card: {
