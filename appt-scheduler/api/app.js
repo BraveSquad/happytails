@@ -1,4 +1,5 @@
 var path = require("path");
+const express = require('express');
 var favicon = require("serve-favicon");
 var logger = require("morgan");
 var cookieParser = require("cookie-parser");
@@ -6,8 +7,8 @@ var bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 var index = require("./routes/index");
 const api = require("./routes/index");
-// var app = express();
-const app = require('express')
+var app = express();
+// const app = require('express')
 
 mongoose.Promise = global.Promise;
 

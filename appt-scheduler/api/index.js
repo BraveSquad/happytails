@@ -1,3 +1,4 @@
+var express = require('express');
 var router = express.Router();
 const appointmentController = require('../../controllers/appointments')
 const slotController = require('../../controllers/slot')
