@@ -2,13 +2,19 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Box, Button, Card, CardMedia, Typography } from '@mui/material';
 import { animalDetail } from '../../features/detailSlice';
+import '../../assets/style/history.css'
+import Chance from 'chance';
+const chance = new Chance();
+
 
 
 
 export default function History() {
   const dispatch = useDispatch();
   const animalHistory = useSelector(state => state.history.animalHistory)
-
+  for (const animal of animalHistory) {
+    console.log('HEY OK', animal)
+  }
   function handleDetail(animal) {
     dispatch(animalDetail(animal))
   }
@@ -26,7 +32,7 @@ export default function History() {
             <Typography sx={{ fontWeight: 'bold', fontSize: '20px' }}>
               {animal.name}
             </Typography>
-            <div id='line-1' >
+            <div id='line-2' >
               <hr />
 
             </div>
@@ -44,8 +50,7 @@ export default function History() {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
       <Typography sx={{ fontWeight: 'bold', fontSize: '40px' }}>Previously Viewed</Typography>
-      {console.log('arr', animalArr)}
-      {animalArr}
+      {chance.pickset(animalArr, 3)}
     </Box>
   )
 }

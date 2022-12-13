@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { cartSlice } from '../../features/cartSlice'
+// import { cartSlice } from '../../features/cartSlice'
 import { Box, Button, Card, CardMedia, Stack, Typography } from '@mui/material';
 import { animalDetail } from '../../features/detailSlice';
 import { animalHistory } from '../../features/historySlice';
@@ -34,33 +34,30 @@ const styles = {
     justifyContent: 'center'
   }
 }
-const set = new Set();
-let history = [];
-
+// const X = [];
+// let history = [];
+// console.log('set::', X)
 
 export default function Animals() {
   const dispatch = useDispatch();
 
-  function handleAddToCart(data) {
-    console.log('ADD_TO_CART', data)
-    dispatch(cartSlice.actions.addToCart(data))
-  }
+  // function handleAddToCart(data) {
+  //   console.log('ADD_TO_CART', data)
+  //   dispatch(cartSlice.actions.addToCart(data))
+  // }
 
   function handleDetail(animal) {
-    if (!set.has(animal)) {
-      set.add(animal)
-      history.push(animal)
-      dispatch(animalHistory(animal))
-    }
     dispatch(animalDetail(animal))
-  }
 
+    dispatch(animalHistory(animal))
+
+
+  }
 
 
 
 
   const animals = useSelector(state => state.animals.animalSelected);
-  console.log('animals from slice', animals)
   let animalArr = [];
 
   if (animals.length > 0) {
@@ -79,7 +76,6 @@ export default function Animals() {
             Cost: {animal.cost}
           </Typography>
           <Stack direction="row" spacing={2}>
-            <Button sx={{ color: 'salmon' }} value={animal} onClick={() => handleAddToCart(animal)}>Add to Cart</Button>
             <Button href='/details' onClick={() => handleDetail(animal)} sx={{ color: 'lightblue' }}>Details</Button>
           </Stack>
         </Box>

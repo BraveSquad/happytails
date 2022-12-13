@@ -52,9 +52,8 @@ function Categories() {
           label="Location"
           onChange={handleLocation}
         >
-          <MenuItem value={'Seattle'}>Seattle</MenuItem>
-          <MenuItem value={'California'}>California</MenuItem>
-          <MenuItem value={'Florida'}>Florida</MenuItem>
+          <MenuItem value={'ZipCode'}>ZipCode</MenuItem>
+
         </Select>
       </FormControl>
       <FormControl sx={{ width: 120 }}>
