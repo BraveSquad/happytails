@@ -6,6 +6,8 @@ import Header from '../header/header'
 import Footer from '../footer/footer'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import '../../assets/style/detail.css'
+import Chance from 'chance';
+const chance = new Chance();
 
 
 
@@ -21,8 +23,8 @@ export default function Details() {
     results = selectedAnimal.map(animal => (
       <div id='MainDiv'>
 
-        <Box sx={{ fontSize: '60px' }}> {animal.name}</Box>
-        <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '50px', width: '600px' }}>
+        <Box key={animal.id} sx={{ fontSize: '60px' }}> {animal.name}</Box>
+        <Box key={animal.id} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '50px', width: '600px' }}>
           <Card key={animal.id} sx={{ padding: '30px', borderRadius: '7px', display: 'flex', flexDirection: 'column', alignItems: 'center' }} elevation={5}>
             <CardMedia image={animal.photos[0]} sx={{ height: '500px', width: '500px', borderRadius: '4px' }} />
             <div id='detailInfo'>
@@ -40,7 +42,7 @@ export default function Details() {
             </div>
 
           </Card>
-          <Button href={`/checkout`} sx={{ color: 'salmon', backgroundColor: 'lightgrey', marginTop: '20px' }} value={animal} >Inquire</Button>
+          <Button href={`/inquire`} sx={{ color: 'salmon', backgroundColor: 'lightgrey', marginTop: '20px' }} value={animal} >Inquire</Button>
           <Typography variant="subtitle1" sx={{ fontSize: '40px', marginTop: '30px', display: 'flex', alignItems: "center", justifyContent: 'center' }}>
             Animal Details
           </Typography>
@@ -50,11 +52,11 @@ export default function Details() {
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography sx={{ fontWeight: 'bold', fontSize: '15px' }}>Fun Facts</Typography>
+              <Typography sx={{ fontWeight: 'bold', fontSize: '15px' }}>Fun Facts </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                {animal.description}
+              {chance.pickset(animal.tags,5)}
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -64,12 +66,12 @@ export default function Details() {
               aria-controls="panel2a-content"
               id="panel2a-header"
             >
-              <Typography sx={{ fontWeight: 'bold', fontSize: '15px' }}>History</Typography>
+              <Typography sx={{ fontWeight: 'bold', fontSize: '15px' }}>Description</Typography>
             </AccordionSummary>
             <AccordionDetails >
 
               <Typography id='history' >
-                <p >History:</p>  <p id='stockText'>{animal.history}</p>
+               <p id='description'>{animal.description}</p>
               </Typography>
             </AccordionDetails>
           </Accordion>

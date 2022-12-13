@@ -12,6 +12,7 @@ const initialState = {
   age: '',
   allAnimals,
   isLoading: true,
+  apiAnimals: [],
 }
 
 export const animalSlice = createSlice({
@@ -42,7 +43,10 @@ export const animalSlice = createSlice({
         state.animalSelected = allAnimals
       }
     },
-
+    setAnimals(state, action){
+      // console.log('apiAnimal HIT!', action.payload)
+      state.apiAnimals = action.payload;
+    }
   }
 })
 
