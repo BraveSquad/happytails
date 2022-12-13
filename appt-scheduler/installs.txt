@@ -1,0 +1,27 @@
+
+How Von made  THE SCHEDULER LIKE THIS
+
+
+cd src/components/appt-scheduler
+
+npm install express-generator -g
+
+express --view=ejs api
+
+cd into api to acsess api
+
+npm install
+
+npm install mongoose
+
+npm install @vonage/server-sdk
+
+npm install nexmo
+got a 
+ 
+1.API Key
+2.API Secret
+
+from Vonage api formerly known as nexmo
+
+Create a sandbox in mongodb atlas

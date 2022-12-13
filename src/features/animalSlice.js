@@ -2,11 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 // import axios from 'axios';
 import { data as allAnimals } from '../assets/dummyData/data'
 
-  //------------PULLING ALL ANIMALS FROM API------//
-  ;
+//------------PULLING ALL ANIMALS FROM API------//
+
 
 const initialState = {
-  animalDetail: [],
   animalSelected: [],
   species: '',
   location: '',
@@ -40,11 +39,10 @@ export const animalSlice = createSlice({
       } else if (state.age && !state.location && !state.species) {
         state.animalSelected = state.allAnimals.filter(x => x.age === state.age)
       } else {
-        if (!state.age && !state.location && !state.species) {
-          state.animalSelected = allAnimals
-        }
+        state.animalSelected = allAnimals
       }
-    }
+    },
+
   }
 })
 
