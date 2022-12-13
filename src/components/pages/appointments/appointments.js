@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { calendarHeader } from '../../scheduling/calendarHeader/calendarHeader';
-import { day } from '../../scheduling/day/day';
-import { newEvent } from '../../scheduling/newEvent/newEvent';
-import { deleteEvent } from '../../scheduling/deleteEvent/deleteEvent';
-import { getDates } from '../../scheduling/hooks/getDates';
+import { CalendarHeader } from '../../scheduling/calendarHeader/calendarHeader';
+import { Day } from '../../scheduling/day/day';
+import { NewEvent } from '../../scheduling/newEvent/newEvent';
+import { DeleteEvent } from '../../scheduling/deleteEvent/deleteEvent';
+import { GetDates } from '../../scheduling/hooks/getDates';
+import '../../scheduling/style.css';
 
-export const appointments = () => {
+
+export const Appointments = () => {
   const [nav, setNav] = useState(0);
   const [clicked, setClicked] = useState();
   const [events, setEvents] = useState(
@@ -20,12 +22,12 @@ export const appointments = () => {
     localStorage.setItem('events', JSON.stringify(events));
   }, [events]);
 
-  const { days, dateDisplay } = getDates(events, nav);
+  const { days, dateDisplay } = GetDates(events, nav);
 
   return(
     <>
       <div id="container">
-        <calendarHeader 
+        <CalendarHeader 
           dateDisplay={dateDisplay}
           onNext={() => setNav(nav + 1)}
           onBack={() => setNav(nav - 1)}
@@ -43,7 +45,7 @@ export const appointments = () => {
 
         <div id="calendar">
           {days.map((d, index) => (
-            <day
+            <Day
               key={index}
               day={d}
               onClick={() => {
@@ -58,7 +60,7 @@ export const appointments = () => {
 
       {
         clicked && !eventForDate(clicked) &&
-        <newEvent
+        <NewEvent
           onClose={() => setClicked(null)}
           onSave={title => {
             setEvents([ ...events, { title, date: clicked }]);
@@ -69,7 +71,7 @@ export const appointments = () => {
 
       {
         clicked && eventForDate(clicked) &&
-        <deleteEvent 
+        <DeleteEvent 
           eventText={eventForDate(clicked).title}
           onClose={() => setClicked(null)}
           onDelete={() => {

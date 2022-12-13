@@ -1,6 +1,7 @@
 import React from 'react';
+import '../style.css';
 
-export const deleteEvent = ({ onDelete, eventText, onClose }) => {
+export const DeleteEvent = ({ onDelete, eventText, onClose }) => {
   return(
     <>
       <div id="deleteEventModal">

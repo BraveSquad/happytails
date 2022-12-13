@@ -8,7 +8,7 @@ import Animals from './components/storefront/animals'
 
 
 
-import Appointments from './components/pages/appointments/appointments'
+import { Appointments } from './components/pages/appointments/appointments'
 import Profile from './components/profile/profile'
 import Welcome from './components/pages/welcome'
 import About from './components/aboutUs/aboutus'

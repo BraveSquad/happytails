@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import '../style.css';
 
-export const newEvent = ({ onSave, onClose }) => {
+
+export const NewEvent = ({ onSave, onClose }) => {
   const [title, setTitle] = useState('');
   const [error, setError] = useState(false);
 

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import '../style.css';
 
-export const getDates = (events, nav) => {
+
+export const GetDates = (events, nav) => {
   const [dateDisplay, setDateDisplay] = useState('');
   const [days, setDays] = useState([]);
 

@@ -1,6 +1,8 @@
 import React from 'react';
+import '../style.css';
 
-export const calendarHeader = ({ onNext, onBack, dateDisplay }) => {
+
+export const CalendarHeader = ({ onNext, onBack, dateDisplay }) => {
   return(
     <div id="header">
       <div id="monthDisplay">{dateDisplay}</div>
