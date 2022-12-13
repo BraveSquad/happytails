@@ -3,11 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/pages/home'
 import Details from './components/animals/details'
 
-import Reviews from './components/review/reviews'
+// import Reviews from './components/review/reviews'
 import Animals from './components/storefront/animals'
-
-// import Reviews from './components/review/reviews';
-import Animals from './components/storefront/animals';
 
 // import Schedule from './components/scheduling/getNextFiveDays'
 import Profile from './components/profile/profile';
