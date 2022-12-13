@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Box, Button, Card, CardMedia, Typography } from '@mui/material';
 import { animalDetail } from '../../features/detailSlice';
+import '../../assets/style/favorites.css'
 import Chance from 'chance';
 const chance = new Chance();
 
@@ -28,7 +29,7 @@ console.log('MY FAVORITE ANIMAL!!', favorites)
             <Typography sx={{ fontWeight: 'bold', fontSize: '20px' }}>
               {animal.name}
             </Typography>
-            <div id='line-1' >
+            <div id='line-2' >
               <hr />
 
             </div>

@@ -11,11 +11,10 @@ function Search() {
 
   const [zipCode, setZipCode] = useState(98106);
   const [age, setAge] = useState('');
-  // const [species, setSpecies] = useState('');
   const [token, setToken] = useState('');
-  const [type, setType] = useState('Dog');
-  const [breed, setBreed] = useState('Akita');
-  const [limit, setLimit]  = useState(20);
+  const [type, setType] = useState('');
+  const [breed, setBreed] = useState('');
+  const [limit, setLimit]  = useState(50);
   const [page, setPage] = useState(1);
   const [animal, setAnimal] = useState([]);
 
@@ -38,16 +37,8 @@ function Search() {
   };
 
   const handleSearch = () => {
-    // let obj = {
-    //   zipCode: zipCode,
-    //   age: age,
-    //   species: species
-    // }
-    // dispatch(animalSlice.actions.selectFilter(obj))
      getPets();
   }
-
-
 
   //build client object - setting the key, secret key and token. The token is needed to make api requests
   const client = new Client({apiKey: process.env.REACT_APP_API_KEY, secret: process.env.REACT_APP_SECRET_KEY, token: token })
@@ -85,13 +76,15 @@ function Search() {
 
     <Box sx={{ minWidth: 120, display: 'flex', alignContent: "center", justifyContent: 'center', padding: 10 }}>
       <FormControl sx={{ width: 120 }}>
-        <InputLabel id="demo-simple-select-label">Zip Code</InputLabel>
+        <InputLabel id="demo-simple-select-label" />
       <TextField id="outlined-basic" value={zipCode} label="Zip Code" onChange={handleZipCode} variant="outlined" />
       </FormControl>
+
       <FormControl sx={{ width: 120 }}>
-        <InputLabel id="demo-simple-select-label">Breed</InputLabel>
+        <InputLabel id="demo-simple-select-label" />
        <TextField id="outlined-basic" value={breed} label="Breed" onChange={handleBreed} variant="outlined" />
       </FormControl>
+
       <FormControl sx={{ width: 120 }}>
         <InputLabel id="demo-simple-select-label">Age</InputLabel>
         <Select
@@ -101,11 +94,12 @@ function Search() {
           label="Age"
           onChange={handleAge}
         >
-          <MenuItem value={'puppy'}>Puppy</MenuItem>
-          <MenuItem value={'kitten'}>Kitten</MenuItem>
-          <MenuItem value={'adult'}>Adult</MenuItem>
+          <MenuItem value={'Baby'}>Baby</MenuItem>
+          <MenuItem value={'Young'}>Young</MenuItem>
+          <MenuItem value={'Adult'}>Adult</MenuItem>
         </Select>
       </FormControl>
+      
       <FormControl sx={{ width: 120 }}>
         <InputLabel id="demo-simple-select-label">Type</InputLabel>
         <Select
@@ -120,7 +114,7 @@ function Search() {
         </Select>
       </FormControl>
     
-      <Button href='/animals' onClick={() => getPets()}>Search</Button>
+      <Button href='/animals' onClick={() => handleSearch()}>Search</Button>
       {/* <Button onClick={() => getPets()}>Search</Button> */}
     </Box>
 

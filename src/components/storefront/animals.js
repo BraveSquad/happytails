@@ -16,7 +16,7 @@ const styles = {
     // background: 'red',
 
     borderRadius: '7px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', padding: '20px',
-    height: '50vh'
+    // height: '50vh'
   },
   box: {
     padding: '20px'
