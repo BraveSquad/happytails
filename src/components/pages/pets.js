@@ -55,7 +55,7 @@ function Pets() {
     <>
         <div>
             {/* <button onClick={() => getPets('Dog', 'Akbash', 1, 50)}>submit</button> */}
-            <button onClick={() => getPets('Dog', '', 98106, )}>submit</button>
+            <button onClick={() => getPets('Cat', '', 98106, 2, 100)}>submit</button>
             {pets.length > 0 && pets.map((pet, idx) => {
                 return <GridItem index={idx} animal={pet} key={pet.id}/>;
         })}

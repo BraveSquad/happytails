@@ -1,9 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { cartSlice } from '../../features/cartSlice'
 import { Box, Button, Card, CardMedia, Stack, Typography } from '@mui/material';
 import { animalDetail } from '../../features/detailSlice';
-import { animalHistory } from '../../features/historySlice';
+import { addToFavorites } from '../../features/favoriteSlice';
 import Search from './search'
 import Header from '../header/header'
 import Footer from '../footer/footer'
@@ -34,52 +33,41 @@ const styles = {
     justifyContent: 'center'
   }
 }
-const set = new Set();
-let history = [];
 
 
 export default function Animals() {
   const dispatch = useDispatch();
 
-  function handleAddToCart(data) {
-    console.log('ADD_TO_CART', data)
-    dispatch(cartSlice.actions.addToCart(data))
-  }
+// add animal to favorite's array
+  function handleAddToFavorites(animal){
+    dispatch(addToFavorites(animal));
+  };
 
   function handleDetail(animal) {
-    if (!set.has(animal)) {
-      set.add(animal)
-      history.push(animal)
-      dispatch(animalHistory(animal))
-    }
     dispatch(animalDetail(animal))
-  }
+  };
 
-
-
-
-
-  const animals = useSelector(state => state.animals.animalSelected);
-  console.log('animals from slice', animals)
+  const animals = useSelector(state => state.animals.apiAnimals);
+  // console.log('api animals from slice', animals);
   let animalArr = [];
 
   if (animals.length > 0) {
     animalArr = animals.map(animal => (
       <Card key={animal.id} sx={styles.card}>
-        <CardMedia image={animal.photos[0]} sx={{ height: '180px', width: '180px', borderRadius: '4px' }} />
+        <CardMedia image={animal.photos[0].medium} sx={{ height: '180px', width: '180px', borderRadius: '4px' }} />
         <Box sx={styles.box}>
           <Typography>
             {animal.name}
           </Typography>
           <hr />
           <Typography>
-            Breed: {animal.breed}
+            Breed: {animal.breeds.primary}
           </Typography>
           <Typography>
-            Cost: {animal.cost}
+           Gender: {animal.gender}
           </Typography>
           <Stack direction="row" spacing={2}>
-            <Button sx={{ color: 'salmon' }} value={animal} onClick={() => handleAddToCart(animal)}>Add to Cart</Button>
+            <Button sx={{ color: 'salmon' }} value={animal} onClick={() => handleAddToFavorites(animal)}>Add to Favorites</Button>
             <Button href='/details' onClick={() => handleDetail(animal)} sx={{ color: 'lightblue' }}>Details</Button>
           </Stack>
         </Box>

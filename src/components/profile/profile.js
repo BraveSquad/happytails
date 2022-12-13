@@ -3,7 +3,7 @@ import { Box, Card, CardMedia, Typography } from '@mui/material';
 import Header from '../header/header'
 import Footer from '../footer/footer'
 import dog from '../../assets/images/dog.png'
-import History from '../history/history';
+import History from '../favorite/favorite';
 
 export default function Profile() {
 
