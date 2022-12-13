@@ -11,9 +11,10 @@ export const historySlice = createSlice({
 
     animalHistory(state, action) {
       console.log('History from detailSlice', action.payload.id)
-      if (state.animalHistory.filter(x => x.id !== action.payload.id))
+      if (state.animalHistory.filter(x => x.id !== action.payload.id)) {
         console.log('HERE')
-      state.animalHistory.push(action.payload)
+        state.animalHistory.push(action.payload)
+      }
     },
   }
 });

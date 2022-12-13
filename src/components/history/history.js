@@ -3,6 +3,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Box, Button, Card, CardMedia, Typography } from '@mui/material';
 import { animalDetail } from '../../features/detailSlice';
 import '../../assets/style/history.css'
+import Chance from 'chance';
+const chance = new Chance();
+
 
 
 
@@ -47,7 +50,7 @@ export default function History() {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
       <Typography sx={{ fontWeight: 'bold', fontSize: '40px' }}>Previously Viewed</Typography>
-      {animalArr}
+      {chance.pickset(animalArr, 3)}
     </Box>
   )
 }
