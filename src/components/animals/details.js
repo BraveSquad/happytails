@@ -23,8 +23,8 @@ export default function Details() {
     results = selectedAnimal.map(animal => (
       <div id='MainDiv'>
 
-        <Box sx={{ fontSize: '60px' }}> {animal.name}</Box>
-        <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '50px', width: '600px' }}>
+        <Box key={animal.id} sx={{ fontSize: '60px' }}> {animal.name}</Box>
+        <Box key={animal.id} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '50px', width: '600px' }}>
           <Card key={animal.id} sx={{ padding: '30px', borderRadius: '7px', display: 'flex', flexDirection: 'column', alignItems: 'center' }} elevation={5}>
             <CardMedia image={animal.photos[0]} sx={{ height: '500px', width: '500px', borderRadius: '4px' }} />
             <div id='detailInfo'>
@@ -42,7 +42,7 @@ export default function Details() {
             </div>
 
           </Card>
-          <Button href={`/checkout`} sx={{ color: 'salmon', backgroundColor: 'lightgrey', marginTop: '20px' }} value={animal} >Inquire</Button>
+          <Button href={`/inquire`} sx={{ color: 'salmon', backgroundColor: 'lightgrey', marginTop: '20px' }} value={animal} >Inquire</Button>
           <Typography variant="subtitle1" sx={{ fontSize: '40px', marginTop: '30px', display: 'flex', alignItems: "center", justifyContent: 'center' }}>
             Animal Details
           </Typography>

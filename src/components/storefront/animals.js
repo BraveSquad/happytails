@@ -34,7 +34,6 @@ const styles = {
   }
 }
 
-
 export default function Animals() {
   const dispatch = useDispatch();
 
@@ -71,8 +70,6 @@ export default function Animals() {
             <Button href='/details' onClick={() => handleDetail(animal)} sx={{ color: 'lightblue' }}>Details</Button>
           </Stack>
         </Box>
-
-
       </Card>
     ))
   }

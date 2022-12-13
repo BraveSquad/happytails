@@ -16,8 +16,6 @@ console.log('MY FAVORITE ANIMAL!!', favorites)
     dispatch(animalDetail(animal))
   }
 
-
-
   let animalArr = [];
 
   if (favorites.length > 0) {
