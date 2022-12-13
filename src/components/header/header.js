@@ -12,6 +12,7 @@ export default function Header() {
       <Link href="/log" underline="hover" sx={{ color: 'grey', display: 'flex', alignItems: 'center' }}>
         Logout
       </Link>
+      <Link href='/pets'>Animal</Link>
     </Box>
   )
 

@@ -8,6 +8,7 @@ import Profile from './components/profile/profile'
 import Welcome from './components/pages/welcome'
 import About from './components/aboutUs/aboutus'
 import Inquiry from './components/cart/inquiry'
+import Pets from './components/pages/pets'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route exact path='/welcome' element={<Welcome />} />
         <Route path='/' element={<Home />} />
+        <Route exact path='/pets' element={<Pets />} />
         <Route exact path='/reviews' element={<Reviews />} />
         <Route exact path='/details' element={<Details />} />
         {/* <Route exact path='/schedule' element={<Schedule />} /> */}
