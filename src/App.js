@@ -1,20 +1,18 @@
-import React from 'react'
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/pages/home'
 import Details from './components/animals/details'
 
-import Reviews from './components/review/reviews'
+// import Reviews from './components/review/reviews'
 import Animals from './components/storefront/animals'
 
-
-
 // import Schedule from './components/scheduling/getNextFiveDays'
-import Profile from './components/profile/profile'
-import Welcome from './components/pages/welcome'
-import About from './components/pages/aboutUs'
-import Inquiry from './components/cart/inquiry'
+import Profile from './components/profile/profile';
+import Welcome from './components/pages/welcome';
+import About from './components/aboutUs/aboutus';
+import Inquiry from './components/cart/inquiry';
 
-import History from './components/history/history'
+import Favorite from './components/favorite/favorite';
 
 // import Chat from './components/chat/Chat';
 // import Reviews from './components/review/reviews'
@@ -28,9 +26,9 @@ function App() {
       <Routes>
         <Route exact path='/welcome' element={<Welcome />} />
         <Route path='/' element={<Home />} />
-        <Route exact path='/review' element={<Reviews />} />
+        {/* <Route exact path='/review' element={<Reviews />} /> */}
         <Route exact path='/details' element={<Details />} />
-        <Route exact path='/history' element={<History />} />
+        <Route exact path='/history' element={<Favorite />} />
         {/* <Route exact path='/schedule' element={<Schedule />} /> */}
         <Route exact path='/profile' element={<Profile />} />
         <Route exact path='/animals' element={<Animals />} />

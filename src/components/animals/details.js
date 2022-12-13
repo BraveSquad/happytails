@@ -6,6 +6,8 @@ import Header from '../header/header'
 import Footer from '../footer/footer'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import '../../assets/style/detail.css'
+import Chance from 'chance';
+const chance = new Chance();
 
 
 
@@ -50,11 +52,11 @@ export default function Details() {
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography sx={{ fontWeight: 'bold', fontSize: '15px' }}>Fun Facts</Typography>
+              <Typography sx={{ fontWeight: 'bold', fontSize: '15px' }}>Fun Facts </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                {animal.description}
+              {chance.pickset(animal.tags,5)}
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -64,12 +66,12 @@ export default function Details() {
               aria-controls="panel2a-content"
               id="panel2a-header"
             >
-              <Typography sx={{ fontWeight: 'bold', fontSize: '15px' }}>History</Typography>
+              <Typography sx={{ fontWeight: 'bold', fontSize: '15px' }}>Description</Typography>
             </AccordionSummary>
             <AccordionDetails >
 
               <Typography id='history' >
-                <p >History:</p>  <p id='stockText'>{animal.history}</p>
+               <p id='description'>{animal.description}</p>
               </Typography>
             </AccordionDetails>
           </Accordion>
