@@ -36,3 +36,9 @@
 ## Database Schema
 
 ![Database Schema](./images/Screenshot%202022-12-06%20at%207.28.21%20PM.png)
+
+---
+
+## Resources
+
+### [Snowpack](https://dev.to/0xkoji/almost-no-config-snowpack-react-ts-5aac)
