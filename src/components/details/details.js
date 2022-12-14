@@ -7,26 +7,31 @@ import Footer from '../footer/footer'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import '../../assets/style/detail.css'
 import Chance from 'chance';
+import Image from '../../assets/images/paw.jpg';
 const chance = new Chance();
 
-
-
+const styles = {
+  media: {
+    height: '200px',
+    width:  '200px',
+  }
+}
 
 export default function Details() {
 
-  const selectedAnimal = useSelector(state => state.detail.animalDetail)
-  console.log('IS THERE AN ANIMAL IN HERE??', selectedAnimal)
+  const animal = useSelector(state => state.detail.animalDetail);
 
-
-  let results = [];
-  if (selectedAnimal.length > 0) {
-    results = selectedAnimal.map(animal => (
+  return (
+    <Box >
+      <Header />
       <div id='MainDiv'>
-
         <Box key={animal.id} sx={{ fontSize: '60px' }}> {animal.name}</Box>
         <Box key={animal.id} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '50px', width: '600px' }}>
           <Card key={animal.id} sx={{ padding: '30px', borderRadius: '7px', display: 'flex', flexDirection: 'column', alignItems: 'center' }} elevation={5}>
-            <CardMedia image={animal.photos[0]} sx={{ height: '500px', width: '500px', borderRadius: '4px' }} />
+            {/* <CardMedia image={animal.photos[0]} sx={{ height: '500px', width: '500px', borderRadius: '4px' }} />*/}
+            {animal.primary_photo_cropped === null ? (
+          <CardMedia image={Image} sx={styles.media} />
+        ) : (<CardMedia image={animal.primary_photo_cropped.medium} sx={styles.media} />)}
             <div id='detailInfo'>
               <Typography sx={{ fontWeight: 'bold', fontSize: '20px' }}>
                 {animal.species}
@@ -56,7 +61,7 @@ export default function Details() {
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-              {chance.pickset(animal.tags,5)}
+              {/* {chance.pickset(animal.tags,5)} */}
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -77,13 +82,6 @@ export default function Details() {
           </Accordion>
         </Box >
       </div>
-    ))
-  }
-
-  return (
-    <Box >
-      <Header />
-      {results}
       <Footer />
     </Box>
   )

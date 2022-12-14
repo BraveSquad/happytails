@@ -3,23 +3,22 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Box, Button, Card, CardMedia, Typography } from '@mui/material';
 import { animalDetail } from '../../features/detailSlice';
 import '../../assets/style/favorites.css'
-import Chance from 'chance';
-const chance = new Chance();
-
-
+// import Chance from 'chance';
+// const chance = new Chance();
 
 export default function Favorite() {
   const dispatch = useDispatch();
-  const favorites = useSelector(state => state.favorite.favoriteArray)
-console.log('MY FAVORITE ANIMAL!!', favorites)
+  const favorites = useSelector(state => state.favorite.favoriteArray);
+  // console.log('MY FAVORITE ANIMAL!!', favorites);
+  
   function handleDetail(animal) {
     dispatch(animalDetail(animal))
   }
 
-  let animalArr = [];
+  let favoritesArray = [];
 
   if (favorites.length > 0) {
-    animalArr = favorites.map(animal => (
+    favoritesArray = favorites.map(animal => (
       <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '400px', marginBottom: 5 }}>
         <Card key={'key'} sx={{ padding: '30px', borderRadius: '7px', display: 'flex', flexDirection: 'column', alignItems: 'center' }} elevation={5}>
           <CardMedia image={animal.primary_photo_cropped.medium} sx={{ height: '200px', width: '200px', borderRadius: '4px' }} />
@@ -43,7 +42,7 @@ console.log('MY FAVORITE ANIMAL!!', favorites)
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
       <Typography sx={{ fontWeight: 'bold', fontSize: '40px' }}>My Favorites</Typography>
       {/* {animalArr > 0 ? chance.pickset(animalArr, 2) : ''} */}
-      {animalArr}
+      {favoritesArray}
     </Box>
   )
 }
