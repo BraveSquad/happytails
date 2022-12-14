@@ -7,6 +7,7 @@ import Search from './search'
 import Header from '../header/header'
 import Footer from '../footer/footer'
 // import { animalSlice } from '../../features/animalSlice';
+import Image from '../../assets/images/paw.jpg';
 
 //------------ INLINE STYLING ----------------//
 
@@ -25,7 +26,15 @@ const styles = {
     margin: '20px',
     padding: '20px', borderRadius: '7px', display: 'flex', alignItems: 'center', justifyContent: 'center',
     boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgb(60, 201, 226,0.39) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;',
+    // boxShadow: 'box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.4);',
+    maxWidth: '20%',
+    minWidth: '400px'
 
+  },
+  media: {
+    height: '200px', 
+    minWidth: '200px', 
+    borderRadius: '4px', 
   },
   title: {
     display: 'flex',
@@ -53,7 +62,9 @@ export default function Animals() {
   if (animals.length > 0) {
     animalArr = animals.map(animal => (
       <Card key={animal.id} sx={styles.card}>
-        <CardMedia image={animal.photos[0].medium} sx={{ height: '180px', width: '180px', borderRadius: '4px' }} />
+       {animal.primary_photo_cropped === null ? (
+          <CardMedia image={Image} sx={styles.media} />
+        ) : (<CardMedia image={animal.primary_photo_cropped.medium} sx={styles.media} />)}
         <Box sx={styles.box}>
           <Typography>
             {animal.name}
@@ -66,7 +77,7 @@ export default function Animals() {
            Gender: {animal.gender}
           </Typography>
           <Stack direction="row" spacing={2}>
-            <Button sx={{ color: 'salmon' }} value={animal} onClick={() => handleAddToFavorites(animal)}>Add to Favorites</Button>
+            <Button sx={{ color: 'salmon' }} value={animal} onClick={() => handleAddToFavorites(animal)}>Favorite</Button>
             <Button href='/details' onClick={() => handleDetail(animal)} sx={{ color: 'lightblue' }}>Details</Button>
           </Stack>
         </Box>

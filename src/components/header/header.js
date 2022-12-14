@@ -3,6 +3,7 @@ import Link from '@mui/material/Link';
 import { Box, Popper, Button } from '@mui/material';
 import '../../assets/style/header.css'
 import MenuIcon from '@mui/icons-material/Menu';
+import PetsIcon from '@mui/icons-material/Pets';
 
 
 export default function Header() {
@@ -23,6 +24,9 @@ export default function Header() {
     <Box className='headerBox' maxWidth='l' sx={{ p: 2, borderRadius: '7px ' }}>
       <Link fontSize={'40px'} href="/" underline="hover" sx={{ color: 'grey' }} onClick={clearLocal} >
         HappyTails
+      </Link>
+      <Link href="/animals" underline="hover" sx={{ color: 'grey' }} onClick={clearLocal} >
+        <PetsIcon sx={{  fontSize: '3rem'}}/>
       </Link>
 
       <Button sx={{ width: '3%' }} aria-describedby={id} type="button" onClick={handleClick}>
