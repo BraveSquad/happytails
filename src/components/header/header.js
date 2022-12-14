@@ -40,6 +40,9 @@ export default function Header() {
           <Link href="/logout" underline="hover" sx={styles.menuBoxLink}>
             Logout
           </Link>
+          <Link href="/appointments" underline="hover" sx={styles.menuBoxLink}>
+            Book An Appointment          
+          </Link>
           <Link href="/about" underline="hover" sx={styles.menuBoxLink}>
             About us
           </Link>
