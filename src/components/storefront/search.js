@@ -113,9 +113,10 @@ function Search() {
           <MenuItem value={'Cat'}>Cat</MenuItem>
         </Select>
       </FormControl>
-
-      <Button href='/animals' onClick={() => handleSearch()}>Search</Button>
-      {/* <Button onClick={() => getPets()}>Search</Button> */}
+    
+      {/* <Button href='/animals' onClick={() => handleSearch()}>Search</Button> */}
+      {/* <Button href='/animals' onClick={() => getPets()}>Search</Button> */}
+      <Button onClick={() => getPets()}>Search</Button>
     </Box>
 
   )
