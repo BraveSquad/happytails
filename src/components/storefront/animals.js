@@ -6,6 +6,7 @@ import { addToFavorites } from '../../features/favoriteSlice';
 import Search from './search'
 import Header from '../header/header'
 import Footer from '../footer/footer'
+import dog from '../../assets/images/dog.jpg'
 // import { animalSlice } from '../../features/animalSlice';
 
 //------------ INLINE STYLING ----------------//
@@ -37,8 +38,8 @@ const styles = {
 export default function Animals() {
   const dispatch = useDispatch();
 
-// add animal to favorite's array
-  function handleAddToFavorites(animal){
+  // add animal to favorite's array
+  function handleAddToFavorites(animal) {
     dispatch(addToFavorites(animal));
   };
 
@@ -52,8 +53,11 @@ export default function Animals() {
 
   if (animals.length > 0) {
     animalArr = animals.map(animal => (
+
       <Card key={animal.id} sx={styles.card}>
-        <CardMedia image={animal.photos[0].medium} sx={{ height: '180px', width: '180px', borderRadius: '4px' }} />
+        {animal.primary_photo_cropped === null ? (
+          <CardMedia image={dog} sx={{ height: '180px', width: '180px', borderRadius: '4px' }} />
+        ) : (<CardMedia image={animal.primary_photo_cropped.medium} sx={{ height: '180px', width: '180px', borderRadius: '4px' }} />)}
         <Box sx={styles.box}>
           <Typography>
             {animal.name}
@@ -63,7 +67,7 @@ export default function Animals() {
             Breed: {animal.breeds.primary}
           </Typography>
           <Typography>
-           Gender: {animal.gender}
+            Gender: {animal.gender}
           </Typography>
           <Stack direction="row" spacing={2}>
             <Button sx={{ color: 'salmon' }} value={animal} onClick={() => handleAddToFavorites(animal)}>Add to Favorites</Button>

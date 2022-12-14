@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { animalSlice } from '../../features/animalSlice'
 import { Box, InputLabel, MenuItem, FormControl, Select, Button, TextField } from '@mui/material';
-
 import { Client } from '@petfinder/petfinder-js';
 
 
@@ -14,7 +13,7 @@ function Search() {
   const [token, setToken] = useState('');
   const [type, setType] = useState('');
   const [breed, setBreed] = useState('');
-  const [limit, setLimit]  = useState(50);
+  const [limit, setLimit] = useState(50);
   const [page, setPage] = useState(1);
   const [animal, setAnimal] = useState([]);
 
@@ -31,20 +30,20 @@ function Search() {
     setType(event.target.value);
 
   };
-  const handleBreed= (event) => {
+  const handleBreed = (event) => {
     console.log('breed from animal.js', event.target.value)
     setBreed(event.target.value);
   };
 
   const handleSearch = () => {
-     getPets();
+    getPets();
   }
 
   //build client object - setting the key, secret key and token. The token is needed to make api requests
-  const client = new Client({apiKey: process.env.REACT_APP_API_KEY, secret: process.env.REACT_APP_SECRET_KEY, token: token })
+  const client = new Client({ apiKey: process.env.REACT_APP_API_KEY, secret: process.env.REACT_APP_SECRET_KEY, token: token })
   console.log('client: ', client);
 
-  function getPets(){
+  function getPets() {
     // console.log('getPets called');
     client.animal.search({
       type: type,
@@ -53,23 +52,23 @@ function Search() {
       limit: limit,
       page: page,
     })
-    .then(res => {
-      // dispatch(res.data.animal);
-      console.log('GET_PETS res object: ', res.data.animals);
-      dispatch(animalSlice.actions.setAnimals(res.data.animals));
-      setAnimal(res.data.animals);
-      console.log('animals', animal);
-    })
-    .catch(err => {
-      console.log(err);
-    });
+      .then(res => {
+        // dispatch(res.data.animal);
+        console.log('GET_PETS res object: ', res.data.animals);
+        dispatch(animalSlice.actions.setAnimals(res.data.animals));
+        setAnimal(res.data.animals);
+        console.log('animals', animal);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
-  
+
   useEffect(() => {
     client.authenticate()
-    .then(res => {
-      setToken(res.data.access_token);
-    });
+      .then(res => {
+        setToken(res.data.access_token);
+      });
   }, []);
 
   return (
@@ -77,12 +76,12 @@ function Search() {
     <Box sx={{ minWidth: 120, display: 'flex', alignContent: "center", justifyContent: 'center', padding: 10 }}>
       <FormControl sx={{ width: 120 }}>
         <InputLabel id="demo-simple-select-label" />
-      <TextField id="outlined-basic" value={zipCode} label="Zip Code" onChange={handleZipCode} variant="outlined" />
+        <TextField id="outlined-basic" value={zipCode} label="Zip Code" onChange={handleZipCode} variant="outlined" />
       </FormControl>
 
       <FormControl sx={{ width: 120 }}>
         <InputLabel id="demo-simple-select-label" />
-       <TextField id="outlined-basic" value={breed} label="Breed" onChange={handleBreed} variant="outlined" />
+        <TextField id="outlined-basic" value={breed} label="Breed" onChange={handleBreed} variant="outlined" />
       </FormControl>
 
       <FormControl sx={{ width: 120 }}>
@@ -99,7 +98,7 @@ function Search() {
           <MenuItem value={'Adult'}>Adult</MenuItem>
         </Select>
       </FormControl>
-      
+
       <FormControl sx={{ width: 120 }}>
         <InputLabel id="demo-simple-select-label">Type</InputLabel>
         <Select
@@ -113,7 +112,7 @@ function Search() {
           <MenuItem value={'Cat'}>Cat</MenuItem>
         </Select>
       </FormControl>
-    
+
       <Button href='/animals' onClick={() => handleSearch()}>Search</Button>
       {/* <Button onClick={() => getPets()}>Search</Button> */}
     </Box>

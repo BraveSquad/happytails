@@ -43,8 +43,8 @@ export const animalSlice = createSlice({
         state.animalSelected = allAnimals
       }
     },
-    setAnimals(state, action){
-      // console.log('apiAnimal HIT!', action.payload)
+    setAnimals(state, action) {
+      console.log('apiAnimal HIT!', action.payload)
       state.apiAnimals = action.payload;
     }
   }
