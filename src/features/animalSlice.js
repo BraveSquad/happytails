@@ -4,7 +4,6 @@ import { data as allAnimals } from '../assets/dummyData/data'
 
 //------------PULLING ALL ANIMALS FROM API------//
 
-
 const initialState = {
   animalSelected: [],
   species: '',

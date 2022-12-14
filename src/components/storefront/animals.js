@@ -8,32 +8,7 @@ import Header from '../header/header'
 import Footer from '../footer/footer'
 import dog from '../../assets/images/dog.jpg'
 // import { animalSlice } from '../../features/animalSlice';
-
-//------------ INLINE STYLING ----------------//
-
-const styles = {
-  mainBox: {
-    // background: 'rgba(210, 210, 210, 0.777)',
-    // background: 'red',
-
-    borderRadius: '7px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', padding: '20px',
-    // height: '50vh'
-  },
-  box: {
-    padding: '20px'
-  },
-  card: {
-    margin: '20px',
-    padding: '20px', borderRadius: '7px', display: 'flex', alignItems: 'center', justifyContent: 'center',
-    boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgb(60, 201, 226,0.39) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;',
-
-  },
-  title: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-}
+import Image from '../../assets/images/paw.jpg';
 
 export default function Animals() {
   const dispatch = useDispatch();
@@ -43,12 +18,12 @@ export default function Animals() {
     dispatch(addToFavorites(animal));
   };
 
+  // add selected animal to favorite object
   function handleDetail(animal) {
     dispatch(animalDetail(animal))
   };
 
   const animals = useSelector(state => state.animals.apiAnimals);
-  // console.log('api animals from slice', animals);
   let animalArr = [];
 
   if (animals.length > 0) {
@@ -56,8 +31,8 @@ export default function Animals() {
 
       <Card key={animal.id} sx={styles.card}>
         {animal.primary_photo_cropped === null ? (
-          <CardMedia image={dog} sx={{ height: '180px', width: '180px', borderRadius: '4px' }} />
-        ) : (<CardMedia image={animal.primary_photo_cropped.medium} sx={{ height: '180px', width: '180px', borderRadius: '4px' }} />)}
+          <CardMedia image={Image} sx={styles.media} />
+        ) : (<CardMedia image={animal.primary_photo_cropped.medium} sx={styles.media} />)}
         <Box sx={styles.box}>
           <Typography>
             {animal.name}
@@ -70,7 +45,7 @@ export default function Animals() {
             Gender: {animal.gender}
           </Typography>
           <Stack direction="row" spacing={2}>
-            <Button sx={{ color: 'salmon' }} value={animal} onClick={() => handleAddToFavorites(animal)}>Add to Favorites</Button>
+            <Button sx={{ color: 'salmon' }} value={animal} onClick={() => handleAddToFavorites(animal)}>Favorite</Button>
             <Button href='/details' onClick={() => handleDetail(animal)} sx={{ color: 'lightblue' }}>Details</Button>
           </Stack>
         </Box>
@@ -89,4 +64,35 @@ export default function Animals() {
       <Footer />
     </Box>
   )
+}
+
+const styles = {
+  mainBox: {
+    // background: 'rgba(210, 210, 210, 0.777)',
+    // background: 'red',
+    borderRadius: '7px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', padding: '20px',
+    // height: '50vh'
+  },
+  box: {
+    padding: '20px'
+  },
+  card: {
+    margin: '20px',
+    padding: '20px', borderRadius: '7px', display: 'flex', alignItems: 'center', justifyContent: 'center',
+    boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgb(60, 201, 226,0.39) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;',
+    // boxShadow: 'box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.4);',
+    maxWidth: '20%',
+    minWidth: '400px'
+
+  },
+  media: {
+    height: '200px',
+    minWidth: '200px',
+    borderRadius: '4px',
+  },
+  title: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
 }
