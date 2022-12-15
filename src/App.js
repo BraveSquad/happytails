@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import { Box } from '@mui/material';
-import Details from './components/details/details'
 import { withAuth0 } from '@auth0/auth0-react';
 // import Reviews from './components/reviews/reviews'
 import { Appointments } from './components/pages/appointments/appointments'
@@ -13,6 +12,7 @@ import Home from './components/pages/homePage'
 import Animals from './components/pages/animalsPage';
 import Welcome from './components/pages/welcomePage'
 import InquiryPage from './components/pages/inquiryPage';
+import Details from './components/pages/detailsPage';
 // import './App.css'
 
 // import Chat from './components/chat/Chat';
@@ -20,10 +20,6 @@ import InquiryPage from './components/pages/inquiryPage';
 
 function App(props) {
   console.log('PROPPIES', props)
-
-
-
-
 
   let handleGetUser = async () => {
 
@@ -56,8 +52,6 @@ function App(props) {
             <Route path='/' element={<Home />} />
           )
           }
-
-
           {/* <Route exact path='/review' element={<Reviews />} /> */}
           <Route exact path='/details' element={<Details />} />
           <Route exact path='/appointments' element={<Appointments />} />

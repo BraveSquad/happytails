@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useSelector } from "react-redux";
+import Form from '../form/form';
 import { Box, Card, CardMedia, Typography, CardActionArea, Grid, TextField, CardContent, Button } from "@mui/material";
 import Image from '../../assets/images/paw.jpg';
 
@@ -10,7 +11,9 @@ export default function Inquiry() {
   return (
     <Box variant='div' sx={styles.mainBox}>
       <Grid>
-        <Typography variant="h3" align="center" fontWeight="bold" style={{marginBottom: '20px'}}>Inquiry</Typography>
+        <Typography variant="h3" align="center" fontWeight="bold" style={{marginBottom: '20px'}}>
+          {animal.name}
+        </Typography>
         <Grid container spacing={1} sx={styles.card} justify-content="center" >
           <Grid item xs={0}>
             <Card sx={styles.imageContainer}>
@@ -62,32 +65,7 @@ export default function Inquiry() {
             <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
               Fill up the form and our team will get back to you within 24 hours.
             </Typography>
-
-            <form>
-              <Grid container spacing={1}>
-                <Grid xs={12} sm={6} item>
-                  <TextField placeholder="Enter first name" label="First Name" variant="outlined" fullWidth required />
-                </Grid>
-                <Grid xs={12} sm={6} item>
-                  <TextField placeholder="Enter last name" label="Last Name" variant="outlined" fullWidth required />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField type="email" placeholder="Enter email" label="Email" variant="outlined" fullWidth required />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField type="number" placeholder="Enter phone number" label="Phone" variant="outlined" fullWidth required />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField type="address" placeholder="Address" label="Address" variant="outlined" fullWidth required />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField label="Message" multiline rows={5} placeholder="Type your message here" variant="outlined" fullWidth required />
-                </Grid>
-                <Grid item xs={12}>
-                  <Button type="submit" variant="contained" color="primary" fullWidth>Submit</Button>
-                </Grid>
-              </Grid>
-            </form>
+            <Form />
           </CardContent>
         </Card>
       </Grid>
@@ -101,18 +79,17 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: '40px',
+    width: '100%',
+    marginTop: 5,
     marginBottom: '40px',
-    width: '960px',
-    maxWidth: '1440px',
-    // border: '2px solid black',
   },
   card: {
     borderRadius: '7px', alignItems: 'center', display: "flex", justifyContent: "center",
     // boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgb(60, 201, 226,0.39) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;',
   },
   grid: {
-    boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgb(60, 201, 226,0.39) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;',
+    // boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgb(60, 201, 226,0.39) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;',
+    boxShadow: '10px 10px 30px rgba(0, 0, 0, 0.2);',
     maxWidth: 450, 
     padding: "20px 5px", 
     margin: "30px auto" 
