@@ -20,6 +20,8 @@ const presistHistoryConfig = {
   storage
 }
 
+
+
 const presistedAnimalReducer = persistReducer(presistAnimalConfig, animalReducer);
 const presistedDetailsReducer = persistReducer(presistDetailConfig, detailReducer);
 const presistedFavoriteReducer = persistReducer(presistHistoryConfig, favoriteReducer);
@@ -30,7 +32,8 @@ export const store = configureStore({
     // counter: counterReducer,
     animals: presistedAnimalReducer,
     detail: presistedDetailsReducer,
-    favorite: presistedFavoriteReducer
+    favorite: presistedFavoriteReducer,
+
   },
 });
 

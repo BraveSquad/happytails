@@ -20,7 +20,7 @@ export const animalSlice = createSlice({
   reducers: {
 
     selectFilter(state, action) {
-      console.log('filter', action.payload)
+      // console.log('filter', action.payload)
       state.location = action.payload.location;
       state.age = action.payload.age;
       state.species = action.payload.species;
@@ -43,7 +43,7 @@ export const animalSlice = createSlice({
       }
     },
     setAnimals(state, action) {
-      console.log('apiAnimal HIT!', action.payload)
+      // console.log('apiAnimal HIT!', action.payload)
       state.apiAnimals = action.payload;
     }
   }

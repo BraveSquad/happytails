@@ -9,7 +9,7 @@ export const detailSlice = createSlice({
   initialState,
   reducers: {
     animalDetail(state, action) {
-      console.log('detailSlice', action.payload)
+      // console.log('detailSlice', action.payload)
       state.animalDetail = action.payload;
     },
 

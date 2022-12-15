@@ -26,12 +26,12 @@ function Search() {
 
   };
   const handleType = (event) => {
-    console.log('search called', event.target.value)
+    // console.log('search called', event.target.value)
     setType(event.target.value);
 
   };
   const handleBreed = (event) => {
-    console.log('breed from animal.js', event.target.value)
+    // console.log('breed from animal.js', event.target.value)
     setBreed(event.target.value);
   };
 
@@ -41,7 +41,7 @@ function Search() {
 
   //build client object - setting the key, secret key and token. The token is needed to make api requests
   const client = new Client({ apiKey: process.env.REACT_APP_API_KEY, secret: process.env.REACT_APP_SECRET_KEY, token: token })
-  console.log('client: ', client);
+  // console.log('client: ', client);
 
   function getPets() {
     // console.log('getPets called');
@@ -54,10 +54,10 @@ function Search() {
     })
       .then(res => {
         // dispatch(res.data.animal);
-        console.log('GET_PETS res object: ', res.data.animals);
+        // console.log('GET_PETS res object: ', res.data.animals);
         dispatch(animalSlice.actions.setAnimals(res.data.animals));
         setAnimal(res.data.animals);
-        console.log('animals', animal);
+        // console.log('animals', animal);
       })
       .catch(err => {
         console.log(err);

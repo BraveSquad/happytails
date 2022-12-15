@@ -6,7 +6,7 @@ import { addToFavorites } from '../../features/favoriteSlice';
 import Search from './search'
 import Header from '../header/header'
 import Footer from '../footer/footer'
-import dog from '../../assets/images/dog.jpg'
+// import dog from '../../assets/images/dog.jpg'
 // import { animalSlice } from '../../features/animalSlice';
 import Image from '../../assets/images/paw.jpg';
 

@@ -6,9 +6,9 @@ import Header from '../header/header'
 import Footer from '../footer/footer'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import '../../assets/style/detail.css'
-import Chance from 'chance';
+// import Chance from 'chance';
 import Image from '../../assets/images/paw.jpg';
-const chance = new Chance();
+// const chance = new Chance();
 
 const styles = {
   media: {
