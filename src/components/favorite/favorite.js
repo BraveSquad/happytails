@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Box, Button, Card, CardMedia, Typography } from '@mui/material';
 import { animalDetail } from '../../features/detailSlice';
 import '../../assets/style/favorites.css'
+import Image  from '../../assets/images/paw.jpg';
 // import Chance from 'chance';
 // const chance = new Chance();
 
@@ -21,7 +22,9 @@ export default function Favorite() {
     favoritesArray = favorites.map(animal => (
       <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '400px', marginBottom: 5 }}>
         <Card key={'key'} sx={{ padding: '30px', borderRadius: '7px', display: 'flex', flexDirection: 'column', alignItems: 'center' }} elevation={5}>
-          <CardMedia image={animal.primary_photo_cropped.medium} sx={{ height: '200px', width: '200px', borderRadius: '4px' }} />
+          {animal.primary_photo_cropped === null ? (
+          <CardMedia image={Image} sx={styles.media} />
+        ) : (<CardMedia image={animal.primary_photo_cropped.medium} sx={styles.media} />)}
           <div id='detailInfo'>
             <Typography sx={{ fontWeight: 'bold', fontSize: '20px' }}>
               {animal.name}
@@ -45,4 +48,12 @@ export default function Favorite() {
       {favoritesArray}
     </Box>
   )
+}
+
+const styles = {
+  media: {
+    height: '200px', 
+    width: '200px', 
+    borderRadius: '4px' 
+  },
 }

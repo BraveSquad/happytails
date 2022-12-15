@@ -1,5 +1,8 @@
 #homeBox{
   height: 80vh;
+  /* display: flex; */
+  /* flex-direction: column; */
   /* background-color: aqua; */
-  min-width: 1280px;
+  /* min-width: 1280px; */
+  width: '100%';
 }
