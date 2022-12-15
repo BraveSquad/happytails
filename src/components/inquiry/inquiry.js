@@ -8,7 +8,7 @@ export default function Inquiry() {
   const animal = useSelector(state => state.detail.animalDetail);
 
   return (
-    <Box variant='div' sx={styles.box}>
+    <Box variant='div' sx={styles.mainBox}>
       <Grid>
         <Typography variant="h3" align="center" fontWeight="bold" style={{marginBottom: '20px'}}>Inquiry</Typography>
         <Grid container spacing={1} sx={styles.card} justify-content="center" >
@@ -96,8 +96,7 @@ export default function Inquiry() {
 }
 
 const styles = {
-  box: {
-    // border: '2px solid black',
+  mainBox: {
     display: 'flex', 
     flexDirection: 'column',
     alignItems: 'center',
@@ -106,6 +105,7 @@ const styles = {
     marginBottom: '40px',
     width: '960px',
     maxWidth: '1440px',
+    // border: '2px solid black',
   },
   card: {
     borderRadius: '7px', alignItems: 'center', display: "flex", justifyContent: "center",
