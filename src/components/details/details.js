@@ -6,14 +6,14 @@ import Header from '../header/header'
 import Footer from '../footer/footer'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import '../../assets/style/detail.css'
-import Chance from 'chance';
+// import Chance from 'chance';
 import Image from '../../assets/images/paw.jpg';
-const chance = new Chance();
+// const chance = new Chance();
 
 const styles = {
   media: {
     height: '200px',
-    width:  '200px',
+    width: '200px',
   }
 }
 
@@ -30,8 +30,8 @@ export default function Details() {
           <Card key={animal.id} sx={{ padding: '30px', borderRadius: '7px', display: 'flex', flexDirection: 'column', alignItems: 'center' }} elevation={5}>
             {/* <CardMedia image={animal.photos[0]} sx={{ height: '500px', width: '500px', borderRadius: '4px' }} />*/}
             {animal.primary_photo_cropped === null ? (
-          <CardMedia image={Image} sx={styles.media} />
-        ) : (<CardMedia image={animal.primary_photo_cropped.medium} sx={styles.media} />)}
+              <CardMedia image={Image} sx={styles.media} />
+            ) : (<CardMedia image={animal.primary_photo_cropped.medium} sx={styles.media} />)}
             <div id='detailInfo'>
               <Typography sx={{ fontWeight: 'bold', fontSize: '20px' }}>
                 {animal.species}
@@ -61,7 +61,7 @@ export default function Details() {
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-              {/* {chance.pickset(animal.tags,5)} */}
+                {/* {chance.pickset(animal.tags,5)} */}
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -76,7 +76,7 @@ export default function Details() {
             <AccordionDetails >
 
               <Typography id='history' >
-               <p id='description'>{animal.description}</p>
+                <p id='description'>{animal.description}</p>
               </Typography>
             </AccordionDetails>
           </Accordion>

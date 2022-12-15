@@ -3,12 +3,11 @@ import Link from '@mui/material/Link';
 import { Box, Popper, Button, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import PetsIcon from '@mui/icons-material/Pets';
-import { GiSverdIFjell } from 'react-icons/gi';
-// import '../../assets/style/header.css'
+import Logout from '../logout/logout'
 
 
 export default function Header() {
-  
+
   const [anchorEl, setAnchorEl] = useState(null);
   //--------CLEARING OUT LOCALHOST FOR DETAILS PAGE -------------//
   // const clearLocal = (e) => {
@@ -25,15 +24,15 @@ export default function Header() {
   return (
     <Box sx={styles.mainBox}>
       <Box sx={styles.logoLinkBox}>
-        <Link href="/" style={{textDecoration: 'none'}}>
+        <Link href="/" style={{ textDecoration: 'none' }}>
           <Typography sx={styles.logoLinkText}>
             HappyTails
           </Typography>
         </Link>
-        <Link href='/'style={{textDecoration: 'none'}}>
-          <PetsIcon sx={styles.logo}/>
+        <Link href='/' style={{ textDecoration: 'none' }}>
+          <PetsIcon sx={styles.logo} />
         </Link>
-      </Box>    
+      </Box>
       <Button sx={styles.button} aria-describedby={id} type="button" onClick={handleClick}>
         <MenuIcon sx={styles.menuIcon} />
       </Button>
@@ -42,15 +41,17 @@ export default function Header() {
           <Link href="/profile" underline="hover" sx={styles.menuBoxLink}>
             Profile
           </Link>
-          <Link href="/logout" underline="hover" sx={styles.menuBoxLink}>
+
+          {/* <Link href="/logout" underline="hover" sx={styles.menuBoxLink}>
             Logout
-          </Link>
+          </Link> */}
           <Link href="/appointments" underline="hover" sx={styles.menuBoxLink}>
-            Book An Appointment          
+            Book An Appointment
           </Link>
           <Link href="/about" underline="hover" sx={styles.menuBoxLink}>
             About us
           </Link>
+          <Logout />
         </Box>
       </Popper>
     </Box>
@@ -74,7 +75,7 @@ const styles = {
     justifyContent: 'space-around',
     textDecoration: 'none',
     marginLeft: 6,
-  }, 
+  },
   logoLinkText: {
     color: 'white',
     fontSize: '40px',
@@ -97,24 +98,24 @@ const styles = {
   },
   menuBox: {
     // p: 1, 
-    bgcolor: 'background.paper', 
-    padding: 3, 
-    marginTop: 1, 
-    borderRadius: '10px', 
+    bgcolor: 'background.paper',
+    padding: 3,
+    marginTop: 1,
+    borderRadius: '10px',
     boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgb(60, 201, 226,0.39) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;',
     border: '1px solid black',
   },
   menuBoxLink: {
-    padding: 1, 
-    color: 'black', 
-    display: 'flex', 
-    alignItems: 'center', 
+    padding: 1,
+    color: 'black',
+    display: 'flex',
+    alignItems: 'center',
     flexDirection: 'column',
-    justifyContent: 'center', 
-    marginBottom: 2, 
-    borderRadius: '10px', 
-    backgroundColor: 'lightgrey', 
-    fontWeight: 'bold', 
+    justifyContent: 'center',
+    marginBottom: 2,
+    borderRadius: '10px',
+    backgroundColor: 'lightgrey',
+    fontWeight: 'bold',
     fontSize: '15px',
   },
 }
