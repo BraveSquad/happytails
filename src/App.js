@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
-import Home from './components/pages/home'
+import { Box } from '@mui/material';
 import Details from './components/details/details'
 import { withAuth0 } from '@auth0/auth0-react';
 // import Reviews from './components/reviews/reviews'
-import { Box } from '@mui/material';
-import Animals from './components/storefront/animals'
 import { Appointments } from './components/pages/appointments/appointments'
 import Profile from './components/profile/profile'
-import Welcome from './components/pages/welcome'
-import About from './components/pages/aboutUs'
-import InquiryPage from './components/pages/inquiry';
-
+import About from './components/pages/aboutUsPage'
 import Favorite from './components/favorite/favorite';
+import Home from './components/pages/homePage'
+import Animals from './components/pages/animalsPage';
+import Welcome from './components/pages/welcomePage'
+import InquiryPage from './components/pages/inquiryPage';
+// import './App.css'
 
 // import Chat from './components/chat/Chat';
 // import Reviews from './components/review/reviews'
@@ -77,6 +77,10 @@ export default withAuth0(App);
 
 const styles = {
   mainBox: {
-    width: '95vw'
+    width: '100vw',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   }
 }

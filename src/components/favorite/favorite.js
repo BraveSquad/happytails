@@ -5,6 +5,7 @@ import { animalDetail } from '../../features/detailSlice';
 import axios from 'axios';
 import Image from '../../assets/images/paw.jpg';
 import '../../assets/style/favorites.css'
+
 // import Chance from 'chance';
 // const chance = new Chance();
 
@@ -52,7 +53,6 @@ export default function Favorite(props) {
     favoritesArray = favorites.map(animal => (
       <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '400px', marginBottom: 5 }}>
         <Card key={'key'} sx={{ padding: '30px', borderRadius: '7px', display: 'flex', flexDirection: 'column', alignItems: 'center' }} elevation={5}>
-          {/* <CardMedia image={animal.primary_photo_cropped.medium} sx={{ height: '200px', width: '200px', borderRadius: '4px' }} /> */}
           {animal.primary_photo_cropped === null ? (
             <CardMedia image={Image} sx={styles.media} />
           ) : (<CardMedia image={animal.primary_photo_cropped.medium} sx={styles.media} />)}
