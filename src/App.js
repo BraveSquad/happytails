@@ -45,31 +45,23 @@ function App(props) {
   };
   handleGetUser()
   return (
-    <Box sx={styles.mainBox}>
-      <Router >
-        {console.log('props in the App component yo!!', props)}
-        {/* <Chat /> */}
-        <Routes>
-          {!props.auth0.isAuthenticated ? (
-            <Route exact path='/' element={<Welcome />} />
-          ) : (
-            <Route path='/' element={<Home />} />
-          )
-          }
+    <Router >
+      {/* <Chat /> */}
+      <Routes>
+        <Route exact path='/welcome' element={<Welcome />} />
+        <Route path='/' element={<Home />} />
+        {/* <Route exact path='/review' element={<Reviews />} /> */}
+        <Route exact path='/details' element={<Details />} />
+        <Route exact path='/appointments' element={<Appointments />} />
+        <Route exact path='/history' element={<Favorite />} />
+        {/* <Route exact path='/schedule' element={<Schedule />} /> */}
+        <Route exact path='/profile' element={<Profile />} />
+        <Route exact path='/animals' element={<Animals />} />
+        <Route exact path='/about' element={<About />} />
+        <Route exact path='/inquire' element={<InquiryPage />} />
 
-
-          {/* <Route exact path='/review' element={<Reviews />} /> */}
-          <Route exact path='/details' element={<Details />} />
-          <Route exact path='/appointments' element={<Appointments />} />
-          <Route exact path='/history' element={<Favorite />} />
-          {/* <Route exact path='/schedule' element={<Schedule />} /> */}
-          <Route exact path='/profile' element={<Profile auth0={props.auth0} />} />
-          <Route exact path='/animals' element={<Animals />} />
-          <Route exact path='/about' element={<About />} />
-          <Route exact path='/inquire' element={<InquiryPage />} />
-        </Routes>
-      </Router>
-    </Box>
+      </Routes>
+    </Router>
   );
 }
 

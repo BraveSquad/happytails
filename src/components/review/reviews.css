@@ -33,7 +33,7 @@
   justify-content: center;
 }
 
-.trail {
+.tail {
   display: flex;
   align-items: center;
 }
@@ -72,3 +72,152 @@ button.disabled {
   font-size: 50px;
   font-family: 'Dancing Script', cursive;
 }
+
+
+
+
+/* .container{
+width: 600px;
+margin: 0 auto;
+padding: 50px;
+}
+
+.card{
+  background-color: #fffcfc;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+.cardHeader{
+  background-color: pink;
+  padding: 25px;
+  border-radius: 10px;
+  font-size: 19px;
+  margin-bottom: 23px;
+}
+
+span.rating{
+  background-color: #333;
+  color: #fff;
+  padding: 12px 19px;
+  border-radius: 24px;
+  font-family: monospace;
+}
+span.name {
+  margin-left: 20px;
+  font-family: monospace;
+  font-size: 30px;
+}
+
+span.icon{
+  float: right;
+  padding-top: 9px;
+  cursor: pointer;
+}
+
+input.nameInput{
+  width: 90%;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+textarea.comment{
+  width: 95%;
+  height:75px;
+  font-size: 20px;
+}
+
+.sbt-btn{
+  padding: 9px 22px;
+  font-size: 20px;
+  background-color: #06b4ea;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
+
+.review {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  text-align: center;
+  width: 100%;
+  border: 2px solid black; 
+  background-color: #B9BFA4; 
+}
+
+.position {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  border: 4px solid black; 
+  width: 100%;
+  background-position: bottom;
+  float: right;
+
+} 
+
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.trail {
+  display: flex;
+  align-items: center;
+}
+
+.trail h1 {
+  font-size: 20px;
+}
+
+textarea {
+  width: 100%;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+button {
+  background: #30592E;
+  color: #fff;
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 6px;
+  padding: 10px 0;
+  border: none;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+button.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+#Title {
+  background-color: #30592e36;
+  border-radius: 7px;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.136);
+  font-size: 50px;
+  font-family: 'Dancing Script', cursive;
+}  */ 
