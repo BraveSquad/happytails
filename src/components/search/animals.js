@@ -3,46 +3,103 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Box, Button, Card, CardMedia, Stack, Typography } from '@mui/material';
 import { animalDetail } from '../../features/detailSlice';
 import { addToFavorites } from '../../features/favoriteSlice';
-
-// import { animalSlice } from '../../features/animalSlice';
+import axios from 'axios';
 import Image from '../../assets/images/paw.jpg';
 
-export default function Animals() {
+export default function Animals(props) {
+  console.log('MY DUDE', props)
+  const { isLoading } = props.auth0;
   const dispatch = useDispatch();
+  // const [updateFav, setUpdateFav] = useState([])
+  const animals = useSelector(state => state.animals.apiAnimals);
+  const favorites = useSelector(state => state.favorite.favoriteArray);
 
-  // const favorites = useSelector(state => state.favorite.favoriteArray);
+  console.log('FAVORITS FROM SELECTOR IN ANIAMLS ON RENDER', favorites)
+
+
+
   // add animal to favorite's array
-  function handleAddToFavorites(animal){
+  function handleAddToFavorites(animal) {
+
     dispatch(addToFavorites(animal));
+
+
   };
 
-  // add selected animal to favorite object
   function handleDetail(animal) {
     dispatch(animalDetail(animal))
+
   };
 
 
-  const animals = useSelector(state => state.animals.apiAnimals);
+
+  setTimeout(() => {
+
+    handlePostFav()
+  }, 5000)
+
+
+
+
+
+  let handlePostFav = async () => {
+    // if (props.auth0.isAuthenticated) {
+    const res = await props.auth0.getIdTokenClaims();
+
+    const jwt = res.__raw;
+
+    const updatedUser = {
+      _id: props.user._id,
+      userName: props.user.userName,
+      email: props.user.email,
+      picture: props.user.picture,
+      favorite: favorites,
+      isLoading: props.auth0.isLoading
+    }
+
+    const config = {
+      headers: { Authorization: `Bearer ${jwt}` },
+      method: 'PUT',
+      baseURL: `${process.env.REACT_APP_HEROKU_URL}`,
+      url: `/fav/${updatedUser._id}`,
+      data: updatedUser
+    };
+
+    const rest = await axios(config);
+
+    console.log('USER CONFIG', rest.data);
+    // }
+  };
+
+  if (isLoading) {
+    return <div>Loading ...</div>;
+  }
+
+
+
+
+
+
   let animalArr = [];
 
   if (animals.length > 0) {
     animalArr = animals.map(animal => (
       <Card key={animal.id} sx={styles.card}>
-       {animal.primary_photo_cropped === null ? (
+        {animal.primary_photo_cropped === null ? (
           <CardMedia image={Image} sx={styles.media} />
         ) : (<CardMedia image={animal.primary_photo_cropped.medium} sx={styles.media} />)}
         <Box sx={styles.informationBox}>
           <Box sx={styles.nameBox}>
             <Typography sx={styles.textName}>
               {animal.name}
-            <Box sx={styles.lineBreak} />
-          </Typography>
+              <Box sx={styles.lineBreak} />
+            </Typography>
           </Box>
           <Typography sx={styles.textBreed}>
             {animal.breeds.primary}
           </Typography>
           <Typography sx={styles.textGender}>
-           {animal.gender}
+            {animal.gender}
           </Typography>
           <Stack direction="row" spacing={2}>
             <Button sx={styles.favoriteButton} value={animal} onClick={() => handleAddToFavorites(animal)}>Favorite</Button>
@@ -69,10 +126,10 @@ export default function Animals() {
 const styles = {
   mainBox: {
     display: 'flex',
-    flexDirection: 'column',  
-    alignItems: 'center', 
+    flexDirection: 'column',
+    alignItems: 'center',
     justifyContent: 'center',
-    width: '100%' 
+    width: '100%'
   },
   animalCardWrapperBox: {
     display: 'flex',
@@ -90,24 +147,24 @@ const styles = {
     fontSize: '3rem'
   },
   card: {
-    display: 'flex', 
-    alignItems: 'center', 
+    display: 'flex',
+    alignItems: 'center',
     justifyContent: 'space-between',
     margin: '20px',
-    padding: '15px', 
-    borderRadius: '7px', 
+    padding: '15px',
+    borderRadius: '7px',
     boxShadow: '10px 10px 30px rgba(0, 0, 0, 0.2);',
     maxWidth: '20%',
     minWidth: '400px',
   },
   media: {
-    height: '200px', 
-    minWidth: '200px', 
-    borderRadius: '4px', 
+    height: '200px',
+    minWidth: '200px',
+    borderRadius: '4px',
   },
   informationBox: {
     display: 'flex',
-    flexDirection:  'column',
+    flexDirection: 'column',
     justifyContent: 'space-around',
     alignItems: 'center',
     height: '200px',
