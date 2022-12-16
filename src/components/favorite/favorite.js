@@ -42,11 +42,6 @@ export default function Favorite(props) {
     // }
   };
 
-
-
-
-
-
   let favoritesArray = [];
 
   if (favorites.length > 0) {
@@ -74,11 +69,11 @@ export default function Favorite(props) {
   }
   return (
     <Box sx={{
-      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+      display: 'flex', 
+      flexDirection: 'column', 
+      alignItems: 'center', 
+      justifyContent: 'center',
       // position: 'absolute',
-
-
-
     }}>
       <Typography sx={{ fontWeight: 'bold', fontSize: '40px', marginBottom: '10px' }}>My Favorites</Typography>
       {/* {animalArr > 0 ? chance.pickset(animalArr, 2) : ''} */}
