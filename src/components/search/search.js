@@ -95,7 +95,7 @@ function Search() {
               value={age}
               label="Age"
               onChange={handleAge}
-              >
+            >
               <MenuItem value={'Baby'}>Baby</MenuItem>
               <MenuItem value={'Young'}>Young</MenuItem>
               <MenuItem value={'Adult'}>Adult</MenuItem>
@@ -110,7 +110,7 @@ function Search() {
               value={type}
               label="species"
               onChange={handleType}
-              >
+            >
               <MenuItem value={'Dog'}>Dog</MenuItem>
               <MenuItem value={'Cat'}>Cat</MenuItem>
             </Select>
@@ -119,7 +119,7 @@ function Search() {
           <Button sx={styles.searchButton} onClick={() => getPets()}>Search</Button>
         </Box>
       </Box>
-      <Box sx={styles.lineBreak}/>
+      <Box sx={styles.lineBreak} />
     </Box>
   )
 }
@@ -129,10 +129,10 @@ export default Search;
 const styles = {
   mainBox: {
     width: '100%',
-    height: '400px', 
+    height: '400px',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center', 
+    alignItems: 'center',
     justifyContent: 'flex-start',
     paddingTop: 10,
     backgroundImage: `url(${Image})`,

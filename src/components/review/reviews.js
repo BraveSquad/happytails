@@ -11,7 +11,6 @@ export default function ReviewTails(props) {
   const [number, setNumber] = useState(0);
   const [hoverStar, setHoverStar] = useState(undefined);
   const [review, setReview] = useState('');
-  console.log('STARS::', number);
 
 
   const handleText = () => {
@@ -58,7 +57,6 @@ export default function ReviewTails(props) {
       const jwt = res.__raw;
 
       // leave this console here in order to grab your token for backend testing in Thunder Client
-      console.log('token: ', jwt);
 
       const config = {
         headers: { Authorization: `Bearer ${jwt}` },
@@ -101,7 +99,7 @@ export default function ReviewTails(props) {
               src={image}
               alt="Trail Pic"
             /> */}
-            <h1 id='Title'>Trails Reviews</h1>
+            <h1 id='Title'>Happy Tail Reviews</h1>
           </div>
           <div>
             <h1 >{handleText()}</h1>
