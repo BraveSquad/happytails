@@ -5,7 +5,7 @@ import Profile from '../profile/profile';
 import { Box } from '@mui/material';
 
 function ProfilePage(props) {
-  console.log('porps in profile page', props)
+  // console.log('porps in profile page', props)
 
 
   return (
