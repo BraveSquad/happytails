@@ -1,52 +1,23 @@
 
 import React from 'react'
 import { Box, Card, CardMedia, Typography } from '@mui/material';
-import Header from '../header/header'
 import { useAuth0 } from "@auth0/auth0-react";
-import Footer from '../footer/footer'
 import Favorites from '../favorite/favorite';
 
 const Profile = (props) => {
+  console.log('props from PROFILE', props)
+
+  const { user, isAuthenticated } = useAuth0();
+  // const { isLoading } = props.user;
+  // if (isLoading) {
+  //   return (
+  //     <div >
+  //       ...WAITING UNTIL I DIE!!!
+  //     </div>
+  //   );
+  // }
 
 
-  const { user, isAuthenticated, isLoading } = useAuth0();
-
-  if (isLoading) {
-    return <div>Loading ...</div>;
-  }
-
-  // useEffect(() => {
-
-  //   handleGetUser()
-  // }, [])
-
-  console.log('OK HERE', user)
-
-
-
-
-
-
-
-
-  // let handleGetUser = async () => {
-
-  //   // if (props.auth0.isAuthenticated) {
-  //   const res = await props.auth0.getIdTokenClaims();
-  //   console.log('res', res)
-  //   const jwt = res.__raw;
-
-  //   const config = {
-  //     headers: { Authorization: `Bearer ${jwt}` },
-  //     method: 'POST',
-  //     baseURL: `${process.env.REACT_APP_HEROKU_URL}`,
-  //     url: '/user',
-  //     data: props.auth0
-  //   };
-  //   const rest = await axios(config);
-  //   console.log('USER CONFIG', rest.data);
-  //   // }
-  // };
 
 
 
@@ -86,7 +57,7 @@ const Profile = (props) => {
         boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgb(60, 201, 226,0.39) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;',
 
       }} >
-        <Favorites auth0={props.auth0} />
+        <Favorites auth0={props.auth0} user={props.user} />
       </Box>
 
     </ Box >
@@ -96,9 +67,7 @@ const Profile = (props) => {
   return (
     isAuthenticated && (
       <Box>
-        <Header />
         {profileUser}
-        <Footer />
       </Box>
     )
   )

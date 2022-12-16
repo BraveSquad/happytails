@@ -6,12 +6,13 @@ import Banner from '../banner'
 import Animals from '../search/animals';
 import { Box } from '@mui/material';
 
-function AnimalsPage() {
+function AnimalsPage(props) {
+  console.log('porps in animal page', props)
   return (
     <Box sx={styles.mainBox}>
       <Header />
       <Search />
-      <Animals />
+      <Animals auth0={props.auth0} user={props.user} />
       <Banner />
       <Footer />
     </Box>
@@ -21,7 +22,7 @@ function AnimalsPage() {
 export default AnimalsPage;
 
 const styles = {
-    mainBox: {
-        width: '100%',
-    }
+  mainBox: {
+    width: '100%',
+  }
 }

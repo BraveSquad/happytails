@@ -57,7 +57,6 @@ export default function ReviewTails(props) {
       const jwt = res.__raw;
 
       // leave this console here in order to grab your token for backend testing in Thunder Client
-      console.log('token: ', jwt);
 
       const config = {
         headers: { Authorization: `Bearer ${jwt}` },
