@@ -23,7 +23,6 @@ export default function Animals(props) {
 
     dispatch(addToFavorites(animal));
 
-
   };
 
   function handleDetail(animal) {
@@ -36,6 +35,7 @@ export default function Animals(props) {
   setTimeout(() => {
 
     handlePostFav()
+
   }, 5000)
 
 

@@ -116,7 +116,7 @@ function Search() {
             </Select>
           </FormControl>
           {/* TODO: need to fix routing after getPets() is selected - if we change pages too quickly, all animals will not get loaded from the API call */}
-          <Button sx={styles.searchButton} onClick={() => getPets()}>Search</Button>
+          <Button href='/animals' sx={styles.searchButton} onClick={() => getPets()}>Search</Button>
         </Box>
       </Box>
       <Box sx={styles.lineBreak} />
