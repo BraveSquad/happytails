@@ -1,16 +1,15 @@
-
-import React, { useState } from "react";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import React, { useState } from 'react'
 import axios from 'axios';
-import Form from 'react-bootstrap/Form';
+import { Form, Card } from 'react-bootstrap';
 import "./reviews.css";
-
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { TextField } from "@mui/material"
 
 
 export default function ReviewTails(props) {
   const [number, setNumber] = useState(0);
   const [hoverStar, setHoverStar] = useState(undefined);
-  const [review, setReview] = useState('');
+  const [reviews, setReview] = useState('');
   console.log('STARS::', number);
 
 
@@ -42,9 +41,9 @@ export default function ReviewTails(props) {
       case 2:
       case 3:
       case 4:
-        return "Thank you for your rating. How can Go Trek imporve?";
+        return "Thank you for your rating. How can Happy Tails improve?";
       case 5:
-        return "What is your favorite thing about Go Trek?";
+        return "What is your favorite thing about Happy Tails?";
       default:
         return "Comment here...";
     }
@@ -71,8 +70,6 @@ export default function ReviewTails(props) {
       const reviewResponse = await axios(config);
 
       console.log('Review from DB: ', reviewResponse.data);
-
-
     }
   };
   // const { user } = props.auth0;
@@ -94,14 +91,14 @@ export default function ReviewTails(props) {
     <div className="review">
       <div className="position">
         <div className="content">
-          <div className="trail">
+          <div className="tail">
             {/* <img
               style={{ width: 60, height: 60, objectFit: "cover" }}
               // src="https://www.pexels.com/photo/person-waking-on-hill-554609/"
               src={image}
               alt="Trail Pic"
             /> */}
-            <h1 id='Title'>Trails Reviews</h1>
+            <h1 id='Title'>Happy Tails Reviews</h1>
           </div>
           <div>
             <h1 >{handleText()}</h1>
@@ -130,12 +127,16 @@ export default function ReviewTails(props) {
               <Form.Control
                 className='reviewTextBox'
                 type='text'
-                value={review}
+                value={reviews}
                 onChange={(e) => { setReview(e.target.value) }}
                 placeholder={handlePlaceHolder()} />
             </Form.Group>
+            <Card>
+              <TextField fullWidth label="fullWidth" id="fullWidth" />
+            </Card>
             <button type='submit' onChange={(e) => { setReview(e.target.value) }} className={` ${!number && "disabled"} `}>Submit</button>
           </Form>
+
         </div>
       </div>
     </div >
@@ -143,15 +144,38 @@ export default function ReviewTails(props) {
 }
 
 
+// import ReviewList from './reviewList';
+// import React, { useState } from "react";
+// import EachReview from './eachReview'
+// import CreateReview from './CreateReview';
 
 
 
-// import React from 'react'
-/// ------- REVIEWS  --------//
 // export default function Reviews() {
+//   //passing dummy data to test CRUD for reviews will refactor after
+//   const [reviews, setReviews] = useState(ReviewList);
+
+//   function deleteReview(id) {
+//     //if the if is not equal to the id in item then return only those reviews
+//     setReviews(reviews.filter((item) => { return id !== item.id }))
+
+
+//   }
+
+
+//   function addReview(review) {
+//     setReviews([review, ...reviews])
+//   }
+
 //   return (
-//     <div>
-//       Reviews
-//     </div>
+//     <>
+//       <CreateReview handleCreateReview={addReview} />
+
+//       {
+//         reviews.length > 0 ? reviews.map((item, index) => {
+//           return <EachReview reviews={item} key={index} handleDelete={() => deleteReview(item.id)} />
+//         }) : 'No Reivew'
+//       }
+//     </>
 //   )
 // }
