@@ -11,7 +11,10 @@ export default function ReviewTails(props) {
   const [hoverStar, setHoverStar] = useState(undefined);
   const [reviews, setReview] = useState('');
   console.log('STARS::', number);
+  if (reviews !== "") {
+    console.log('Reviews::', reviews);
 
+  }
 
   const handleText = () => {
     // console.log('NUMBER::', number);
@@ -62,23 +65,24 @@ export default function ReviewTails(props) {
         headers: { Authorization: `Bearer ${jwt}` },
         method: 'POST',
         baseURL: `${process.env.REACT_APP_HEROKU_URL}`,
-        url: '/review',
+        // url: '/review',
         data: newReview
       };
 
-      const reviewResponse = await axios(config);
+      const reviewResponse = await axios.post('/review', config);
 
       console.log('Review from DB: ', reviewResponse.data);
     }
   };
   // const { user } = props.auth0;
   const handleSubmit = (event) => {
-    console.log('OK??::', event.target.review.value);
+    // console.log('OK??::', event.target.review.value);
     event.preventDefault();
-    setReview('');
+    console.log("reviews", reviews)
+    // setReview('');
     const newReview = {
-      // username: user.name,
-      review: event.target.review.value,
+      //  username: user.name,
+      review: reviews,
       star: number
     };
     console.log('ALMOST!!::', newReview);
@@ -121,19 +125,20 @@ export default function ReviewTails(props) {
                 )
               )}
           </div>
-          <Form className='reviewFrom' onSubmit={(e) => { handleSubmit(e) }}>
+          <Form className='reviewFrom' onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="review">
-              <Form.Control
+              <TextField
                 className='reviewTextBox'
                 type='text'
                 value={reviews}
-                onChange={(e) => { setReview(e.target.value) }}
-                placeholder={handlePlaceHolder()} />
+                onChange={(e) => setReview(e.target.value)}
+                placeholder={handlePlaceHolder()}
+                fullWidth id="fullWidth"
+              />
             </Form.Group>
             <Card>
-              <TextField fullWidth label="fullWidth" id="fullWidth" />
             </Card>
-            <button type='submit' onChange={(e) => { setReview(e.target.value) }} className={` ${!number && "disabled"} `}>Submit</button>
+            <button type='submit' className={` ${!number && "disabled"} `}>Submit</button>
           </Form>
 
         </div>

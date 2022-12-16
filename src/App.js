@@ -16,6 +16,8 @@ import Welcome from './components/pages/welcomePage'
 import InquiryPage from './components/pages/inquiryPage';
 import { postUser } from './features/userSlice'
 import { setFromMongo } from './features/favoriteSlice';
+import Review from "./components/review/reviews"
+// import './App.css'
 
 
 function App(props) {
