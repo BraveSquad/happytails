@@ -8,11 +8,12 @@ import Reviews from './components/review/reviews'
 import { Appointments } from './components/pages/appointments/appointments'
 import Profile from './components/pages/profilePage'
 import About from './components/pages/aboutUsPage'
-import Favorite from './components/favorite/favorite';
+// import Favorite from './components/favorite/favorite';
 import Home from './components/pages/homePage'
 import Animals from './components/pages/animalsPage';
 import Welcome from './components/pages/welcomePage'
 import InquiryPage from './components/pages/inquiryPage';
+import Details from  './components/pages/detailsPage';
 import { postUser } from './features/userSlice'
 import { setFromMongo } from './features/favoriteSlice';
 
@@ -28,12 +29,9 @@ function App(props) {
     postUser('HEY')
     setTimeout(() => {
       handleGetUser();
-
     }, 3000)
-
     // }
     // getData()
-
   }, [])
 
 
@@ -61,11 +59,6 @@ function App(props) {
     // }
   };
 
-
-
-
-
-
   let handlePostUser = async () => {
 
     const res = await props.auth0.getIdTokenClaims();
@@ -82,14 +75,9 @@ function App(props) {
       console.log('resPost', rest)
 
     }).catch(err => console.log('error', err));
-
-
-
   }
 
   handlePostUser();
-
-
   // console.log('user', this.state.newUser)
   const { isLoading } = props.auth0;
   if (isLoading) {
@@ -98,17 +86,6 @@ function App(props) {
         ...Loading App
       </div>
     );
-  }
-
-
-  const styles = {
-    mainBox: {
-      width: '100vw',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }
   }
   return (
     <Box sx={styles.mainBox} >
@@ -139,8 +116,14 @@ function App(props) {
   );
 }
 
-
-
-
-
 export default withAuth0(App);
+
+const styles = {
+  mainBox: {
+    width: '100vw',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+}

@@ -14,7 +14,7 @@ function Search() {
   const [token, setToken] = useState('');
   const [type, setType] = useState('');
   const [breed, setBreed] = useState('');
-  const [limit, setLimit] = useState(50);
+  const [limit, setLimit] = useState(100);
   const [page, setPage] = useState(1);
   const [animal, setAnimal] = useState([]);
 
@@ -116,7 +116,7 @@ function Search() {
             </Select>
           </FormControl>
           {/* TODO: need to fix routing after getPets() is selected - if we change pages too quickly, all animals will not get loaded from the API call */}
-          <Button sx={styles.searchButton} onClick={() => getPets()}>Search</Button>
+          <Button sx={styles.searchButton} onClick={() => handleSearch()}>Search</Button>
         </Box>
       </Box>
       <Box sx={styles.lineBreak} />

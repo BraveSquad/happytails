@@ -1,0 +1,53 @@
+.list-card {
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .list-item {
+    display: flex;
+    align-items: center;  
+    justify-content: space-between;
+    background-color: #0093E9;
+    /* background-color: black; */
+    color: white;
+  }
+  
+  .card-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .list-item.item {
+    background: #0093E9;
+  }
+  
+  .paginationButtons {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    height: 40px;
+    list-style: none;
+  }
+  
+  .paginationButtons a {
+    text-decoration: none;
+    color: white;
+    background-color: #676767;
+    padding: 10px;
+    margin: 8px;
+    border-radius: 5px;
+    /* border: 1px solid black; */
+    cursor: pointer;
+}
+
+.paginationButtons a:hover {
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+  }
+  
+  .paginationActive a {
+    color: white;
+    text-decoration: none;
+    background-color: #1ee8c0;
+  }

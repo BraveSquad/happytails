@@ -66,12 +66,19 @@ const Profile = (props) => {
 
   return (
     isAuthenticated && (
-      <Box>
+      <Box sx={styles.mainBox}>
         {profileUser}
       </Box>
     )
   )
-
 }
 
-export default Profile
+export default Profile;
+
+const styles = {
+  mainBox: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+}
