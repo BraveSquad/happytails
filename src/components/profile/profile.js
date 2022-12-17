@@ -16,11 +16,7 @@ const Profile = (props) => {
   //     </div>
   //   );
   // }
-
-
-
-
-
+  
   let profileUser = (
     <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: 10, paddingLeft: 10 }} >
 

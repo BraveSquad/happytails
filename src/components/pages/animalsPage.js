@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import Search from '../search/search';
-import Banner from '../banner'
+import Banner from '../banner/banner'
 import Animals from '../search/animals';
 import { Box } from '@mui/material';
 

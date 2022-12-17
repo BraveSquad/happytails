@@ -14,9 +14,10 @@ function Search() {
   const [token, setToken] = useState('');
   const [type, setType] = useState('');
   const [breed, setBreed] = useState('');
-  const [limit, setLimit] = useState(100);
+  const [limit, setLimit] = useState(50);
   const [page, setPage] = useState(1);
   const [animal, setAnimal] = useState([]);
+  const [size, setSize] = useState('large');
 
   const handleZipCode = (event) => {
     setZipCode(event.target.value);
@@ -50,6 +51,7 @@ function Search() {
       type: type,
       breed: breed,
       location: zipCode,
+      size: size,
       limit: limit,
       page: page,
     })
