@@ -16,31 +16,31 @@ import InquiryPage from './components/pages/inquiryPage';
 import Details from  './components/pages/detailsPage';
 import { postUser } from './features/userSlice'
 import { setFromMongo } from './features/favoriteSlice';
+import { getPets } from './components/search/api';
+// import { getPetsAction }  from './features/action';
 
 
 function App(props) {
   const dispatch = useDispatch();
   const [newUser, setNewUser] = useState('');
-  console.log('new user foo', newUser)
+  // console.log('new user foo', newUser)
 
   useEffect(() => {
-    // function getData() {
-    console.log('USE EFFECT WAS CALLED')
-    postUser('HEY')
+    handleGetPets();
     setTimeout(() => {
       handleGetUser();
     }, 3000)
-    // }
-    // getData()
   }, [])
 
 
+  const handleGetPets = () => {
+    dispatch(getPets({ type: 'dog', breed: '', location: '98106', limit: 100, page: 1 }));
+  }
 
   let handleGetUser = async () => {
-    // if (this.props.auth0.isAuthenticated) {
 
     const res = await props.auth0.getIdTokenClaims();
-    console.log('response from get user', res)
+    // console.log('response from get user', res)
     const jwt = res.__raw;
 
     const config = {
@@ -51,7 +51,6 @@ function App(props) {
 
     };
     await axios(config).then((rest) => {
-      console.log('rest response', rest.data[0].favorite)
       setNewUser(rest.data[0])
 
       dispatch(setFromMongo(rest.data[0].favorite))
@@ -72,7 +71,7 @@ function App(props) {
       data: props.auth0
     };
     await axios(config).then((rest) => {
-      console.log('resPost', rest)
+      // console.log('resPost', rest)
 
     }).catch(err => console.log('error', err));
   }
@@ -90,13 +89,13 @@ function App(props) {
   return (
     <Box sx={styles.mainBox} >
       <Router >
-        {console.log('props in the App component yo!!', props)}
+        {/* {console.log('props in the App component yo!!', props)} */}
         {/* <Chat /> */}
         <Routes>
           {!props.auth0.isAuthenticated ? (
             <Route exact path='/' element={<Welcome />} />
           ) : (
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={<Home auth0={props.auth0} user={newUser}/>} />
           )
           }
 

@@ -7,7 +7,7 @@ import Animals from '../search/animals';
 import { Box } from '@mui/material';
 
 function AnimalsPage(props) {
-  console.log('porps in animal page', props)
+  // console.log('props in animal page', props)
   return (
     <Box sx={styles.mainBox}>
       <Header />

@@ -22,11 +22,6 @@ export default function Animals(props) {
   
   const pagesVisited = pageNumber * itemsPerPage; 
 
-
-  // console.log('FAVORITS FROM SELECTOR IN ANIAMLS ON RENDER', favorites)
-  // console.log('MY DUDE', props)
-
-  // add animal to favorite's array
   function handleAddToFavorites(animal) {
     dispatch(addToFavorites(animal));
   };
@@ -39,14 +34,9 @@ export default function Animals(props) {
     handlePostFav()
   }, 5000)
 
-
-  // figure out a way to call handlePostFav
   let handlePostFav = async () => {
-    // if (props.auth0.isAuthenticated) {
     const res = await props.auth0.getIdTokenClaims();
-
     const jwt = res.__raw;
-
     const updatedUser = {
       _id: props.user._id,
       userName: props.user.userName,
