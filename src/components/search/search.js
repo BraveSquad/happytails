@@ -36,9 +36,6 @@ function Search() {
     setBreed(event.target.value);
   };
 
-  const handleSearch = () => {
-    getPets();
-  }
 
   //build client object - setting the key, secret key and token. The token is needed to make api requests
   const client = new Client({ apiKey: process.env.REACT_APP_API_KEY, secret: process.env.REACT_APP_SECRET_KEY, token: token })
@@ -116,7 +113,7 @@ function Search() {
             </Select>
           </FormControl>
           {/* TODO: need to fix routing after getPets() is selected - if we change pages too quickly, all animals will not get loaded from the API call */}
-          <Button href='/animals' sx={styles.searchButton} onClick={() => getPets()}>Search</Button>
+          <Button sx={styles.searchButton} onClick={() => getPets()}>Search</Button>
         </Box>
       </Box>
       <Box sx={styles.lineBreak} />
@@ -139,7 +136,6 @@ const styles = {
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     marginBottom: 3,
-    // border: '3px solid red'
   },
   wrapperBox: {
     height: '100%',

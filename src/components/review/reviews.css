@@ -7,6 +7,7 @@
   font-family: sans-serif;
   text-align: center;
   width: 100%;
+  /* border: 3px solid red; */
 }
 
 .position {
@@ -14,10 +15,10 @@
   align-items: center;
   justify-content: center;
   /* border: 4px solid black; */
-  width: 100%;
+  width: 70%;
   background-position: bottom;
   float: right;
-
+  
 }
 
 .content {
@@ -29,6 +30,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-right: 90px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  /* border: 2px solid blue; */
 }
 
 .tail {
@@ -43,18 +47,18 @@
 .reviewTextBox {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   width: 100%;
   
   border-radius: 6px;
   padding: 20px;
-  background-color: aqua;
+  /* background-color: aqua; */
 }
 
 button {
-  background: #30592E;
-  color: #fff;
+  background: #1ee8c0;
+  color: rgb(66, 66, 66);
   margin-top: 10px;
   width: 100%;
   border-radius: 6px;
@@ -67,7 +71,9 @@ button {
 button.disabled {
   opacity: 0.5;
   pointer-events: none;
+  /* color: #3b3b3b; */
 }
+
 
 #Title {
   background-color: #1ee8c092;
@@ -80,6 +86,7 @@ button.disabled {
 #line-3{
  margin-top: 20px;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 #reviewBox{
@@ -105,7 +112,14 @@ max-height: 600px;
     /* color:rgba(109, 249, 139, 0.407) */
 }
 
-
+.mb-3{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid black; */
+  width: 100%;
+} 
 
 /* .container{
 width: 600px;

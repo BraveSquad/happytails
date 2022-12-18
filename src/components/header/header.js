@@ -51,6 +51,9 @@ export default function Header() {
           <Link href="/about" underline="hover" sx={styles.menuBoxLink}>
             About us
           </Link>
+          <Link href="/reviews" underline="hover" sx={styles.menuBoxLink}>
+            Reviews
+          </Link>
           <Logout />
         </Box>
       </Popper>
@@ -63,6 +66,7 @@ const styles = {
     display: 'flex',
     width: '100%',
     backgroundColor: '#1ee8c0',
+    // backgroundColor: '#40404049',
     justifyContent: 'space-between',
     alignItems: 'center',
     height: '100px',
