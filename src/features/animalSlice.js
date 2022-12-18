@@ -32,7 +32,6 @@ export const animalSlice = createSlice({
   reducers: {
     setAnimals(state, action) {
       state.apiAnimals = action.payload;
-      // state.randomAnimals = state.apiAnimals.sort(Math.random() - Math.random()).slice(0,5)
       state.randomAnimals = state.apiAnimals.slice().sort(() => 0.5 - Math.random()).slice(0,5);
     },
     setType(state, action){
