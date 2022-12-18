@@ -6,32 +6,34 @@ export const NewEvent = ({ onSave, onClose }) => {
   const [title, setTitle] = useState('');
   const [error, setError] = useState(false);
 
-  return(
+
+  return (
     <>
       <div id="newEventModal">
         <h2>New Event</h2>
 
-        <input 
+        <input
           className={error ? 'error' : ''}
-          value={title} 
-          onChange={e => setTitle(e.target.value)} 
-          id="eventTitleInput" 
-          placeholder="Event Title" 
+          value={title}
+          onChange={e => setTitle(e.target.value)}
+          id="eventTitleInput"
+          placeholder="Event Title"
         />
 
-        <button 
+        <button
           onClick={() => {
             if (title) {
+
               setError(false);
               onSave(title);
             } else {
               setError(true);
             }
-          }} 
+          }}
           id="saveButton">Save</button>
 
 
-        <button 
+        <button
           onClick={onClose}
           id="cancelButton">Cancel</button>
       </div>

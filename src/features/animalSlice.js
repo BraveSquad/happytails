@@ -32,24 +32,24 @@ export const animalSlice = createSlice({
   reducers: {
     setAnimals(state, action) {
       state.apiAnimals = action.payload;
-      state.randomAnimals = state.apiAnimals.slice().sort(() => 0.5 - Math.random()).slice(0,5);
+      state.randomAnimals = state.apiAnimals.slice().sort(() => 0.5 - Math.random()).slice(0, 5);
     },
-    setType(state, action){
+    setType(state, action) {
       state.params.type = action.payload;
     },
-    setBreed(state, action){
+    setBreed(state, action) {
       state.params.breed = action.payload;
     },
-    setLocation(state,  action){
+    setLocation(state, action) {
       state.params.location = action.payload;
     },
-    setLimit(state, action){
+    setLimit(state, action) {
       state.params.limit = action.payload;
     },
-    setPage(state, action){
+    setPage(state, action) {
       state.params.page = action.payload;
     },
-    setAge(state, action){
+    setAge(state, action) {
       state.params.age = action.payload;
     },
   },

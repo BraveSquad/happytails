@@ -1,15 +1,64 @@
 import React from 'react'
 import { Box, Button, Card, CardMedia, Typography, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { addToFavorites } from '../../features/favoriteSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import '../../assets/style/detail.css'
-// import Chance from 'chance';
 import Image from '../../assets/images/paw.jpg';
-// const chance = new Chance();
 
-export default function Details() {
 
+
+export default function Details(props) {
+  const dispatch = useDispatch();
   const animal = useSelector(state => state.detail.animalDetail);
+  const favorites = useSelector(state => state.favorite.favoriteArray);
+  console.log('CURRENT DETAIL', animal);
+  console.log('CURRENT FAV', favorites);
+
+  function handleAddToFavorites(animal) {
+
+    dispatch(addToFavorites(animal));
+
+  };
+
+  let handlePostFav = async () => {
+    const res = await props.auth0.getIdTokenClaims();
+
+    const jwt = res.__raw;
+
+    const updatedUser = {
+      _id: props.user._id,
+      userName: props.user.userName,
+      email: props.user.email,
+      picture: props.user.picture,
+      favorite: favorites,
+      isLoading: props.auth0.isLoading
+    }
+
+    const config = {
+      headers: { Authorization: `Bearer ${jwt}` },
+      method: 'PUT',
+      baseURL: `${process.env.REACT_APP_HEROKU_URL}`,
+      url: `/fav/${updatedUser._id}`,
+      data: updatedUser
+    };
+
+    const rest = await axios(config);
+
+    console.log('USER CONFIG', rest.data);
+    // }
+  };
+
+  setTimeout(() => {
+
+    handlePostFav()
+
+  }, 5000)
+
+
+
+
 
   return (
     <Box sx={styles.mainBox}>
@@ -26,14 +75,13 @@ export default function Details() {
               </Typography>
               <div id='line-1' >
                 <hr />
-
               </div>
               <Typography >
-                Cost: ${animal.cost}
+                Status: {animal.status}
               </Typography>
               <>````````````````````````</>
             </div>
-
+            <Button sx={styles.favoriteButton} value={animal} onClick={() => handleAddToFavorites(animal)}>Favorite</Button>
           </Card>
           <Button href={`/inquire`} sx={{ color: 'salmon', backgroundColor: 'lightgrey', marginTop: '20px' }} value={animal} >Inquire</Button>
           <Typography variant="subtitle1" sx={{ fontSize: '40px', marginTop: '30px', display: 'flex', alignItems: "center", justifyContent: 'center' }}>
@@ -48,9 +96,20 @@ export default function Details() {
               <Typography sx={{ fontWeight: 'bold', fontSize: '15px' }}>Fun Facts </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography>
-                {/* {chance.pickset(animal.tags,5)} */}
-              </Typography>
+              {animal.tags.length === 0 ? (
+                <Typography>
+                  Ready to take home!
+                </Typography>
+
+              ) : (
+                <Typography>
+                  {/* {chance.pickset(animal.tags, 3)} */}
+                  {animal.tags.map(x => <Typography>
+                    - {x}
+                  </Typography>)}
+                </Typography>
+              )}
+
             </AccordionDetails>
           </Accordion>
           <Accordion elevation={5} sx={{ borderRadius: '5px' }}>
@@ -76,10 +135,18 @@ export default function Details() {
 
 const styles = {
   mainBox: {
-    width: '100%',
+    width: '100%'
   },
   media: {
     height: '400px',
     width: '400px',
   },
+
+  favoriteButton: {
+    color: '#3b3b3b', "& button:focus": { color: "#3b3b3b" },
+    "& button:active": { color: "black" }, "&:hover ": {
+      "background-color": 'lightgrey', color: 'white'
+    },
+  }
+
 }

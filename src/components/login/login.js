@@ -13,7 +13,10 @@ export default LoginButton;
 const styles = {
 
   menuBoxLink: {
-    color: 'black',
+    color: '#3b3b3b', "& button:focus": { color: "#3b3b3b" },
+    "& button:active": { color: "black" }, "&:hover ": {
+      "background-color": '#a9a9a9'
+    },
     display: 'flex',
     alignItems: 'center',
     padding: 1,
@@ -23,7 +26,7 @@ const styles = {
     backgroundColor: '#cd5c5c',
     borderRadius: '10px',
     fontWeight: 'bold',
-    fontSize: '12px',
+    fontSize: '16px',
     width: 180,
     height: 35
   }

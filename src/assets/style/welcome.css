@@ -1,23 +1,27 @@
-/* #myVideo {
-  position: fixed;
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
+#background {
+  position: relative;
+  top:0;
+  left: 0;
   right: 0;
   bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
 }
 .content {
-  position: fixed;
+ font-family: 'Dancing Script', cursive;
   bottom: 0;
-  background: #00000080;
-  color: #f1f1f1;
+  background: transparent;
+  /* color: #f1f1f1; */
   width: 100%;
-  padding: 200px;
+ 
 }
-.myDog{
-  position: fixed;
-bottom: 0;
-width: 50%;
-border-radius: '4px';
-background-color: 'red' 
+#dogVideo{
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
 
-} */
+}

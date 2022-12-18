@@ -4,6 +4,7 @@ import detailReducer from './detailSlice'
 import favoriteReducer from './favoriteSlice'
 import userReducer from './userSlice'
 import reviewReducer from './reviewSlice'
+import calendarReducer from './calendarSlice'
 import { persistReducer, persistStore } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
@@ -22,15 +23,20 @@ const presistHistoryConfig = {
   storage
 }
 
-
 const presistUserConfig = {
   key: 'user',
   storage
 }
+
 const presistReviewConfig = {
   key: 'user',
   storage
 }
+const presistCalendarConfig = {
+  key: 'calendar',
+  storage
+}
+
 
 
 
@@ -39,6 +45,7 @@ const presistedDetailsReducer = persistReducer(presistDetailConfig, detailReduce
 const presistedFavoriteReducer = persistReducer(presistHistoryConfig, favoriteReducer);
 const presistedUserReducer = persistReducer(presistUserConfig, userReducer);
 const presistedReviewReducer = persistReducer(presistReviewConfig, reviewReducer);
+const presistedCalendarReducer = persistReducer(presistCalendarConfig, calendarReducer);
 
 export const store = configureStore({
   reducer: {
@@ -47,7 +54,8 @@ export const store = configureStore({
     detail: presistedDetailsReducer,
     favorite: presistedFavoriteReducer,
     user: presistedUserReducer,
-    review: presistedReviewReducer
+    review: presistedReviewReducer,
+    calendar: presistedCalendarReducer
   },
 });
 

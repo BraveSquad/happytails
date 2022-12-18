@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { animalSlice,  setAnimals, setLocation, setBreed, setLimit, setPage, setType, setAge } from '../../features/animalSlice'
+import { animalSlice, setAnimals, setLocation, setBreed, setLimit, setPage, setType, setAge } from '../../features/animalSlice'
 import { Box, InputLabel, MenuItem, FormControl, Select, Button, TextField } from '@mui/material';
 import Image from '../../assets/images/animalBanner.jpg';
-import { getPets } from './api'; 
+import { getPets } from './api';
 
 
 function Search() {
@@ -25,7 +25,7 @@ function Search() {
   };
 
   const handleSearch = () => {
-    getPets({type: search.type, breed: search.breed, age: search.age, location: search.location, limit: search.limit, page: search.page});
+    getPets({ type: search.type, breed: search.breed, age: search.age, location: search.location, limit: search.limit, page: search.page });
   }
 
   useEffect(() => {
@@ -98,7 +98,6 @@ const styles = {
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     marginBottom: 3,
-    // border: '3px solid red'
   },
   wrapperBox: {
     height: '100%',
