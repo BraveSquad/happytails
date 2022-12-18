@@ -27,7 +27,6 @@ export default function Favorite(props) {
 
 
 
-
   let favoritesArray = [];
 
 

@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { Box } from '@mui/material';
-import Details from './components/details/details'
 import { withAuth0 } from '@auth0/auth0-react';
 import Reviews from './components/pages/reviewPage'
 import { Appointments } from './components/pages/appointments/appointments'
@@ -12,9 +11,14 @@ import About from './components/pages/aboutUsPage'
 import Home from './components/pages/homePage'
 import Animals from './components/pages/animalsPage';
 import Welcome from './components/pages/welcomePage'
-import InquiryPage from './components/pages/inquiryPage';
+
+import Details from  './components/pages/detailsPage';
+import { postUser } from './features/userSlice'
 import { setFromMongo } from './features/favoriteSlice';
+import { getPets } from './components/search/api';
+// import { getPetsAction }  from './features/action';
 import { setReviewsFromMongo } from './features/reviewSlice';
+
 
 
 function App(props) {
@@ -23,26 +27,18 @@ function App(props) {
   // console.log('new user foo', newUser)
 
   useEffect(() => {
-    // function getData() {
-    console.log('USE EFFECT WAS CALLED')
+    handleGetPets();
     setTimeout(() => {
       handleGetUser();
-
-    }, 6000)
-
-    // }
-    // getData()
-
+    }, 3000)
   }, [])
 
 
-
-
-
-
+  const handleGetPets = () => {
+    dispatch(getPets({ type: 'dog', breed: '', location: '98106', limit: 100, page: 1 }));
+  }
 
   let handleGetUser = async () => {
-    // if (this.props.auth0.isAuthenticated) {
 
     const res = await props.auth0.getIdTokenClaims();
     // console.log('response from get user', res)
@@ -56,14 +52,12 @@ function App(props) {
 
     };
     await axios(config).then((rest) => {
-      // console.log('rest response', rest.data[0].favorite)
       setNewUser(rest.data[0])
 
       dispatch(setFromMongo(rest.data[0].favorite))
     }).catch(err => console.log('error', err))
     // }
   };
-
 
 
   const handleAllReview = async () => {
@@ -90,6 +84,7 @@ function App(props) {
 
   handleAllReview();
 
+
   let handlePostUser = async () => {
 
     const res = await props.auth0.getIdTokenClaims();
@@ -106,14 +101,9 @@ function App(props) {
       // console.log('resPost', rest)
 
     }).catch(err => console.log('error', err));
-
-
-
   }
 
   handlePostUser();
-
-
   // console.log('user', this.state.newUser)
   const { isLoading } = props.auth0;
   if (isLoading) {
@@ -123,27 +113,16 @@ function App(props) {
       </div>
     );
   }
-
-
-  const styles = {
-    mainBox: {
-      width: '100vw',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }
-  }
   return (
     <Box sx={styles.mainBox} >
       <Router >
-        {console.log('props in the App component yo!!', props)}
+        {/* {console.log('props in the App component yo!!', props)} */}
         {/* <Chat /> */}
         <Routes>
           {!props.auth0.isAuthenticated ? (
             <Route exact path='/' element={<Welcome />} />
           ) : (
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={<Home auth0={props.auth0} user={newUser}/>} />
           )
           }
 
@@ -163,8 +142,14 @@ function App(props) {
   );
 }
 
-
-
-
-
 export default withAuth0(App);
+
+const styles = {
+  mainBox: {
+    width: '100vw',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+}

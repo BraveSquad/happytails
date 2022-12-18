@@ -1,53 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, Button, Card, CardMedia, Stack, Typography } from '@mui/material';
 import { animalDetail } from '../../features/detailSlice';
 import { addToFavorites } from '../../features/favoriteSlice';
 import axios from 'axios';
+import ReactPaginate from 'react-paginate';
 import Image from '../../assets/images/paw.jpg';
+import '../../assets/style/list.css';
 
 export default function Animals(props) {
-  console.log('MY DUDE', props)
+  
+  // const [pageNumber, setPageNumber]
+  const [  pageNumber, setPageNumber ] = useState(0);
+  const  itemsPerPage  = 9;
+
   const { isLoading } = props.auth0;
   const dispatch = useDispatch();
   // const [updateFav, setUpdateFav] = useState([])
   const animals = useSelector(state => state.animals.apiAnimals);
   const favorites = useSelector(state => state.favorite.favoriteArray);
+  
+  const pagesVisited = pageNumber * itemsPerPage; 
 
-  console.log('FAVORITS FROM SELECTOR IN ANIAMLS ON RENDER', favorites)
-
-
-
-  // add animal to favorite's array
   function handleAddToFavorites(animal) {
-
     dispatch(addToFavorites(animal));
 
   };
 
   function handleDetail(animal) {
     dispatch(animalDetail(animal))
-
   };
 
-
-
   setTimeout(() => {
-
     handlePostFav()
 
   }, 5000)
 
-
-
-
-
   let handlePostFav = async () => {
-    // if (props.auth0.isAuthenticated) {
     const res = await props.auth0.getIdTokenClaims();
-
     const jwt = res.__raw;
-
     const updatedUser = {
       _id: props.user._id,
       userName: props.user.userName,
@@ -56,7 +47,6 @@ export default function Animals(props) {
       favorite: favorites,
       isLoading: props.auth0.isLoading
     }
-
     const config = {
       headers: { Authorization: `Bearer ${jwt}` },
       method: 'PUT',
@@ -64,26 +54,18 @@ export default function Animals(props) {
       url: `/fav/${updatedUser._id}`,
       data: updatedUser
     };
-
     const rest = await axios(config);
-
     console.log('USER CONFIG', rest.data);
-    // }
   };
 
   if (isLoading) {
     return <div>Loading ...</div>;
   }
 
-
-
-
-
-
   let animalArr = [];
 
   if (animals.length > 0) {
-    animalArr = animals.map(animal => (
+    animalArr = animals.slice(pagesVisited, pagesVisited + itemsPerPage).map(animal => (
       <Card key={animal.id} sx={styles.card}>
         {animal.primary_photo_cropped === null ? (
           <CardMedia image={Image} sx={styles.media} />
@@ -111,11 +93,28 @@ export default function Animals(props) {
     ))
   }
 
+  const pageCount = Math.ceil(animals.length / itemsPerPage);
+
+  const changePage = ({ selected })  => {
+    setPageNumber(selected);
+  }
+
   return (
     <Box sx={styles.mainBox}>
       <Typography sx={styles.titleText}>
         Browse our Animals
       </Typography>
+      <ReactPaginate 
+        previousLabel={'Previous'}
+        nextLabel={'Next'}
+        pageCount={pageCount}
+        onPageChange={changePage}
+        containerClassName={'paginationButtons'}
+        previousLinkClassName={'previousButton'}
+        nextLinkClassName={'nextButton'}
+        disabledClassName={'paginationDisabled'}
+        activeClassName={'paginationActive'}
+      />
       <Box sx={styles.animalCardWrapperBox}>
         {animalArr}
       </Box>

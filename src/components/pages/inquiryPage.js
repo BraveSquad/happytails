@@ -18,10 +18,10 @@ export default InquiryPage;
 
 const styles = {
   mainBox: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // display: 'flex',
+    // flexDirection: 'column',
+    // alignItems: 'center',
+    // justifyContent: 'center',
     width: '100%',
     // border: '1px solid black',
   }
