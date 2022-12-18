@@ -3,8 +3,6 @@ import { Box, Button, Card, CardMedia, Typography, Accordion, AccordionSummary, 
 import { addToFavorites } from '../../features/favoriteSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import Header from '../header/header'
-import Footer from '../footer/footer'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import '../../assets/style/detail.css'
 import Image from '../../assets/images/paw.jpg';
@@ -64,12 +62,10 @@ export default function Details(props) {
 
   return (
     <Box sx={styles.mainBox}>
-      <Header />
       <div id='MainDiv'>
         <Box key={animal.id} sx={{ fontSize: '60px' }}> {animal.name}</Box>
         <Box key={animal.id} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '50px', width: '600px' }}>
           <Card key={animal.id} sx={{ padding: '30px', borderRadius: '7px', display: 'flex', flexDirection: 'column', alignItems: 'center' }} elevation={5}>
-            {/* <CardMedia image={animal.photos[0]} sx={{ height: '500px', width: '500px', borderRadius: '4px' }} />*/}
             {animal.primary_photo_cropped === null ? (
               <CardMedia image={Image} sx={styles.media} />
             ) : (<CardMedia image={animal.primary_photo_cropped.medium} sx={styles.media} />)}
@@ -133,7 +129,6 @@ export default function Details(props) {
           </Accordion>
         </Box >
       </div>
-      <Footer />
     </Box>
   )
 }
@@ -143,8 +138,8 @@ const styles = {
     width: '100%'
   },
   media: {
-    height: '200px',
-    width: '200px',
+    height: '400px',
+    width: '400px',
   },
 
   favoriteButton: {
@@ -153,4 +148,5 @@ const styles = {
       "background-color": 'lightgrey', color: 'white'
     },
   }
+
 }

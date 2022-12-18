@@ -5,20 +5,23 @@ import { withAuth0 } from '@auth0/auth0-react';
 import { useDispatch } from 'react-redux';
 import { Box } from '@mui/material';
 import ReviewUpdate from './components/review/updateReview'
-import Details from './components/details/details'
+// import Details from './components/details/details'
 //--------------------PAGES IMPORT------------------------//
-import { Appointments } from './components/pages/appointments/appointments'
 import Reviews from './components/pages/reviewPage'
+import { Appointments } from './components/pages/appointments/appointments'
 import Profile from './components/pages/profilePage'
 import About from './components/pages/aboutUsPage'
 import Home from './components/pages/homePage'
 import Animals from './components/pages/animalsPage';
 import Welcome from './components/pages/welcomePage'
 import InquiryPage from './components/pages/inquiryPage';
+import Details from './components/pages/detailsPage';
 //-----------------SLICE IMPORT------------------------//
 import { setFromMongo } from './features/favoriteSlice';
 import { setAppointmets } from './features/calendarSlice';
+import { getPets } from './components/search/api';
 import { setReviewsFromMongo } from './features/reviewSlice';
+
 
 
 function App(props) {
@@ -27,8 +30,10 @@ function App(props) {
 
   useEffect(() => {
     console.log('USE EFFECT WAS CALLED')
+    handleGetPets();
     setTimeout(() => {
       handleGetUser();
+
     }, 6000)
   }, [])
 
@@ -53,8 +58,15 @@ function App(props) {
   handleGetUserCalendar();
 
 
+
+
+
+
+  const handleGetPets = () => {
+    dispatch(getPets({ type: 'dog', breed: '', location: '98106', limit: 100, page: 1 }));
+  }
+
   let handleGetUser = async () => {
-    // if (this.props.auth0.isAuthenticated) {
 
     const res = await props.auth0.getIdTokenClaims();
     // console.log('response from get user', res)
@@ -68,14 +80,12 @@ function App(props) {
 
     };
     await axios(config).then((rest) => {
-      // console.log('rest response', rest.data[0].favorite)
       setNewUser(rest.data[0])
 
       dispatch(setFromMongo(rest.data[0].favorite))
     }).catch(err => console.log('error', err))
     // }
   };
-
 
 
   const handleAllReview = async () => {
@@ -97,6 +107,7 @@ function App(props) {
 
   handleAllReview();
 
+
   let handlePostUser = async () => {
     const res = await props.auth0.getIdTokenClaims();
     const jwt = res.__raw;
@@ -111,9 +122,6 @@ function App(props) {
       console.log('resPost', rest)
 
     }).catch(err => console.log('error', err));
-
-
-
   }
 
   handlePostUser();
@@ -127,26 +135,15 @@ function App(props) {
       </div>
     );
   }
-
-
-  const styles = {
-    mainBox: {
-      width: '100vw',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }
-  }
   return (
     <Box sx={styles.mainBox} >
       <Router >
-        {console.log('props in the App component yo!!', props)}
+        {/* {console.log('props in the App component yo!!', props)} */}
         <Routes>
           {!props.auth0.isAuthenticated ? (
             <Route exact path='/' element={<Welcome />} />
           ) : (
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={<Home auth0={props.auth0} user={newUser} />} />
           )
           }
           <Route exact path='/reviews' element={<Reviews auth0={props.auth0} user={newUser} />} />
@@ -163,8 +160,14 @@ function App(props) {
   );
 }
 
-
-
-
-
 export default withAuth0(App);
+
+const styles = {
+  mainBox: {
+    width: '100vw',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+}

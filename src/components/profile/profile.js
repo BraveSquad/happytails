@@ -16,11 +16,7 @@ const Profile = (props) => {
   //     </div>
   //   );
   // }
-
-
-
-
-
+  
   let profileUser = (
     <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: 10, paddingLeft: 10 }} >
 
@@ -66,12 +62,19 @@ const Profile = (props) => {
 
   return (
     isAuthenticated && (
-      <Box>
+      <Box sx={styles.mainBox}>
         {profileUser}
       </Box>
     )
   )
-
 }
 
-export default Profile
+export default Profile;
+
+const styles = {
+  mainBox: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+}

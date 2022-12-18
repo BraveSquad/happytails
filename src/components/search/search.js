@@ -1,72 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { animalSlice } from '../../features/animalSlice'
+import { useDispatch, useSelector } from 'react-redux';
+import { animalSlice, setAnimals, setLocation, setBreed, setLimit, setPage, setType, setAge } from '../../features/animalSlice'
 import { Box, InputLabel, MenuItem, FormControl, Select, Button, TextField } from '@mui/material';
 import Image from '../../assets/images/animalBanner.jpg';
-import { Client } from '@petfinder/petfinder-js';
+import { getPets } from './api';
 
 
 function Search() {
   const dispatch = useDispatch();
+  const search = useSelector(state => state.animals.params);
+  console.log('Search: ', search);
 
-  const [zipCode, setZipCode] = useState();
-  const [age, setAge] = useState('');
-  const [token, setToken] = useState('');
-  const [type, setType] = useState('');
-  const [breed, setBreed] = useState('');
-  const [limit, setLimit] = useState(50);
-  const [page, setPage] = useState(1);
-  const [animal, setAnimal] = useState([]);
-
-  const handleZipCode = (event) => {
-    setZipCode(event.target.value);
-
+  const handleLocation = (event) => {
+    dispatch(setLocation(event.target.value));
   };
   const handleAge = (event) => {
-    setAge(event.target.value);
-
+    dispatch(setAge(event.target.value));
   };
   const handleType = (event) => {
-    console.log('search called', event.target.value)
-    setType(event.target.value);
-
+    dispatch(setType(event.target.value));
   };
   const handleBreed = (event) => {
-    console.log('breed from animal.js', event.target.value)
-    setBreed(event.target.value);
+    dispatch(setBreed(event.target.value));
   };
 
-
-  //build client object - setting the key, secret key and token. The token is needed to make api requests
-  const client = new Client({ apiKey: process.env.REACT_APP_API_KEY, secret: process.env.REACT_APP_SECRET_KEY, token: token })
-  console.log('client: ', client);
-
-  function getPets() {
-    // console.log('getPets called');
-    client.animal.search({
-      type: type,
-      breed: breed,
-      location: zipCode,
-      limit: limit,
-      page: page,
-    })
-      .then(res => {
-        // dispatch(res.data.animal);
-        console.log('GET_PETS res object: ', res.data.animals);
-        dispatch(animalSlice.actions.setAnimals(res.data.animals));
-        setAnimal(res.data.animals);
-        console.log('animals', animal);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  const handleSearch = () => {
+    getPets({ type: search.type, breed: search.breed, age: search.age, location: search.location, limit: search.limit, page: search.page });
   }
 
   useEffect(() => {
-    client.authenticate()
-      .then(res => {
-        setToken(res.data.access_token);
-      });
   }, []);
 
   return (
@@ -76,12 +38,12 @@ function Search() {
         <Box sx={styles.searchBox}>
           <FormControl sx={styles.formControl}>
             <InputLabel id="demo-simple-select-label" />
-            <TextField id="outlined-basic" value={zipCode} label="Zip Code" onChange={handleZipCode} variant="outlined" />
+            <TextField id="outlined-basic" value={search.location} label="Zip Code" onChange={handleLocation} variant="outlined" />
           </FormControl>
 
           <FormControl sx={styles.formControl}>
             <InputLabel id="demo-simple-select-label" />
-            <TextField id="outlined-basic" value={breed} label="Breed" onChange={handleBreed} variant="outlined" />
+            <TextField id="outlined-basic" value={search.breed} label="Breed" onChange={handleBreed} variant="outlined" />
           </FormControl>
 
           <FormControl sx={styles.formControl}>
@@ -89,7 +51,7 @@ function Search() {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={age}
+              value={search.age}
               label="Age"
               onChange={handleAge}
             >
@@ -104,7 +66,7 @@ function Search() {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={type}
+              value={search.type}
               label="species"
               onChange={handleType}
             >
@@ -112,8 +74,8 @@ function Search() {
               <MenuItem value={'Cat'}>Cat</MenuItem>
             </Select>
           </FormControl>
-          {/* TODO: need to fix routing after getPets() is selected - if we change pages too quickly, all animals will not get loaded from the API call */}
-          <Button sx={styles.searchButton} onClick={() => getPets()}>Search</Button>
+          <Button href='/animals' sx={styles.searchButton} onClick={() => handleSearch()}>Search</Button>
+
         </Box>
       </Box>
       <Box sx={styles.lineBreak} />
