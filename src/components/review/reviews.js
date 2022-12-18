@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import { Form, Card } from 'react-bootstrap';
+import { useSelector } from 'react-redux'
+import { Form } from 'react-bootstrap';
 import "./reviews.css";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import { TextField } from "@mui/material"
-
+import { Box, Card, Stack, Typography, Button, TextField } from '@mui/material';
 
 export default function ReviewTails(props) {
+  console.log('Props in REVIEW', props)
   const [number, setNumber] = useState(0);
   const [hoverStar, setHoverStar] = useState(undefined);
   const [reviews, setReview] = useState('');
   console.log('STARS::', number);
+
+  const reviewArray = useSelector(state => state.review.reviewArray);
 
 
   const handleText = () => {
@@ -56,7 +59,6 @@ export default function ReviewTails(props) {
       const res = await props.auth0.getIdTokenClaims();
       const jwt = res.__raw;
 
-      // leave this console here in order to grab your token for backend testing in Thunder Client
 
       const config = {
         headers: { Authorization: `Bearer ${jwt}` },
@@ -71,32 +73,63 @@ export default function ReviewTails(props) {
       console.log('Review from DB: ', reviewResponse.data);
     }
   };
-  // const { user } = props.auth0;
+  const { user } = props.auth0;
   const handleSubmit = (event) => {
     console.log('OK??::', event.target.review.value);
     event.preventDefault();
     setReview('');
     const newReview = {
-      // username: user.name,
+      userName: user.given_name,
+      email: user.email,
       review: event.target.review.value,
-      star: number
+      stars: number
     };
     console.log('ALMOST!!::', newReview);
     handleCreateReview(newReview);
 
   };
 
+  let allReviews = [];
+
+  if (reviewArray.length > 0) {
+
+    allReviews = reviewArray.map(review => (
+      <Card key={review.id} sx={styles.card}>
+        <Box sx={styles.informationBox}>
+          <Box sx={styles.nameBox}>
+            <Typography sx={styles.textName}>
+              Name: {review.userName}
+              <Box sx={styles.lineBreak} />
+            </Typography>
+          </Box>
+          <Typography sx={styles.textBreed}>
+            Email: {review.email}
+          </Typography>
+          <Typography sx={styles.textGender}>
+            My Review: {review.review}
+          </Typography>
+          <Typography sx={styles.textGender}>
+            Stars: {review.stars}
+          </Typography>
+          <Stack direction="row" spacing={2}>
+            <Button sx={styles.favoriteButton} value={review} >Update</Button>
+            <Button sx={styles.detailsButton}  >Delete</Button>
+          </Stack>
+          {/* {favorites.map(x => { return x === animal ? <h4>Added to Favorites</h4> : ''})} */}
+        </Box>
+      </Card>
+    ))
+  }
+
+
+
   return (
     <div className="review">
       <div className="position">
+
         <div className="content">
+
           <div className="tail">
-            {/* <img
-              style={{ width: 60, height: 60, objectFit: "cover" }}
-              // src="https://www.pexels.com/photo/person-waking-on-hill-554609/"
-              src={image}
-              alt="Trail Pic"
-            /> */}
             <h1 id='Title'>Happy Tails Reviews</h1>
           </div>
           <div>
@@ -124,57 +157,134 @@ export default function ReviewTails(props) {
           <Form className='reviewFrom' onSubmit={(e) => { handleSubmit(e) }}>
             <Form.Group className="mb-3" controlId="review">
               <Form.Control
+
                 className='reviewTextBox'
                 type='text'
                 value={reviews}
                 onChange={(e) => { setReview(e.target.value) }}
                 placeholder={handlePlaceHolder()} />
             </Form.Group>
-            <Card>
-              <TextField fullWidth label="fullWidth" id="fullWidth" />
-            </Card>
             <button type='submit' onChange={(e) => { setReview(e.target.value) }} className={` ${!number && "disabled"} `}>Submit</button>
           </Form>
-
         </div>
+        <Box sx={{ width: '40%', marginTop: 10 }}>
+          <Card sx={{ padding: '30px', borderRadius: '7px', display: 'flex', flexDirection: 'column', alignItems: 'center' }} elevation={5}>
+            <div id='reviewBox'>
+              <Typography sx={{ fontWeight: 'bold', fontSize: '20px' }}>
+                Reviews
+              </Typography>
+              <div id='line-3' >
+                <hr />
+              </div>
+              <div id='simpleCartBox'>
+                {allReviews}
+              </div>
+            </div>
+
+          </Card>
+        </Box>
       </div>
+
     </div >
   );
 }
 
+const styles = {
+  mainBox: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%'
+  },
+  animalCardWrapperBox: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '95%',
+  },
+  titleText: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontFamily: 'Raleway',
+    fontWeight: 'bold',
+    fontSize: '3rem'
+  },
+  card: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    margin: '20px',
+    padding: '15px',
+    borderRadius: '7px',
+    boxShadow: '10px 10px 30px rgba(0, 0, 0, 0.2);',
+    maxWidth: '20%',
+    minWidth: '400px',
 
-// import ReviewList from './reviewList';
-// import React, { useState } from "react";
-// import EachReview from './eachReview'
-// import CreateReview from './CreateReview';
+  },
+  media: {
+    height: '200px',
+    minWidth: '200px',
+    borderRadius: '4px',
+  },
+  informationBox: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    height: '200px',
+    width: '100%',
+    // border: '2px solid red',
+  },
+  lineBreak: {
+    height: '2px',
+    width: '100%',
+    backgroundColor: '#676767',
+    borderRadius: '20px'
+  },
+  nameBox: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+  },
+  textName: {
+    textAlign: 'center',
+    fontFamily: 'Raleway',
+    fontWeight: 'bold',
+    fontSize: '1.2rem'
+  },
+  textBreed: {
+    textAlign: 'center',
+    fontFamily: 'Raleway',
+    fontWeight: 'bold',
+  },
+  textGender: {
+    textAlign: 'center',
+    // fontWeight: 'bold',
+  },
+  favoriteButton: {
+    backgroundColor: '#676767',
+    color: 'white',
+    borderRadius: '10px',
+    boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.3)',
+    '&:hover': {
+      backgroundColor: '	#FF0000',
+      // color: 'black',
+      boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.3)',
+    },
+  },
+  detailsButton: {
+    // border: '1px solid black',
+    backgroundColor: '#1ee8c0',
+    color: 'white',
+    borderRadius: '10px',
+    boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.3)',
+    '&:hover': {
+      boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.3)',
+      color: 'black',
+    }
+  },
+}
 
-
-
-// export default function Reviews() {
-//   //passing dummy data to test CRUD for reviews will refactor after
-//   const [reviews, setReviews] = useState(ReviewList);
-
-//   function deleteReview(id) {
-//     //if the if is not equal to the id in item then return only those reviews
-//     setReviews(reviews.filter((item) => { return id !== item.id }))
-
-
-//   }
-
-
-//   function addReview(review) {
-//     setReviews([review, ...reviews])
-//   }
-
-//   return (
-//     <>
-//       <CreateReview handleCreateReview={addReview} />
-
-//       {
-//         reviews.length > 0 ? reviews.map((item, index) => {
-//           return <EachReview reviews={item} key={index} handleDelete={() => deleteReview(item.id)} />
-//         }) : 'No Reivew'
-//       }
-//     </>
-//   )
-// }

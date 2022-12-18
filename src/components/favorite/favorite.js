@@ -5,8 +5,7 @@ import { animalDetail } from '../../features/detailSlice';
 import Image from '../../assets/images/paw.jpg';
 import '../../assets/style/favorites.css'
 
-// import Chance from 'chance';
-// const chance = new Chance();
+
 
 export default function Favorite(props) {
   const [favMongo, setFavMongo] = useState([]);
@@ -16,23 +15,8 @@ export default function Favorite(props) {
   const dispatch = useDispatch();
   const favorites = useSelector(state => state.favorite.favoriteArray);
 
-  //
-  // console.log('MODGO FAVS', props.user.favorite)
 
-  // useEffect(() => {
-  //   setTimeout(() => {
 
-  //     handlegetFavorites()
-  //   }, 3000)
-  // }, [favMongo])
-
-  // function handlegetFavorites() {
-  //   // if (isLoading) {
-  //   //   <div>...Loading from Favs</div>
-  //   // } else {
-  //   setFavMongo(props.user.favorite)
-  //   // }
-  // }
   console.log('faveMongo', favMongo)
 
   function handleDetail(animal) {

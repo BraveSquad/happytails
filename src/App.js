@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Box } from '@mui/material';
 import { withAuth0 } from '@auth0/auth0-react';
-import Reviews from './components/review/reviews'
+import Reviews from './components/pages/reviewPage'
 import { Appointments } from './components/pages/appointments/appointments'
 import Profile from './components/pages/profilePage'
 import About from './components/pages/aboutUsPage'
-// import Favorite from './components/favorite/favorite';
 import Home from './components/pages/homePage'
 import Animals from './components/pages/animalsPage';
 import Welcome from './components/pages/welcomePage'
-import InquiryPage from './components/pages/inquiryPage';
+
 import Details from  './components/pages/detailsPage';
 import { postUser } from './features/userSlice'
 import { setFromMongo } from './features/favoriteSlice';
 import { getPets } from './components/search/api';
 // import { getPetsAction }  from './features/action';
+import { setReviewsFromMongo } from './features/reviewSlice';
+
 
 
 function App(props) {
@@ -45,7 +46,7 @@ function App(props) {
 
     const config = {
       headers: { Authorization: `Bearer ${jwt}` },
-      method: 'get',
+      method: 'GET',
       baseURL: process.env.REACT_APP_HEROKU_URL,
       url: '/newUser',
 
@@ -57,6 +58,32 @@ function App(props) {
     }).catch(err => console.log('error', err))
     // }
   };
+
+
+  const handleAllReview = async () => {
+    if (props.auth0.isAuthenticated) {
+      console.log('making an API call');
+      const res = await props.auth0.getIdTokenClaims();
+      const jwt = res.__raw;
+
+      // console.log('token: ', jwt);
+
+      const config = {
+        headers: { Authorization: `Bearer ${jwt}` },
+        method: 'GET',
+        baseURL: process.env.REACT_APP_HEROKU_URL,
+        url: '/allReviews',
+      };
+
+      const reviewResponse = await axios(config);
+
+      console.log('review from DB:: ', reviewResponse.data);
+      dispatch(setReviewsFromMongo(reviewResponse.data))
+    }
+  };
+
+  handleAllReview();
+
 
   let handlePostUser = async () => {
 
@@ -100,7 +127,7 @@ function App(props) {
           }
 
           {console.log('user', newUser)}
-          <Route exact path='/review' element={<Reviews />} />
+          <Route exact path='/reviews' element={<Reviews auth0={props.auth0} user={newUser} />} />
           <Route exact path='/details' element={<Details />} />
           <Route exact path='/appointments' element={<Appointments />} />
           {/* <Route exact path='/history' element={<Favorite />} /> */}

@@ -75,6 +75,7 @@ function Search() {
             </Select>
           </FormControl>
           <Button href='/animals' sx={styles.searchButton} onClick={() => handleSearch()}>Search</Button>
+
         </Box>
       </Box>
       <Box sx={styles.lineBreak} />
