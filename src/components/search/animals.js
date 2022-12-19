@@ -9,18 +9,18 @@ import Image from '../../assets/images/paw.jpg';
 import '../../assets/style/list.css';
 
 export default function Animals(props) {
-  
+
   // const [pageNumber, setPageNumber]
-  const [  pageNumber, setPageNumber ] = useState(0);
-  const  itemsPerPage  = 9;
+  const [pageNumber, setPageNumber] = useState(0);
+  const itemsPerPage = 9;
 
   const { isLoading } = props.auth0;
   const dispatch = useDispatch();
   // const [updateFav, setUpdateFav] = useState([])
   const animals = useSelector(state => state.animals.apiAnimals);
   const favorites = useSelector(state => state.favorite.favoriteArray);
-  
-  const pagesVisited = pageNumber * itemsPerPage; 
+
+  const pagesVisited = pageNumber * itemsPerPage;
 
   function handleAddToFavorites(animal) {
     dispatch(addToFavorites(animal));
@@ -34,7 +34,7 @@ export default function Animals(props) {
   setTimeout(() => {
     handlePostFav()
 
-  }, 5000)
+  }, 2000)
 
   let handlePostFav = async () => {
     const res = await props.auth0.getIdTokenClaims();
@@ -95,7 +95,7 @@ export default function Animals(props) {
 
   const pageCount = Math.ceil(animals.length / itemsPerPage);
 
-  const changePage = ({ selected })  => {
+  const changePage = ({ selected }) => {
     setPageNumber(selected);
   }
 
@@ -104,7 +104,7 @@ export default function Animals(props) {
       <Typography sx={styles.titleText}>
         Browse our Animals
       </Typography>
-      <ReactPaginate 
+      <ReactPaginate
         previousLabel={'Previous'}
         nextLabel={'Next'}
         pageCount={pageCount}

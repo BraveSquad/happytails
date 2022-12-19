@@ -4,7 +4,7 @@ import { Box, Popper, Button, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import PetsIcon from '@mui/icons-material/Pets';
 import Logout from '../logout/logout'
-
+import '../../assets/style/header.css'
 
 export default function Header() {
 
@@ -22,10 +22,15 @@ export default function Header() {
   const id = open ? 'simple-popper' : undefined;
 
   return (
-    <Box sx={styles.mainBox}>
+    <Box
+      // className='headerBox' 
+      // className='header2'
+      // className='header3'
+      className='header4'
+      sx={styles.mainBox}>
       <Box sx={styles.logoLinkBox}>
         <Link href="/" style={{ textDecoration: 'none' }}>
-          <Typography sx={styles.logoLinkText}>
+          <Typography sx={styles.logoLinkText} id='titleFont'>
             HappyTails
           </Typography>
         </Link>
@@ -48,11 +53,11 @@ export default function Header() {
           <Link href="/appointments" underline="hover" sx={styles.menuBoxLink}>
             Book An Appointment
           </Link>
-          <Link href="/about" underline="hover" sx={styles.menuBoxLink}>
-            About us
-          </Link>
           <Link href="/reviews" underline="hover" sx={styles.menuBoxLink}>
             Reviews
+          </Link>
+          <Link href="/about" underline="hover" sx={styles.menuBoxLink}>
+            About us
           </Link>
           <Logout />
         </Box>
@@ -65,8 +70,9 @@ const styles = {
   mainBox: {
     display: 'flex',
     width: '100%',
-    backgroundColor: '#1ee8c0',
-    // backgroundColor: '#40404049',
+    // backgroundColor: '#1ee8c0',
+    // backgroundColor: '#fee048c3',
+
     justifyContent: 'space-between',
     alignItems: 'center',
     height: '100px',
@@ -81,11 +87,11 @@ const styles = {
     marginLeft: 6,
   },
   logoLinkText: {
-    color: 'white',
-    fontSize: '40px',
+    color: 'grey',
+    fontSize: '50px',
     textDecoration: 'none',
-    fontFamily: 'Raleway',
-    fontWeight: 'bold',
+    // fontFamily: 'Raleway',
+    // fontWeight: 'bold',
     marginRight: 1,
   },
   logo: {

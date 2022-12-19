@@ -40,9 +40,6 @@
   align-items: center;
 }
 
-.trail h1 {
-  font-size: 20px;
-}
 
 .reviewTextBox {
   display: flex;
@@ -83,6 +80,12 @@ button.disabled {
   font-size: 50px;
   font-family: 'Dancing Script', cursive;
 }
+#updateTitle{
+  font-family: 'Dancing Script', cursive;
+  font-size: 50px;
+  
+}
+
 #line-3{
  margin-top: 20px;
   width: 100%;
