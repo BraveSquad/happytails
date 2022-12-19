@@ -1,9 +1,10 @@
-body {
+
+/* body {
     display: flex;
     margin-top: 50px;
     justify-content: center;
     background-color: #FFFCFF;
-  }
+  } */
   button {
     margin-right: 2.5px;
     margin-left: 2.5px;
@@ -30,6 +31,7 @@ body {
   }
   #container {
     width: 770px;
+   
   }
   #weekdays {
     width: 100%;

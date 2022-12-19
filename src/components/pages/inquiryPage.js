@@ -4,12 +4,12 @@ import Header from '../header/header';
 import Inquiry from '../inquiry/inquiry';
 import Footer from '../footer/footer';
 
-function InquiryPage() {
+function InquiryPage(props) {
   return (
     <Box sx={styles.mainBox}>
-        <Header />
-        <Inquiry />
-        <Footer />
+      <Header />
+      <Inquiry auth0={props.auth0} user={props.user} />
+      <Footer />
     </Box>
   )
 }

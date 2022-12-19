@@ -6,7 +6,7 @@ export const BannerContainer = styled.div`
     justify-content: center;
     width: 100%;
     height: 300px;
-    background-color: #1ee8c0;
+    // background-color: #1ee8c0;
     margin-bottom: 40px;
 `;
 

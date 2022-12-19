@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { CalendarHeader } from '../../scheduling/calendarHeader/calendarHeader';
-import { Day } from '../../scheduling/day/day';
-import { NewEvent } from '../../scheduling/newEvent/newEvent';
-import { DeleteEvent } from '../../scheduling/deleteEvent/deleteEvent';
-import { GetDates } from '../../scheduling/hooks/getDates';
-import Header from '../../header/header';
+import { Box } from '@mui/material';
+import { CalendarHeader } from '../calendarHeader/calendarHeader';
+import { Day } from '../day/day';
+import { NewEvent } from '../newEvent/newEvent';
+import { DeleteEvent } from '../deleteEvent/deleteEvent';
+import { GetDates } from '../hooks/getDates';
 import axios from 'axios';
 import { useSelector } from 'react-redux'
-import Footer from '../../footer/footer';
+import Dog from '../../../assets/images/dog.jpg'
 import '../../scheduling/style.css';
 
 
 export const Appointments = (props) => {
+  // console.log('APPT PROPS======================>', props)
   const [nav, setNav] = useState(0);
   const [clicked, setClicked] = useState();
   // const [newTitle, setNewTitle] = useState();
@@ -72,9 +73,9 @@ export const Appointments = (props) => {
   const { days, dateDisplay } = GetDates(events, nav);
 
   return (
-    <>
-      <Header />
-      <div id="container">
+    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: 10, backgroundImage: `url:${Dog}`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
+
+      <div id="container" >
         <CalendarHeader
           dateDisplay={dateDisplay}
           onNext={() => setNav(nav + 1)}
@@ -133,8 +134,8 @@ export const Appointments = (props) => {
 
         />
       }
-      <Footer />
 
-    </>
+
+    </Box>
   );
 };

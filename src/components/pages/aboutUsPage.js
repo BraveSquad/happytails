@@ -2,15 +2,22 @@ import React from 'react'
 import Header from '../header/header'
 import Footer from '../footer/footer'
 import About from '../aboutUs/aboutus'
-import '../../assets/style/home.css'
+import { Box } from '@mui/material';
 
 
-export default function about() {
+function AboutUsPage() {
   return (
-    <div id='homeBox'>
+    <Box sx={styles.mainBox}>
       <Header />
       <About />
       <Footer />
-    </div>
+    </Box>
   )
+}
+
+export default AboutUsPage;
+const styles = {
+  mainBox: {
+    width: '100%',
+  }
 }

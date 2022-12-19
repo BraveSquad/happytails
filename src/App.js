@@ -4,11 +4,10 @@ import axios from 'axios';
 import { withAuth0 } from '@auth0/auth0-react';
 import { useDispatch } from 'react-redux';
 import { Box } from '@mui/material';
-import ReviewUpdate from './components/review/updateReview'
 // import Details from './components/details/details'
 //--------------------PAGES IMPORT------------------------//
 import Reviews from './components/pages/reviewPage'
-import { Appointments } from './components/pages/appointments/appointments'
+import Appointments from './components/pages/appointmentsPage'
 import Profile from './components/pages/profilePage'
 import About from './components/pages/aboutUsPage'
 import Home from './components/pages/homePage'
@@ -148,12 +147,11 @@ function App(props) {
           }
           <Route exact path='/reviews' element={<Reviews auth0={props.auth0} user={newUser} />} />
           <Route exact path='/details' element={<Details auth0={props.auth0} user={newUser} />} />
-          <Route exact path='/reviewUpdate' element={<ReviewUpdate />} />
           <Route exact path='/appointments' element={<Appointments auth0={props.auth0} user={newUser} />} />
           <Route exact path='/profile' element={<Profile auth0={props.auth0} user={newUser} />} />
           <Route exact path='/animals' element={<Animals auth0={props.auth0} user={newUser} />} />
           <Route exact path='/about' element={<About />} />
-          <Route exact path='/inquire' element={<InquiryPage />} />
+          <Route exact path='/inquire' element={<InquiryPage auth0={props.auth0} user={newUser} />} />
         </Routes>
       </Router>
     </Box>

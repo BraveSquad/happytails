@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux'
 import { Form } from 'react-bootstrap';
-import ReviewUpdate from './updateReview'
+import { styles } from './reviewStyle'
+import PetsIcon from '@mui/icons-material/Pets';
 import "./reviews.css";
 import { reviewSlice } from '../../features/reviewSlice'
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
@@ -60,6 +61,7 @@ export default function ReviewTails(props) {
   };
 
   const deleteReview = (review) => {
+    console.log('deleteReview id', review);
     dispatch(reviewSlice.actions.deleteReview(review))
     handleDeleteReview(review._id)
   }
@@ -71,9 +73,11 @@ export default function ReviewTails(props) {
   };
 
   const onSave = (newReview) => {
+    console.log('review id', newReview._id);
     handleUpdateReview(newReview)
     setNumber('')
     setReview('')
+    setOpen(false)
   }
 
 
@@ -120,12 +124,12 @@ export default function ReviewTails(props) {
     console.log('passing update', updateReview)
     const newReview = {
       _id: updateReview._id,
-      userName: user.given_name,
-      email: user.email,
+      userName: updateReview.userName,
+      email: updateReview.email,
       review: reviews,
       stars: number
     };
-
+    // console.log('newReview', newReview)
     dispatch(reviewToBeUpdated(newReview))
 
     if (props.auth0.isAuthenticated) {
@@ -199,8 +203,8 @@ export default function ReviewTails(props) {
           <Stack direction="row" spacing={2}>
 
             {review.email === user.email ? (
-              <div >
-                <Button onClick={handleOpen}>Update</Button>
+              <Box  >
+                <Button sx={{ color: 'salmon' }} onClick={handleOpen}>Update</Button>
                 <Modal
                   open={open}
                   onClose={handleClose}
@@ -210,30 +214,33 @@ export default function ReviewTails(props) {
 
                 >
                   <Box sx={styles.modal} >
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                    <Typography id='updateTitle' variant="h6" component="h2">
                       Update you review!
                     </Typography>
-                    <TextField onChange={(e) => setReview(e.target.value)} ></TextField>
-                    <Select
-                      labelId="demo-simple-select-label"
-                      id="demo-simple-select"
-                      value={number}
-                      label="stars"
-                      onChange={handleUpdateChange}
-                    >
-                      <MenuItem value={0}>0</MenuItem>
-                      <MenuItem value={1}>1</MenuItem>
-                      <MenuItem value={2}>2</MenuItem>
-                      <MenuItem value={3}>3</MenuItem>
-                      <MenuItem value={4}>4</MenuItem>
-                      <MenuItem value={5}>5</MenuItem>
-                    </Select>
-                    <Button onClick={() => { onSave(review) }}>Save</Button>
+                    <TextField sx={styles.updateBody} onChange={(e) => setReview(e.target.value)} label='What would you like to say?'></TextField>
+                    <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginRight: 7 }}>
+                      <Box sx={{ marginRight: 1, fontWeight: 'bolder', color: 'black', fontSize: '18px' }}>Stars: </Box>
+                      <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={number}
+                        label="stars"
+                        onChange={handleUpdateChange}
+                      >
+                        <MenuItem value={0}>0</MenuItem>
+                        <MenuItem value={1}>1</MenuItem>
+                        <MenuItem value={2}>2</MenuItem>
+                        <MenuItem value={3}>3</MenuItem>
+                        <MenuItem value={4}>4</MenuItem>
+                        <MenuItem value={5}>5</MenuItem>
+                      </Select>
+                    </Box>
+                    <Button sx={styles.saveButton} onClick={() => { onSave(review) }}>Save</Button>
                   </Box>
 
                 </Modal>
 
-              </div>
+              </Box>
             ) : ('')}
 
             <Button sx={styles.detailsButton} onClick={() => deleteReview(review)}>Delete</Button>
@@ -254,6 +261,7 @@ export default function ReviewTails(props) {
           <div className="tail">
             <h1 id='Title'>Happy Tails Reviews</h1>
           </div>
+          <PetsIcon sx={styles.logo} />
           <div>
             <h1 >{handleText()}</h1>
             {Array(5)
@@ -292,7 +300,7 @@ export default function ReviewTails(props) {
         <Box sx={{ width: '40%', marginTop: 10 }}>
           <Card sx={{ padding: '30px', borderRadius: '7px', display: 'flex', flexDirection: 'column', alignItems: 'center' }} elevation={5}>
             <div id='reviewBox'>
-              <Typography sx={{ fontWeight: 'bold', fontSize: '20px' }}>
+              <Typography sx={{ fontWeight: 'bold', fontSize: '30px' }}>
                 Reviews
               </Typography>
               <div id='line-3' >
@@ -309,131 +317,5 @@ export default function ReviewTails(props) {
 
     </div >
   );
-}
-
-const styles = {
-  mainBox: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%'
-  },
-  animalCardWrapperBox: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '95%',
-  },
-  titleText: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontFamily: 'Raleway',
-    fontWeight: 'bold',
-    fontSize: '3rem'
-  },
-  card: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    margin: '20px',
-    padding: '15px',
-    borderRadius: '7px',
-    boxShadow: '10px 10px 30px rgba(0, 0, 0, 0.2);',
-    maxWidth: '20%',
-    minWidth: '400px',
-
-  },
-  media: {
-    height: '200px',
-    minWidth: '200px',
-    borderRadius: '4px',
-  },
-  informationBox: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    height: '200px',
-    width: '100%',
-    // border: '2px solid red',
-  },
-  lineBreak: {
-    height: '2px',
-    width: '100%',
-    backgroundColor: '#676767',
-    borderRadius: '20px'
-  },
-  nameBox: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '100%',
-  },
-  textName: {
-    textAlign: 'center',
-    fontFamily: 'Raleway',
-    fontWeight: 'bold',
-    fontSize: '1.2rem'
-  },
-  textBreed: {
-    textAlign: 'center',
-    fontFamily: 'Raleway',
-    fontWeight: 'bold',
-  },
-  textGender: {
-    textAlign: 'center',
-    // fontWeight: 'bold',
-  },
-  favoriteButton: {
-    backgroundColor: '#676767',
-    color: 'white',
-    borderRadius: '10px',
-    boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.3)',
-    '&:hover': {
-      backgroundColor: '	#FF0000',
-      // color: 'black',
-      boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.3)',
-    },
-  },
-  detailsButton: {
-    // border: '1px solid black',
-    backgroundColor: '#1ee8c0',
-    color: 'white',
-    borderRadius: '10px',
-    boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.3)',
-    '&:hover': {
-      boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.3)',
-      color: 'black',
-    }
-  },
-  menuBoxLink: {
-    color: 'white', "& button:focus": { color: "#3b3b3b" },
-    "& button:active": { color: "black" }, "&:hover ": {
-      "background-color": 'white', color: 'black'
-    },
-
-    padding: 1,
-    marginBottom: 2,
-    marginTop: 2,
-    backgroundColor: '#1ee8c0',
-    borderRadius: '10px',
-    fontWeight: 'bold',
-    fontSize: '14px',
-    width: 100,
-    height: 35
-  },
-  modal: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  }
 }
 

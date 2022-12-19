@@ -12,15 +12,17 @@ export const favoriteSlice = createSlice({
     addToFavorites(state, action) {
       console.log('Favorite Array from favoriteSlice=====>>', action.payload)
       state.favoriteArray.push(action.payload);
-      // console.log('Favorite Array', state.favoriteArray);
-
     },
     setFromMongo(state, action) {
       console.log('setFromMongo=====>>', action.payload)
       state.favoriteArray = action.payload;
-    }
+    },
+    deleteFavorite(state, action) {
+      let itemToBeDeleted = action.payload.id;
+      state.favoriteArray = state.favoriteArray.filter(x => x.id !== itemToBeDeleted)
+    },
   }
 });
-export const { addToFavorites, setFromMongo } = favoriteSlice.actions;
+export const { addToFavorites, setFromMongo, deleteFavorite } = favoriteSlice.actions;
 
 export default favoriteSlice.reducer;
