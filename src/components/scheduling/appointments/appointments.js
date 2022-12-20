@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box } from '@mui/material';
+import { Box, CardMedia, Card } from '@mui/material';
 import { CalendarHeader } from '../calendarHeader/calendarHeader';
 import { Day } from '../day/day';
 import { NewEvent } from '../newEvent/newEvent';
@@ -7,7 +7,7 @@ import { DeleteEvent } from '../deleteEvent/deleteEvent';
 import { GetDates } from '../hooks/getDates';
 import axios from 'axios';
 import { useSelector } from 'react-redux'
-import Dog from '../../../assets/images/dog.jpg'
+import Dog from '../../../assets/images/beanie.jpg'
 import '../../scheduling/style.css';
 
 
@@ -74,68 +74,79 @@ export const Appointments = (props) => {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: 10, backgroundImage: `url:${Dog}`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'row', }}>
+        <CardMedia image={Dog}
+          component='image'
+          sx={{
+            // border: '3px solid pink',
+            height: '600px',
+            width: '400px',
+            borderRadius: '4px',
+            marginTop: 4,
+            marginRight: 3
+          }} />
+        <div id="container" >
 
-      <div id="container" >
-        <CalendarHeader
-          dateDisplay={dateDisplay}
-          onNext={() => setNav(nav + 1)}
-          onBack={() => setNav(nav - 1)}
-        />
+          <CalendarHeader
+            dateDisplay={dateDisplay}
+            onNext={() => setNav(nav + 1)}
+            onBack={() => setNav(nav - 1)}
+          />
 
-        <div id="weekdays">
-          <div>Sunday</div>
-          <div>Monday</div>
-          <div>Tuesday</div>
-          <div>Wednesday</div>
-          <div>Thursday</div>
-          <div>Friday</div>
-          <div>Saturday</div>
+          <div id="weekdays">
+            <div>Sunday</div>
+            <div>Monday</div>
+            <div>Tuesday</div>
+            <div>Wednesday</div>
+            <div>Thursday</div>
+            <div>Friday</div>
+            <div>Saturday</div>
+          </div>
+
+          <div id="calendar">
+            {days.map((d, index) => (
+              <Day
+                key={index}
+                day={d}
+                onClick={() => {
+                  if (d.value !== 'padding') {
+                    setNewDate(d.date)
+                    console.log('d.date',)
+                    setClicked(d.date);
+                  }
+                }}
+              />
+            ))}
+          </div>
         </div>
 
-        <div id="calendar">
-          {days.map((d, index) => (
-            <Day
-              key={index}
-              day={d}
-              onClick={() => {
-                if (d.value !== 'padding') {
-                  setNewDate(d.date)
-                  console.log('d.date',)
-                  setClicked(d.date);
-                }
-              }}
-            />
-          ))}
-        </div>
-      </div>
+        {
+          clicked && !eventForDate(clicked) &&
+          <NewEvent
+            onClose={() => setClicked(null)}
 
-      {
-        clicked && !eventForDate(clicked) &&
-        <NewEvent
-          onClose={() => setClicked(null)}
+            onSave={title => {
+              handleSubmit(title)
+              setEvents([...events, { title, date: clicked }]);
+              setClicked(null);
+            }}
+          />
+        }
 
-          onSave={title => {
-            handleSubmit(title)
-            setEvents([...events, { title, date: clicked }]);
-            setClicked(null);
-          }}
-        />
-      }
+        {
+          clicked && eventForDate(clicked) &&
+          <DeleteEvent
+            eventText={eventForDate(clicked).title}
+            onClose={() => setClicked(null)}
+            onDelete={() => {
+              setEvents(events.filter(e => e.date !== clicked));
+              setClicked(null);
+            }}
 
-      {
-        clicked && eventForDate(clicked) &&
-        <DeleteEvent
-          eventText={eventForDate(clicked).title}
-          onClose={() => setClicked(null)}
-          onDelete={() => {
-            setEvents(events.filter(e => e.date !== clicked));
-            setClicked(null);
-          }}
+          />
+        }
 
-        />
-      }
-
-
+      </Box>
     </Box>
   );
 };
