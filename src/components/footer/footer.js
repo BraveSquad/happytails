@@ -2,9 +2,10 @@ import React from 'react'
 import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa';
 import { Box, Link, Typography } from '@mui/material';
 import PetsIcon from '@mui/icons-material/Pets';
+// import Chatbot from '../chatbot/chatbot';
 
 
-export default function Footer() {
+export default function Footer(props) {
   return (
     <Box elevation={5} sx={styles.mainBox}>
       <Box sx={styles.topBox}>
@@ -56,7 +57,7 @@ export default function Footer() {
           </Link>
         </Box>
         <Box sx={styles.middleBoxColumn}>
-          Sign Up
+          Sign up for our newsletter!
         </Box>
       </Box>
       <Box sx={styles.bottomBox}>
@@ -72,7 +73,6 @@ export default function Footer() {
           <Link sx={styles.mediaIcon} href="https://www.linkedIn.com" target="_blank"> <FaLinkedin /></Link>
         </Box>
       </Box>
-
     </Box>
   )
 }
@@ -83,6 +83,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    // height: '500px'
   },
   topBox:{
     display: 'flex',
@@ -99,7 +100,6 @@ const styles = {
     justifyContent: 'space-between',
     color: 'white',
     fontSize: '1.5rem',
-    // fontFamily: 'Raleway',
     fontFamily: 'Kaushan Script',
     width: '7%',
   },
