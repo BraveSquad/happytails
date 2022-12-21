@@ -116,7 +116,7 @@ const styles = {
     color: 'white',
     marginLeft: '10px',
     '&:hover': {
-      backgroundColor: '#1ee8c0',
+      backgroundColor: '#70E1F5',
       color: 'black',
       boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.3)',
     },

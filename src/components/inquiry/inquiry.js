@@ -1,8 +1,10 @@
 import * as React from "react";
 import { useSelector } from "react-redux";
 import Form from '../form/form';
-import { Box, Card, CardMedia, Typography, CardActionArea, Grid, TextField, CardContent, Button } from "@mui/material";
+import { Box, Card, CardMedia, Typography, CardActionArea, Grid, CardContent } from "@mui/material";
 import Image from '../../assets/images/paw.jpg';
+
+
 
 export default function Inquiry() {
 
@@ -11,16 +13,16 @@ export default function Inquiry() {
   return (
     <Box variant='div' sx={styles.mainBox}>
       <Grid>
-        <Typography variant="h3" align="center" fontWeight="bold" style={{marginBottom: '20px'}}>
+        <Typography variant="h3" align="center" fontWeight="bold" style={{ marginBottom: '20px' }}>
           {animal.name}
         </Typography>
         <Grid container spacing={1} sx={styles.card} justify-content="center" >
           <Grid item xs={0}>
             <Card sx={styles.imageContainer}>
               <CardActionArea>
-              {animal.primary_photo_cropped === null ? (
-              <CardMedia image={Image} sx={styles.cardStyle} />
-              ) : (<CardMedia image={animal.primary_photo_cropped.medium} sx={styles.cardStyle} />)}
+                {animal.primary_photo_cropped === null ? (
+                  <CardMedia image={Image} sx={styles.cardStyle} />
+                ) : (<CardMedia image={animal.primary_photo_cropped.medium} sx={styles.cardStyle} />)}
               </CardActionArea>
             </Card>
             <Card sx={{ borderRadius: 7, marginTop: 3 }} >
@@ -57,13 +59,14 @@ export default function Inquiry() {
         </Grid>
       </Grid>
       <Grid >
+
         <Card sx={styles.grid}>
           <CardContent>
             <Typography gutterBottom variant="h5">
               Contact Us
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
-              Fill up the form and our team will get back to you within 24 hours.
+              Fill out the form and our team will get back to you within 24 hours.
             </Typography>
             <Form />
           </CardContent>
@@ -75,7 +78,7 @@ export default function Inquiry() {
 
 const styles = {
   mainBox: {
-    display: 'flex', 
+    display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
@@ -90,9 +93,9 @@ const styles = {
   grid: {
     // boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgb(60, 201, 226,0.39) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;',
     boxShadow: '10px 10px 30px rgba(0, 0, 0, 0.2);',
-    maxWidth: 450, 
-    padding: "20px 5px", 
-    margin: "30px auto" 
+    maxWidth: 450,
+    padding: "20px 5px",
+    margin: "30px auto"
   },
   position: {
     float: "right",

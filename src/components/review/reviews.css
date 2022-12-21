@@ -54,7 +54,7 @@
 }
 
 button {
-  background: #1ee8c0;
+  background: #70E1F5;
   color: rgb(66, 66, 66);
   margin-top: 10px;
   width: 100%;
@@ -73,7 +73,7 @@ button.disabled {
 
 
 #Title {
-  background-color: #1ee8c092;
+  background-color: #70e1f585;
   padding: 10px;
   border-radius: 7px;
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.136);
