@@ -1,13 +1,13 @@
 import { Client } from '@petfinder/petfinder-js';
 import { animalSlice } from '../../features/animalSlice';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 const client = new Client({
   apiKey: process.env.REACT_APP_API_KEY,
   secret: process.env.REACT_APP_SECRET_KEY,
 });
 
-export const getPets = (search) => async dispatch => {
+export const GetPets = (search, dispatch) => async () => {
     try {
     const res = await client.animal.search({
       type: search.type,
@@ -17,7 +17,7 @@ export const getPets = (search) => async dispatch => {
       page: search.page,
     });
     dispatch(animalSlice.actions.setAnimals(res.data.animals));
-    console.log('DISPATCHING FROM getPets() API', res.data.animals);
+    // console.log('ANIMALS FROM  API CALL======>', res.data.animals);
   } catch (err) {
     console.error('Error getting pets:', err);
   }
