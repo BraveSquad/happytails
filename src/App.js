@@ -17,10 +17,11 @@ import InquiryPage from './components/pages/inquiryPage';
 import Details from './components/pages/detailsPage';
 //-----------------SLICE IMPORT------------------------//
 import { setFromMongo } from './features/favoriteSlice';
-import { setAppointmets } from './features/calendarSlice';
+import { setAppointments } from './features/calendarSlice';
 import { getPets } from './components/search/api';
 import { setReviewsFromMongo } from './features/reviewSlice';
-
+//-----------------LOADING------------------------//
+import LoadingSpinner from './components/loading/loading';
 
 
 function App(props) {
@@ -50,16 +51,11 @@ function App(props) {
       };
       const reviewResponse = await axios(config);
       console.log('APPOINTMENTS from DB:: ', reviewResponse.data);
-      dispatch(setAppointmets(reviewResponse.data))
+      dispatch(setAppointments(reviewResponse.data))
     }
   };
 
   handleGetUserCalendar();
-
-
-
-
-
 
   const handleGetPets = () => {
     dispatch(getPets({ type: 'dog', breed: '', location: '98106', limit: 100, page: 1 }));
@@ -76,11 +72,9 @@ function App(props) {
       method: 'GET',
       baseURL: process.env.REACT_APP_HEROKU_URL,
       url: '/newUser',
-
     };
     await axios(config).then((rest) => {
       setNewUser(rest.data[0])
-
       dispatch(setFromMongo(rest.data[0].favorite))
     }).catch(err => console.log('error', err))
     // }
@@ -106,7 +100,6 @@ function App(props) {
 
   handleAllReview();
 
-
   let handlePostUser = async () => {
     const res = await props.auth0.getIdTokenClaims();
     const jwt = res.__raw;
@@ -125,26 +118,23 @@ function App(props) {
 
   handlePostUser();
 
-
   const { isLoading } = props.auth0;
   if (isLoading) {
     return (
-      <div >
-        ...Loading App
-      </div>
+      <>
+        <LoadingSpinner />
+      </>
     );
   }
   return (
     <Box sx={styles.mainBox} >
       <Router >
-        {/* {console.log('props in the App component yo!!', props)} */}
         <Routes>
           {!props.auth0.isAuthenticated ? (
             <Route exact path='/' element={<Welcome />} />
           ) : (
             <Route path='/' element={<Home auth0={props.auth0} user={newUser} />} />
-          )
-          }
+          )}
           <Route exact path='/reviews' element={<Reviews auth0={props.auth0} user={newUser} />} />
           <Route exact path='/details' element={<Details auth0={props.auth0} user={newUser} />} />
           <Route exact path='/appointments' element={<Appointments auth0={props.auth0} user={newUser} />} />

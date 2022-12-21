@@ -13,13 +13,13 @@ export const calendarSlice = createSlice({
   reducers: {
 
 
-    setAppointmets(state, action) {
+    setAppointments(state, action) {
       console.log('CALENDAR CALL TO STATE!', action.payload)
       state.userAppts = action.payload;
     }
   }
 })
 
-export const { setAppointmets } = calendarSlice.actions;
+export const { setAppointments } = calendarSlice.actions;
 
 export default calendarSlice.reducer;

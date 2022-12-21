@@ -1,6 +1,6 @@
 import { Client } from '@petfinder/petfinder-js';
 import { animalSlice } from '../../features/animalSlice';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 const client = new Client({
   apiKey: process.env.REACT_APP_API_KEY,

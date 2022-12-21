@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Box, Button, Card, CardMedia, Stack, Typography } from '@mui/material';
 import { animalDetail } from '../../features/detailSlice';
 import { addToFavorites } from '../../features/favoriteSlice';
+import LoadingSpinner from '../loading/loading';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import Image from '../../assets/images/paw.jpg';
@@ -10,13 +11,11 @@ import '../../assets/style/list.css';
 
 export default function Animals(props) {
 
-  // const [pageNumber, setPageNumber]
   const [pageNumber, setPageNumber] = useState(0);
   const itemsPerPage = 9;
 
   const { isLoading } = props.auth0;
   const dispatch = useDispatch();
-  // const [updateFav, setUpdateFav] = useState([])
   const animals = useSelector(state => state.animals.apiAnimals);
   const favorites = useSelector(state => state.favorite.favoriteArray);
 
@@ -59,7 +58,7 @@ export default function Animals(props) {
   };
 
   if (isLoading) {
-    return <div>Loading ...</div>;
+    return <><LoadingSpinner /></>;
   }
 
   let animalArr = [];
@@ -87,7 +86,6 @@ export default function Animals(props) {
             <Button sx={styles.favoriteButton} value={animal} onClick={() => handleAddToFavorites(animal)}>Favorite</Button>
             <Button sx={styles.detailsButton} href='/details' onClick={() => handleDetail(animal)}>Details</Button>
           </Stack>
-          {/* {favorites.map(x => { return x === animal ? <h4>Added to Favorites</h4> : ''})} */}
         </Box>
       </Card>
     ))
@@ -200,21 +198,19 @@ const styles = {
     backgroundColor: '#676767',
     color: 'white',
     borderRadius: '10px',
-    boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.3)',
+    boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.2)',
     '&:hover': {
       backgroundColor: '	#FF0000',
-      // color: 'black',
-      boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.3)',
+      boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.2)',
     },
   },
   detailsButton: {
-    // border: '1px solid black',
     backgroundColor: '#70E1F5',
     color: 'white',
     borderRadius: '10px',
-    boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.3)',
+    boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.2)',
     '&:hover': {
-      boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.3)',
+      boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.2)',
       color: 'black',
     }
   },
