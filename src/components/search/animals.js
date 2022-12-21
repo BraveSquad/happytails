@@ -6,7 +6,9 @@ import { addToFavorites } from '../../features/favoriteSlice';
 import LoadingSpinner from '../loading/loading';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
-import Image from '../../assets/images/paw.jpg';
+// import Image from '../../assets/images/paw.jpg';
+import Cat from '../../assets/images/catlogo.png';
+import Dog from '../../assets/images/doglogo.jpg';
 import '../../assets/style/list.css';
 
 export default function Animals(props) {
@@ -66,9 +68,15 @@ export default function Animals(props) {
   if (animals.length > 0) {
     animalArr = animals.slice(pagesVisited, pagesVisited + itemsPerPage).map(animal => (
       <Card key={animal.id} sx={styles.card}>
-        {animal.primary_photo_cropped === null ? (
-          <CardMedia image={Image} sx={styles.media} />
-        ) : (<CardMedia image={animal.primary_photo_cropped.medium} sx={styles.media} />)}
+        {animal.primary_photo_cropped === null && animal.type ===  'Dog' ? (
+          <CardMedia image={Dog} sx={styles.media} />
+          ) : (
+            animal.primary_photo_cropped === null && animal.type === 'Cat' ? (
+            <CardMedia image={Cat} sx={styles.media} />
+          ) : (
+            <CardMedia image={animal.primary_photo_cropped.medium} sx={styles.media} />
+              )
+          )}
         <Box sx={styles.informationBox}>
           <Box sx={styles.nameBox}>
             <Typography sx={styles.textName}>
