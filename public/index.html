@@ -38,12 +38,12 @@
   <body>
     <style>
       df-messenger {
-        --df-messenger-bot-message: #878fac;
-        --df-messenger-button-titlebar-color: #039ffa;
+        --df-messenger-bot-message: #2dadd4;
+        --df-messenger-button-titlebar-color: #2dadd4;
         --df-messenger-chat-background-color: #fafafa;
-        --df-messenger-font-color: rgb(255, 255, 255);
+        --df-messenger-font-color: white;
         --df-messenger-send-icon: #878fac;
-        --df-messenger-user-message: #039ffa;
+        --df-messenger-user-message: black;
         --df-messenger-minimized-chat-close-icon-color: 'black';
         --df-messenger-send-icon: #039ffa;
       }
@@ -51,10 +51,12 @@
     <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
     <df-messenger
     intent="WELCOME"
-    chat-title="PawAgent"
+    chat-title="Paw Agent"
     agent-id="f9cb2db6-4d08-4bbd-8d3c-c7ce76b5ede3"
     language-code="en"
-    chat-icon="https://www.pngitem.com/pimgs/m/64-640748_paw-vector-graphics-clip-art-logo-dog-paw.png"
+
+    chat-icon="https://freesvg.org/img/paw-print.png"
+
     ></df-messenger>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
