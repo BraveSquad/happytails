@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import { withAuth0 } from '@auth0/auth0-react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Box } from '@mui/material';
 // import Details from './components/details/details'
 //--------------------PAGES IMPORT------------------------//
@@ -18,7 +18,7 @@ import Details from './components/pages/detailsPage';
 //-----------------SLICE IMPORT------------------------//
 import { setFromMongo } from './features/favoriteSlice';
 import { setAppointments } from './features/calendarSlice';
-import { getPets } from './components/search/api';
+import { GetPets } from './components/search/api';
 import { setReviewsFromMongo } from './features/reviewSlice';
 //-----------------LOADING------------------------//
 import LoadingSpinner from './components/loading/loading';
@@ -26,6 +26,7 @@ import LoadingSpinner from './components/loading/loading';
 
 function App(props) {
   const dispatch = useDispatch();
+  const search = useSelector(state => state.animals.params);
   const [newUser, setNewUser] = useState('');
 
   useEffect(() => {
@@ -33,7 +34,6 @@ function App(props) {
     handleGetPets();
     setTimeout(() => {
       handleGetUser();
-
     }, 6000)
   }, [])
 
@@ -58,7 +58,8 @@ function App(props) {
   handleGetUserCalendar();
 
   const handleGetPets = () => {
-    dispatch(getPets({ type: 'dog', breed: '', location: '98106', limit: 100, page: 1 }));
+    // dispatch(GetPets({ type: 'dog', breed: '', location: '98106', limit: 50, page: 1 }));
+    dispatch(GetPets({ type: search.type, breed: search.breed, age: search.age, location: search.location, limit: search.limit, page: search.page}, dispatch));
   }
 
   let handleGetUser = async () => {

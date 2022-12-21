@@ -1,31 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { animalSlice, setAnimals, setLocation, setBreed, setLimit, setPage, setType, setAge } from '../../features/animalSlice'
+import { animalSlice, setAnimals, setLocation, setBreed, setType, setAge } from '../../features/animalSlice';
 import { Box, InputLabel, MenuItem, FormControl, Select, Button, TextField } from '@mui/material';
 import Image from '../../assets/images/animalBanner.jpg';
-import { getPets } from './api';
+import { GetPets } from './api';
 
 
 function Search() {
   const dispatch = useDispatch();
   const search = useSelector(state => state.animals.params);
+
+  // const [location, setLocation] = useState();
+  // const [type, setTypes] = useState('');
+  // const [breed, setBreeds] = useState('');
+  // const [age, setAges] = useState('Baby');
+  // const [limit, setLimits] = useState(20);
+  // const [page, setPages] = useState(1);
+
   console.log('Search: ', search);
 
+
   const handleLocation = (event) => {
+    setLocation(event.target.value);
+    console.log('SET LOCATION: ', event.target.value);
     dispatch(setLocation(event.target.value));
   };
   const handleAge = (event) => {
+    setAge(event.target.value);
     dispatch(setAge(event.target.value));
   };
   const handleType = (event) => {
+    setType(event.target.value);
+    console.log('handleType', event.target.value);
     dispatch(setType(event.target.value));
   };
   const handleBreed = (event) => {
+    setBreed(event.target.value);
     dispatch(setBreed(event.target.value));
   };
 
-  const handleSearch = () => {
-    getPets({ type: search.type, breed: search.breed, age: search.age, location: search.location, limit: search.limit, page: search.page });
+  const handleSearch = (e) => {
+    // e.preventDefault();
+    console.log('handleSearch called -----> ');
+    GetPets({ type: search.type, breed: search.breed, age: search.age, location: search.location, limit: search.limit, page: search.page}, dispatch);
   }
 
   useEffect(() => {
@@ -67,6 +84,7 @@ function Search() {
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={search.type}
+              name={search.type}
               label="species"
               onChange={handleType}
             >
@@ -74,7 +92,9 @@ function Search() {
               <MenuItem value={'Cat'}>Cat</MenuItem>
             </Select>
           </FormControl>
-          <Button href='/animals' sx={styles.searchButton} onClick={() => handleSearch()}>Search</Button>
+          {/* <Button href='/animals' sx={styles.searchButton} onClick={handleSearch}>Search</Button> */}
+          {/* <Button href='/animals' sx={styles.searchButton} onClick={GetPets({ type: type, breed: breed, age: age, location: location, limit: limit, page: page}, dispatch)}>Search</Button> */}
+          <Button href='/animals' sx={styles.searchButton} onClick={GetPets({ type: search.type, breed: search.breed, age: search.age, location: search.location, limit: search.limit, page: search.page}, dispatch)}>Search</Button>
 
         </Box>
       </Box>
