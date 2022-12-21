@@ -9,6 +9,7 @@
       name="description"
       content="Web site created using create-react-app"
     />
+    
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -27,11 +28,33 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital@1&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/@petfinder/petfinder-js/dist/petfinder.min.js"></script>
     <title>Happy Tails</title>
   </head>
   <body>
+    <style>
+      df-messenger {
+        --df-messenger-bot-message: #878fac;
+        --df-messenger-button-titlebar-color: #039ffa;
+        --df-messenger-chat-background-color: #fafafa;
+        --df-messenger-font-color: rgb(255, 255, 255);
+        --df-messenger-send-icon: #878fac;
+        --df-messenger-user-message: #039ffa;
+        --df-messenger-minimized-chat-close-icon-color: 'black';
+        --df-messenger-send-icon: #039ffa;
+      }
+      </style>
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger
+    intent="WELCOME"
+    chat-title="PawAgent"
+    agent-id="f9cb2db6-4d08-4bbd-8d3c-c7ce76b5ede3"
+    language-code="en"
+    ></df-messenger>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--

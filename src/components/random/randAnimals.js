@@ -75,6 +75,7 @@ const styles = {
     button: {
         fontSize: '3rem',
         color: 'black'
+        // color: '#70e1f5'
     },
     icon: {
         color: 'black'
