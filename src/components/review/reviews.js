@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Form } from 'react-bootstrap';
 import { styles } from './reviewStyle'
 import PetsIcon from '@mui/icons-material/Pets';
+import SentimentVeryDissatisfiedRoundedIcon from '@mui/icons-material/SentimentVeryDissatisfiedRounded';
 import "./reviews.css";
 import { reviewSlice } from '../../features/reviewSlice'
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
@@ -197,9 +198,49 @@ export default function ReviewTails(props) {
           <Typography sx={styles.textGender}>
             Review: {review.review}
           </Typography>
-          <Typography sx={styles.textGender}>
+
+
+          {review.stars === 0 ? (<SentimentVeryDissatisfiedRoundedIcon />
+          ) : ('')}
+
+          {review.stars === 1 ? (<AiFillStar style={{ color: "orange" }} />
+          ) : ('')}
+
+          {review.stars === 2 ? (
+            <Box sx={{ display: 'flex' }}>
+              <AiFillStar style={{ color: "orange" }} />
+              <AiFillStar style={{ color: "orange" }} />
+            </Box>
+          ) : ('')}
+          {review.stars === 3 ? (
+            <Box sx={{ display: 'flex' }}>
+              <AiFillStar style={{ color: "orange" }} />
+              <AiFillStar style={{ color: "orange" }} />
+              <AiFillStar style={{ color: "orange" }} />
+            </Box>
+          ) : ('')}
+          {review.stars === 4 ? (
+            <Box sx={{ display: 'flex' }}>
+              <AiFillStar style={{ color: "orange" }} />
+              <AiFillStar style={{ color: "orange" }} />
+              <AiFillStar style={{ color: "orange" }} />
+              <AiFillStar style={{ color: "orange" }} />
+            </Box>
+          ) : ('')}
+          {review.stars === 5 ? (
+            <Box sx={{ display: 'flex' }}>
+              <AiFillStar style={{ color: "orange" }} />
+              <AiFillStar style={{ color: "orange" }} />
+              <AiFillStar style={{ color: "orange" }} />
+              <AiFillStar style={{ color: "orange" }} />
+              <AiFillStar style={{ color: "orange" }} />
+            </Box>
+          ) : ('')}
+
+
+          {/* <Typography sx={styles.textGender}>
             Stars: {review.stars}
-          </Typography>
+          </Typography> */}
           <Stack direction="row" spacing={2}>
 
             {review.email === user.email ? (
@@ -242,8 +283,9 @@ export default function ReviewTails(props) {
 
               </Box>
             ) : ('')}
+            {review.email === user.email ? (<Button sx={styles.detailsButton} onClick={() => deleteReview(review)}>Delete</Button>)
+              : ('')}
 
-            <Button sx={styles.detailsButton} onClick={() => deleteReview(review)}>Delete</Button>
           </Stack>
         </Box>
       </Card>
