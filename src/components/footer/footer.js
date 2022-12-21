@@ -2,7 +2,7 @@ import React from 'react'
 import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa';
 import { Box, Link, Typography } from '@mui/material';
 import PetsIcon from '@mui/icons-material/Pets';
-// import Chatbot from '../chatbot/chatbot';
+import NewsLetter from '../newsletter/newsletter';
 
 
 export default function Footer(props) {
@@ -57,7 +57,7 @@ export default function Footer(props) {
           </Link>
         </Box>
         <Box sx={styles.middleBoxColumn}>
-          Sign up for our newsletter!
+          <NewsLetter />
         </Box>
       </Box>
       <Box sx={styles.bottomBox}>

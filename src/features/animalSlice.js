@@ -4,6 +4,7 @@ import { data as allAnimals } from '../assets/dummyData/data'
 
 //------------PULLING ALL ANIMALS FROM API------//
 
+// const location;
 const initialState = {
   animalSelected: [],
   randomAnimals: [],
@@ -18,7 +19,7 @@ const initialState = {
     breed: '',
     age: '',
     location: 98106,
-    limit: 50,
+    limit: 100,
     page: 1,
   },
   token: '',
@@ -53,19 +54,33 @@ export const animalSlice = createSlice({
       state.params.age = action.payload;
     },
   },
-  extraReducers: {
-    [getPetsThunk.pending]: (state) => {
+  // extraReducers: {
+  //   [getPetsThunk.pending]: (state) => {
+  //     state.loading = true;
+  //   },
+  //   [getPetsThunk.fulfilled]: (state, action) => {
+  //     state.apiAnimals = action.payload;
+  //     state.loading = false;
+  //     state.error = null;
+  //   },
+  //   [getPetsThunk.rejected]: (state, action) => {
+  //     state.loading = false;
+  //     state.error = action.error;
+  //   },
+  // },
+  extraReducers: (builder) => {
+    builder.addCase(getPetsThunk.pending, (state) => {
       state.loading = true;
-    },
-    [getPetsThunk.fulfilled]: (state, action) => {
+    })
+    builder.addCase(getPetsThunk.fulfilled, (state, action) => {
       state.apiAnimals = action.payload;
       state.loading = false;
       state.error = null;
-    },
-    [getPetsThunk.rejected]: (state, action) => {
+    })
+    builder.addCase(getPetsThunk.rejected, (state, action) => {
       state.loading = false;
       state.error = action.error;
-    },
+    })
   },
 })
 
