@@ -17,6 +17,7 @@ export default function Home(props) {
       {/* <Animals auth0={props.auth0} user={props.user}/> */}
       <Video />
       <Banner />
+
       <Footer />
     </Box>
   )

@@ -3,7 +3,7 @@ import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa';
 import { Box, Link, Typography } from '@mui/material';
 import PetsIcon from '@mui/icons-material/Pets';
 import NewsLetter from '../newsletter/newsletter';
-
+import Messenger from '../../components/bot/bot'
 
 export default function Footer(props) {
   return (
@@ -14,7 +14,7 @@ export default function Footer(props) {
         </Typography>
       </Box>
       <Box sx={styles.middleBox}>
-        <Box sx={styles.middleBoxColumn}>
+        {/* <Box sx={styles.middleBoxColumn}>
           <Link>
             Link 1
           </Link>
@@ -55,9 +55,10 @@ export default function Footer(props) {
           <Link>
             Link 3
           </Link>
-        </Box>
+        </Box> */}
         <Box sx={styles.middleBoxColumn}>
           <NewsLetter />
+          <Messenger />
         </Box>
       </Box>
       <Box sx={styles.bottomBox}>
@@ -85,7 +86,7 @@ const styles = {
     alignItems: 'center',
     // height: '500px'
   },
-  topBox:{
+  topBox: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -108,7 +109,7 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     width: '90%',
-    height:  '200px',
+    height: '200px',
     marginTop: '30px',
     marginBottom: '10px',
     // border: '1px solid red',
@@ -144,7 +145,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-around',
-    marginRight: 4,
+    marginRight: 12,
     width: '15%'
     // border: '2px solid blue',
   },

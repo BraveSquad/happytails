@@ -12,10 +12,10 @@ function Search() {
   // console.log('Search: ', search);
 
   const params = {
-    type: search.type, 
-    breed: search.breed, 
-    age: search.age, 
-    location: search.location, 
+    type: search.type,
+    breed: search.breed,
+    age: search.age,
+    location: search.location,
     limit: search.limit,
     page: search.page
   }
@@ -81,9 +81,6 @@ function Search() {
             </Select>
           </FormControl>
           <Button href='/animals' sx={styles.searchButton} onClick={() => handleSearch(params, dispatch)}>Search</Button>
-          {/* <Button href='/animals' sx={styles.searchButton} onClick={GetPets({ type: type, breed: breed, age: age, location: location, limit: limit, page: page}, dispatch)}>Search</Button> */}
-          {/* <Button href='/animals' sx={styles.searchButton} onClick={GetPets({ type: search.type, breed: search.breed, age: search.age, location: search.location, limit: search.limit, page: search.page}, dispatch)}>Search</Button> */}
-
         </Box>
       </Box>
       <Box sx={styles.lineBreak} />

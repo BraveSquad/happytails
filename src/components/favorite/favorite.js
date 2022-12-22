@@ -12,10 +12,11 @@ import '../../assets/style/favorites.css'
 
 export default function Favorite(props) {
 
+  // console.log('USER FAVE PROPS', props)
   const { isLoading } = props.user
   const dispatch = useDispatch();
   const favorites = useSelector(state => state.favorite.favoriteArray);
-  
+
   function handleDetail(animal) {
     dispatch(animalDetail(animal))
   }
@@ -34,7 +35,7 @@ export default function Favorite(props) {
     const jwt = res.__raw;
     const updatedUser = {
       _id: props.user._id,
-      userName: props.user.userName,
+      userName: props.user.userName || props.user.nickName,
       email: props.user.email,
       picture: props.user.picture,
       favorite: favorites,
@@ -47,8 +48,8 @@ export default function Favorite(props) {
       url: `/fav/${updatedUser._id}`,
       data: updatedUser
     };
-    const rest = await axios(config);
-    console.log('Fav Updated!!', rest.data);
+    await axios(config);
+    // console.log('Fav Updated!!', rest.data);
   };
 
   // console.log("This will be the end of the world ")
@@ -59,15 +60,15 @@ export default function Favorite(props) {
     favoritesArray = favorites.map((animal, idx) => (
       <Box key={idx} sx={styles.cardContainer}>
         <Card key={idx} sx={styles.card} elevation={5}>
-        {animal.primary_photo_cropped === null && animal.type === 'Dog' ? (
-              <CardMedia image={Dog} sx={styles.cardMedia}/>
-              ) : (
-                animal.primary_photo_cropped === null && animal.type === 'Cat' ? (
-                  <CardMedia image={Cat} sx={styles.cardMedia} />
-              ) : (
-                <CardMedia image={animal.primary_photo_cropped.medium} sx={styles.cardMedia} />
-                )
-              )}
+          {animal.primary_photo_cropped === null && animal.type === 'Dog' ? (
+            <CardMedia image={Dog} sx={styles.cardMedia} />
+          ) : (
+            animal.primary_photo_cropped === null && animal.type === 'Cat' ? (
+              <CardMedia image={Cat} sx={styles.cardMedia} />
+            ) : (
+              <CardMedia image={animal.primary_photo_cropped.medium} sx={styles.cardMedia} />
+            )
+          )}
           <Box sx={styles.informationBox}>
             <Box sx={styles.nameBox}>
               <Typography sx={styles.textAnimalName}>
@@ -95,9 +96,9 @@ export default function Favorite(props) {
       {isLoading ? (
         <LoadingSpinner />
       ) : (
-          <Box sx={styles.favoritesBox}>
-            {favoritesArray}
-          </Box>
+        <Box sx={styles.favoritesBox}>
+          {favoritesArray}
+        </Box>
       )}
     </>
   )
@@ -105,9 +106,9 @@ export default function Favorite(props) {
 
 const styles = {
   favoritesContainer: {
-    display: 'flex', 
-    flexDirection: 'column', 
-    alignItems: 'center', 
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     justifyContent: 'center',
     border: '1px solid black'
   },
@@ -185,7 +186,7 @@ const styles = {
     fontSize: '1.2rem'
   },
   buttonDetails: {
-    color: 'lightblue', 
+    color: 'lightblue',
     borderRadius: '10px',
     boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.2)',
     '&:hover': {

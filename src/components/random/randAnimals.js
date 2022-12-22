@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch, useSelector }  from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { animalDetail } from '../../features/detailSlice';
 import { getRandom } from '../../features/animalSlice';
 import { Box, Typography, CardMedia, Card, Button } from '@mui/material';
@@ -13,48 +13,48 @@ function Random() {
     const dispatch = useDispatch();
     const animals = useSelector(state => state.animals.randomAnimals);
 
-    function handleClick(animal){
+    function handleClick(animal) {
         dispatch(animalDetail(animal))
     }
 
-    function handleShuffle(){
+    function handleShuffle() {
         dispatch(getRandom());
     }
 
-  return (
-    <Box sx={styles.mainBox}>
-        <Box sx={styles.boxShuffle}>
-            <Typography sx={styles.textShuffle}>Shuffle <ForwardIcon sx={styles.iconForward} /></Typography>
-            <Button sx={styles.buttonShuffle}onClick={handleShuffle}>
-                <Box component='img' sx={styles.imageShuffleIcon} />
-            </Button>
-        </Box>
-        <Box sx={styles.wrapperBox}>
-            {animals.length > 0 && animals.map((animal, idx) => (
-                <Box key={idx} variant='div' sx={styles.wrapper}>
-                    <Card sx={styles.card}>
-                        <Typography sx={styles.textName}>{animal.name}</Typography>
-                        {animal.primary_photo_cropped === null && animal.type === 'Dog' ? (
+    return (
+        <Box sx={styles.mainBox}>
+            <Box sx={styles.boxShuffle}>
+                <Typography sx={styles.textShuffle}>Shuffle <ForwardIcon sx={styles.iconForward} /></Typography>
+                <Button sx={styles.buttonShuffle} onClick={handleShuffle}>
+                    <Box component='img' sx={styles.imageShuffleIcon} />
+                </Button>
+            </Box>
+            <Box sx={styles.wrapperBox}>
+                {animals.length > 0 && animals.map((animal, idx) => (
+                    <Box key={idx} variant='div' sx={styles.wrapper}>
+                        <Card sx={styles.card}>
+                            <Typography sx={styles.textName}>{animal.name}</Typography>
+                            {animal.primary_photo_cropped === null && animal.type === 'Dog' ? (
                                 <CardMedia sx={styles.imageAnimalCard} image={Dog} />
                             ) : (
-                            animal.primary_photo_cropped  === null && animal.type === 'Cat' ? (
-                                <CardMedia sx={styles.imageAnimalCard} image={Cat}/>                          
-                            ) : (
-                                <CardMedia sx={styles.imageAnimalCard} image={animal.primary_photo_cropped.medium} />
-                            )
-                          )}
-                            <Button sx={styles.buttonDetails}href='/details' onClick={() => handleClick(animal)}>
-                                <IoPawSharp sx={styles.iconPaw}/>
+                                animal.primary_photo_cropped === null && animal.type === 'Cat' ? (
+                                    <CardMedia sx={styles.imageAnimalCard} image={Cat} />
+                                ) : (
+                                    <CardMedia sx={styles.imageAnimalCard} image={animal.primary_photo_cropped.medium} />
+                                )
+                            )}
+                            <Button sx={styles.buttonDetails} href='/details' onClick={() => handleClick(animal)}>
+                                <IoPawSharp sx={styles.iconPaw} />
                             </Button>
-                    </Card>
-                </Box>
-            ))}
+                        </Card>
+                    </Box>
+                ))}
+            </Box>
+            <Box sx={styles.boxTextTitle}>
+                <Typography sx={styles.textTitle}>Animals Nearby</Typography>
+            </Box>
         </Box>
-        <Box sx={styles.boxTextTitle}>
-            <Typography sx={styles.textTitle}>Animals Nearby</Typography>
-        </Box>
-    </Box>
-  )
+    )
 }
 
 export default Random;
@@ -165,32 +165,32 @@ const styles = {
     },
     buttonShuffle: {
         height: '170px',
-        width:  '170px',
+        width: '170px',
         borderRadius: '50%',
         backgroundColor: '#fcae1c',
         transition: 'transform  0.1s',
         // backgroundColor: 'red',
         // border: '1px solid white',
         '&:hover': {
-          animation: 'wiggle 0.5s infinite',
-          backgroundColor: '#70e1f5',
-          borderRadius: '50%',
-          boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.3)',
+            animation: 'wiggle 0.5s infinite',
+            backgroundColor: '#70e1f5',
+            borderRadius: '50%',
+            boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.3)',
         },
         '&:hover:active': {
             transform: 'translateX(3px)',
         },
         '@keyframes wiggle': {
             '0%': {
-              transform: 'rotate(0deg)',
+                transform: 'rotate(0deg)',
             },
             '50%': {
-              transform: 'rotate(-5deg)'
+                transform: 'rotate(-5deg)'
             },
             '100%': {
-              transform: 'rotate(0deg)'
+                transform: 'rotate(0deg)'
             }
-          }
+        }
     },
     iconForward: {
         fontSize: '3rem',

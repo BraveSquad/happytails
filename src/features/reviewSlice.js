@@ -12,11 +12,11 @@ export const reviewSlice = createSlice({
   reducers: {
 
     addReview(state, action) {
-      console.log('NEW REVIEW')
+      // console.log('NEW REVIEW')
       state.reviewArray.push(action.payload);
     },
     setReviewsFromMongo(state, action) {
-      console.log('setReviewsFromMongo=====>>', action.payload)
+      // console.log('setReviewsFromMongo=====>>', action.payload)
       state.reviewArray = action.payload;
     },
 
@@ -25,7 +25,7 @@ export const reviewSlice = createSlice({
       state.reviewArray = state.reviewArray.filter(x => x._id !== itemToBeDeleted)
     },
     reviewToBeUpdated(state, action) {
-      console.log('update from review slice=====>', action.payload)
+      // console.log('update from review slice=====>', action.payload)
       let updateReview = action.payload;
       state.reviewArray = map(state.reviewArray, x => {
         if (x._id === updateReview._id) {

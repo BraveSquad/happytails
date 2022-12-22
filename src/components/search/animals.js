@@ -42,7 +42,7 @@ export default function Animals(props) {
     const jwt = res.__raw;
     const updatedUser = {
       _id: props.user._id,
-      userName: props.user.userName,
+      userName: props.user.userName || props.user.nickname,
       email: props.user.email,
       picture: props.user.picture,
       favorite: favorites,
@@ -55,8 +55,8 @@ export default function Animals(props) {
       url: `/fav/${updatedUser._id}`,
       data: updatedUser
     };
-    const rest = await axios(config);
-    console.log('USER CONFIG', rest.data);
+    await axios(config);
+    // console.log('USER CONFIG', rest.data);
   };
 
   if (isLoading) {

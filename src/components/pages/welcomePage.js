@@ -12,7 +12,7 @@ const Welcome = (props) => {
 
   return (
 
-    <div id="background">
+    <div id="background" >
       <div className='content' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', height: '100%', width: '100%', position: 'absolute', zIndex: 10 }}>
         {isAuthenticated}
         <div className='content' style={{ fontSize: '60px', position: 'absolute', top: 0, left: 0 }}> Welcome to HappyTails <LoginButton /> </div>

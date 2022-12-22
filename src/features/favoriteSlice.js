@@ -11,11 +11,11 @@ export const favoriteSlice = createSlice({
   initialState,
   reducers: {
     addToFavorites(state, action) {
-      console.log('Favorite Array from favoriteSlice=====>>', action.payload)
+      // console.log('Favorite Array from favoriteSlice=====>>', action.payload)
       state.favoriteArray.push(action.payload);
     },
     setFromMongo(state, action) {
-      console.log('setFromMongo=====>>', action.payload)
+      // console.log('setFromMongo=====>>', action.payload)
       state.favoriteArray = action.payload;
     },
     deleteFavorite(state, action) {

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { withAuth0 } from '@auth0/auth0-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box } from '@mui/material';
+
 // import Details from './components/details/details'
 //--------------------PAGES IMPORT------------------------//
 import Reviews from './components/pages/reviewPage'
@@ -30,7 +31,7 @@ function App(props) {
   const [newUser, setNewUser] = useState('');
 
   useEffect(() => {
-    console.log('USE EFFECT WAS CALLED')
+    // console.log('USE EFFECT WAS CALLED')
     handleGetPets();
     setTimeout(() => {
       handleGetUser();
@@ -40,7 +41,7 @@ function App(props) {
 
   const handleGetUserCalendar = async () => {
     if (props.auth0.isAuthenticated) {
-      console.log('making an API call');
+      // console.log('making an API call');
       const res = await props.auth0.getIdTokenClaims();
       const jwt = res.__raw;
       const config = {
@@ -50,7 +51,7 @@ function App(props) {
         url: '/calendar',
       };
       const reviewResponse = await axios(config);
-      console.log('APPOINTMENTS from DB:: ', reviewResponse.data);
+      // console.log('APPOINTMENTS from DB:: ', reviewResponse.data);
       dispatch(setAppointments(reviewResponse.data))
     }
   };
@@ -59,7 +60,7 @@ function App(props) {
 
   const handleGetPets = () => {
     // dispatch(GetPets({ type: 'dog', breed: '', location: '98106', limit: 50, page: 1 }));
-    dispatch(GetPets({ type: search.type, breed: search.breed, age: search.age, location: search.location, limit: search.limit, page: search.page}, dispatch));
+    dispatch(GetPets({ type: search.type, breed: search.breed, age: search.age, location: search.location, limit: search.limit, page: search.page }, dispatch));
   }
 
   let handleGetUser = async () => {
@@ -84,7 +85,7 @@ function App(props) {
 
   const handleAllReview = async () => {
     if (props.auth0.isAuthenticated) {
-      console.log('making an API call');
+      // console.log('making an API call');
       const res = await props.auth0.getIdTokenClaims();
       const jwt = res.__raw;
       const config = {
@@ -94,7 +95,7 @@ function App(props) {
         url: '/allReviews',
       };
       const reviewResponse = await axios(config);
-      console.log('review from DB:: ', reviewResponse.data);
+      // console.log('review from DB:: ', reviewResponse.data);
       dispatch(setReviewsFromMongo(reviewResponse.data))
     }
   };
@@ -112,7 +113,7 @@ function App(props) {
       data: props.auth0
     };
     await axios(config).then((rest) => {
-      console.log('resPost', rest)
+      // console.log('resPost', rest)
 
     }).catch(err => console.log('error', err));
   }
@@ -143,6 +144,7 @@ function App(props) {
           <Route exact path='/animals' element={<Animals auth0={props.auth0} user={newUser} />} />
           <Route exact path='/about' element={<About />} />
           <Route exact path='/inquire' element={<InquiryPage auth0={props.auth0} user={newUser} />} />
+
         </Routes>
       </Router>
     </Box>

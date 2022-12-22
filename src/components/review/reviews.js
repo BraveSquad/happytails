@@ -13,7 +13,7 @@ import { addReview, reviewToBeUpdated } from '../../features/reviewSlice'
 
 export default function ReviewTails(props) {
   const dispatch = useDispatch();
-  console.log('Props in REVIEW', props)
+  // console.log('Props in REVIEW', props)
   const [number, setNumber] = useState(0);
   const [hoverStar, setHoverStar] = useState(undefined);
   const [reviews, setReview] = useState('');
@@ -23,7 +23,7 @@ export default function ReviewTails(props) {
 
 
   const reviewArray = useSelector(state => state.review.reviewArray);
-  console.log('UPDATED REVIEW IN STATE', reviewArray)
+  // console.log('UPDATED REVIEW IN STATE', reviewArray)
 
   const handleText = () => {
     // console.log('NUMBER::', number);
@@ -62,7 +62,7 @@ export default function ReviewTails(props) {
   };
 
   const deleteReview = (review) => {
-    console.log('deleteReview id', review);
+    // console.log('deleteReview id', review);
     dispatch(reviewSlice.actions.deleteReview(review))
     handleDeleteReview(review._id)
   }
@@ -74,7 +74,7 @@ export default function ReviewTails(props) {
   };
 
   const onSave = (newReview) => {
-    console.log('review id', newReview._id);
+    // console.log('review id', newReview._id);
     handleUpdateReview(newReview)
     setNumber('')
     setReview('')
@@ -94,15 +94,15 @@ export default function ReviewTails(props) {
         url: '/review',
         data: newReview
       };
-      const reviewResponse = await axios(config);
-      console.log('Review from DB: ', reviewResponse.data);
+      await axios(config);
+      // console.log('Review from DB: ', reviewResponse.data);
     }
   };
 
 
 
   const handleDeleteReview = async (id) => {
-    console.log('WHAT ARE YOU', id)
+    // console.log('WHAT ARE YOU', id)
 
     if (props.auth0.isAuthenticated) {
       const res = await props.auth0.getIdTokenClaims();
@@ -122,10 +122,10 @@ export default function ReviewTails(props) {
   };
 
   const handleUpdateReview = async (updateReview) => {
-    console.log('passing update', updateReview)
+    // console.log('passing update', updateReview)
     const newReview = {
       _id: updateReview._id,
-      userName: updateReview.userName,
+      userName: updateReview.userName || props.user.nickName,
       email: updateReview.email,
       review: reviews,
       stars: number
@@ -137,7 +137,7 @@ export default function ReviewTails(props) {
       const res = await props.auth0.getIdTokenClaims();
       const jwt = res.__raw;
 
-      console.log('token: ', jwt);
+      // console.log('token: ', jwt);
 
       const config = {
         headers: { Authorization: `Bearer ${jwt}` },
@@ -147,9 +147,9 @@ export default function ReviewTails(props) {
         data: newReview,
       };
 
-      const rest = await axios(config);
+      await axios(config);
 
-      console.log('UPDATED REVIEW!', rest.data);
+      // console.log('UPDATED REVIEW!', rest.data);
 
     }
 
@@ -160,7 +160,7 @@ export default function ReviewTails(props) {
 
   const { user } = props.auth0;
   const handleSubmit = (event) => {
-    console.log('OK??::', event.target.review.value);
+    // console.log('OK??::', event.target.review.value);
     event.preventDefault();
     setReview('');
     const newReview = {
@@ -169,7 +169,7 @@ export default function ReviewTails(props) {
       review: event.target.review.value,
       stars: number
     };
-    console.log('ALMOST!!::', newReview);
+    // console.log('ALMOST!!::', newReview);
     dispatch(addReview(newReview))
     handleCreateReview(newReview);
 
@@ -190,7 +190,7 @@ export default function ReviewTails(props) {
         <Box sx={styles.informationBox}>
           <Box sx={styles.nameBox}>
             <Typography sx={styles.textName}>
-              Post From: {review.userName}
+              Post From: {review.userName || review.nickname}
               <Box sx={styles.lineBreak} />
             </Typography>
           </Box>

@@ -14,7 +14,7 @@ export const calendarSlice = createSlice({
 
 
     setAppointments(state, action) {
-      console.log('CALENDAR CALL TO STATE!', action.payload)
+      // console.log('CALENDAR CALL TO STATE!', action.payload)
       state.userAppts = action.payload;
     }
   }

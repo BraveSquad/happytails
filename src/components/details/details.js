@@ -14,8 +14,8 @@ export default function Details(props) {
   const dispatch = useDispatch();
   const animal = useSelector(state => state.detail.animalDetail);
   const favorites = useSelector(state => state.favorite.favoriteArray);
-  console.log('CURRENT DETAIL', animal);
-  console.log('CURRENT FAV', favorites);
+  // console.log('CURRENT DETAIL', animal);
+  // console.log('CURRENT FAV', favorites);
 
   function handleAddToFavorites(animal) {
 
@@ -30,7 +30,7 @@ export default function Details(props) {
 
     const updatedUser = {
       _id: props.user._id,
-      userName: props.user.userName,
+      userName: props.user.userName || props.user.nickname,
       email: props.user.email,
       picture: props.user.picture,
       favorite: favorites,
@@ -45,9 +45,9 @@ export default function Details(props) {
       data: updatedUser
     };
 
-    const rest = await axios(config);
+    await axios(config);
 
-    console.log('USER CONFIG', rest.data);
+    // console.log('USER CONFIG', rest.data);
     // }
   };
 
