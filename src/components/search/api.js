@@ -17,7 +17,7 @@ export const GetPets = (search, dispatch) => async () => {
       page: search.page,
     });
     dispatch(animalSlice.actions.setAnimals(res.data.animals));
-    // console.log('ANIMALS FROM  API CALL======>', res.data.animals);
+    console.log('ANIMALS FROM  API CALL: ', res.data.animals);
   } catch (err) {
     console.error('Error getting pets:', err);
   }

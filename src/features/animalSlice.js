@@ -35,6 +35,9 @@ export const animalSlice = createSlice({
       state.apiAnimals = action.payload;
       state.randomAnimals = state.apiAnimals.slice().sort(() => 0.5 - Math.random()).slice(0, 5);
     },
+    getRandom(state, action){
+      state.randomAnimals = state.apiAnimals.slice().sort(() => 0.5 - Math.random()).slice(0, 5);
+    },
     setType(state, action) {
       state.params.type = action.payload;
     },
@@ -84,6 +87,6 @@ export const animalSlice = createSlice({
   },
 })
 
-export const { selectCategory, setAnimals, setBreed, setType, setLocation, setLimit, setPage, setAge } = animalSlice.actions
+export const { selectCategory, getRandom, setAnimals, setBreed, setType, setLocation, setLimit, setPage, setAge } = animalSlice.actions
 
 export default animalSlice.reducer;

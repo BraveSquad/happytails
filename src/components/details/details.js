@@ -5,7 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import '../../assets/style/detail.css'
-import Image from '../../assets/images/paw.jpg';
+import Cat from '../../assets/images/catlogo.png';
+import Dog from '../../assets/images/doglogo.jpg';
 
 
 
@@ -56,19 +57,21 @@ export default function Details(props) {
 
   }, 5000)
 
-
-
-
-
   return (
     <Box sx={styles.mainBox}>
       <div id='MainDiv'>
         <Box key={animal.id} sx={{ fontSize: '60px' }}> {animal.name}</Box>
         <Box key={animal.id} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '50px', width: '600px' }}>
           <Card key={animal.id} sx={{ padding: '30px', borderRadius: '7px', display: 'flex', flexDirection: 'column', alignItems: 'center' }} elevation={5}>
-            {animal.primary_photo_cropped === null ? (
-              <CardMedia image={Image} sx={styles.media} />
-            ) : (<CardMedia image={animal.primary_photo_cropped.medium} sx={styles.media} />)}
+            {animal.primary_photo_cropped === null && animal.type === 'Dog' ? (
+              <CardMedia image={Dog} sx={styles.media} />
+              ) : (
+                animal.primary_photo_cropped === null && animal.type === 'Cat' ? (
+                  <CardMedia image={Cat} sx={styles.media} />
+              ) : (
+                <CardMedia image={animal.primary_photo_cropped.medium} sx={styles.media} />
+                )
+              )}
             <div id='detailInfo'>
               <Typography sx={{ fontWeight: 'bold', fontSize: '20px' }}>
                 {animal.species}
@@ -135,7 +138,8 @@ export default function Details(props) {
 
 const styles = {
   mainBox: {
-    width: '100%'
+    width: '100%',
+    marginBottom: 7,
   },
   media: {
     height: '400px',
