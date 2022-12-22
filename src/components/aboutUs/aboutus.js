@@ -92,13 +92,10 @@ export default function Aboutus() {
               </CardContent>
             </CardActionArea>
             <Box sx={styles.cardButtons}>
-              <IconButton aria-label="share">
+              <IconButton href="https://github.com/Edward-Regalado" target='_blank'>
                 <GitHub />
               </IconButton>
-              <IconButton aria-label="share">
-                <Facebook />
-              </IconButton>
-              <IconButton aria-label="share">
+              <IconButton href="https://www.linkedin.com/in/edward-regalado/" target='_blank'>
                 <LinkedIn />
               </IconButton>
             </Box>
@@ -124,13 +121,10 @@ export default function Aboutus() {
               </CardContent>
             </CardActionArea>
             <Box sx={styles.cardButtons}>
-              <IconButton aria-label="share">
+              <IconButton href="https://github.com/SarahTek" target='_blank'>
                 <GitHub />
               </IconButton>
-              <IconButton aria-label="share">
-                <Facebook />
-              </IconButton>
-              <IconButton aria-label="share">
+              <IconButton href="https://www.linkedin.com/in/sarah-t-31658b190/" target='_blank'>
                 <LinkedIn />
               </IconButton>
             </Box>
@@ -156,13 +150,10 @@ export default function Aboutus() {
               </CardContent>
             </CardActionArea>
             <Box sx={styles.cardButtons}>
-              <IconButton aria-label="share">
+              <IconButton href="https://github.com/Dcastro99" target='_blank'>
                 <GitHub />
               </IconButton>
-              <IconButton aria-label="share">
-                <Facebook />
-              </IconButton>
-              <IconButton aria-label="share">
+              <IconButton href="https://www.linkedin.com/in/dcastro99/" target='_blank'>
                 <LinkedIn />
               </IconButton>
             </Box>
@@ -188,13 +179,10 @@ export default function Aboutus() {
               </CardContent>
             </CardActionArea>
             <Box sx={styles.cardButtons}>
-              <IconButton aria-label="share">
+              <IconButton href="https://github.com/Marthaquinram" target='_blank'>
                 <GitHub />
               </IconButton>
-              <IconButton aria-label="share">
-                <Facebook />
-              </IconButton>
-              <IconButton aria-label="share">
+              <IconButton href="https://www.linkedin.com/in/martha-quintanilla-ramirez/" target='_blank'>
                 <LinkedIn />
               </IconButton>
             </Box>
@@ -215,18 +203,15 @@ export default function Aboutus() {
                   Von
                 </Typography>
                 <Typography sx={styles.cardtext} variant="body2" color="text.secondary">
-                  Von is a software engineer and veteran who served in the United States Navy for 8 years. She then obtained her Master’s degree in Data Science and Interaction design. Von likes exploring, learning, and is excited to bring her skills into the tech industry.
+                  Von is a software engineer and veteran who has served in the United States Navy. She obtained her Master’s degree in Data Science and Interaction Design and enrolled in coding bootcamps. Von enjoy’s exploring, learning, and is excited to further implement her skills in the tech industry.
                 </Typography>
               </CardContent>
             </CardActionArea>
             <Box sx={styles.cardButtons}>
-              <IconButton aria-label="share">
+              <IconButton href="https://github.com/ArzuVon" target='_blank'>
                 <GitHub />
               </IconButton>
-              <IconButton aria-label="share">
-                <Facebook />
-              </IconButton>
-              <IconButton aria-label="share">
+              <IconButton href="https://www.linkedin.com/in/vonarzu" target='_blank'>
                 <LinkedIn />
               </IconButton>
             </Box>
