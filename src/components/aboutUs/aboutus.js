@@ -74,13 +74,10 @@ export default function Aboutus() {
               </CardContent>
             </CardActionArea>
             <Box sx={styles.cardButtons}>
-              <IconButton aria-label="share">
+              <IconButton aria-label="https://github.com/Edward-Regalado">
                 <GitHub />
               </IconButton>
-              <IconButton aria-label="share">
-                <Facebook />
-              </IconButton>
-              <IconButton aria-label="share">
+              <IconButton aria-label="https://www.linkedin.com/in/edward-regalado/">
                 <LinkedIn />
               </IconButton>
             </Box>
@@ -106,13 +103,10 @@ export default function Aboutus() {
               </CardContent>
             </CardActionArea>
             <Box sx={styles.cardButtons}>
-              <IconButton aria-label="share">
+              <IconButton aria-label="https://github.com/SarahTek">
                 <GitHub />
               </IconButton>
-              <IconButton aria-label="share">
-                <Facebook />
-              </IconButton>
-              <IconButton aria-label="share">
+              <IconButton aria-label="https://www.linkedin.com/in/sarah-t-31658b190/">
                 <LinkedIn />
               </IconButton>
             </Box>
@@ -138,13 +132,10 @@ export default function Aboutus() {
               </CardContent>
             </CardActionArea>
             <Box sx={styles.cardButtons}>
-              <IconButton aria-label="share">
+              <IconButton aria-label="https://github.com/Dcastro99">
                 <GitHub />
               </IconButton>
-              <IconButton aria-label="share">
-                <Facebook />
-              </IconButton>
-              <IconButton aria-label="share">
+              <IconButton aria-label="https://www.linkedin.com/in/dcastro99/">
                 <LinkedIn />
               </IconButton>
             </Box>
@@ -170,13 +161,10 @@ export default function Aboutus() {
               </CardContent>
             </CardActionArea>
             <Box sx={styles.cardButtons}>
-              <IconButton aria-label="share">
+              <IconButton aria-label="https://github.com/Marthaquinram">
                 <GitHub />
               </IconButton>
-              <IconButton aria-label="share">
-                <Facebook />
-              </IconButton>
-              <IconButton aria-label="share">
+              <IconButton aria-label="https://www.linkedin.com/in/martha-quintanilla-ramirez/">
                 <LinkedIn />
               </IconButton>
             </Box>
@@ -202,13 +190,10 @@ export default function Aboutus() {
               </CardContent>
             </CardActionArea>
             <Box sx={styles.cardButtons}>
-              <IconButton aria-label="share">
-                <GitHub />
+              <IconButton aria-label="https://github.com/ArzuVon">
+                <GitHub  />
               </IconButton>
-              <IconButton aria-label="share">
-                <Facebook />
-              </IconButton>
-              <IconButton aria-label="share">
+              <IconButton aria-label="https://www.linkedin.com/in/vonarzu'">
                 <LinkedIn />
               </IconButton>
             </Box>
