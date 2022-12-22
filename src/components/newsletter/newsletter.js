@@ -27,11 +27,11 @@ function NewsLetterSubscribe() {
                   setLoading(true)
                   subscribe(formData)
                     .then(() => {
-                      // console.log('then called',  loading);
+                      console.log('then called', loading);
                       setLoading(false)
                     })
                     .catch((e) => {
-                      // console.log('catch called', e);
+                      console.log('catch called', e);
                       setLoading(false)
                     });
                 }}

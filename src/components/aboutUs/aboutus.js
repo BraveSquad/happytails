@@ -17,8 +17,8 @@ import Danny from "../../assets/images/Danny.jpg"
 
 
 const styles = {
-  card: {
-    // border: '3px solid black',
+  mainGrid: {
+    // border: '3px solid black',//BLACK
     display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
     width: '90%'
   },
@@ -32,11 +32,13 @@ const styles = {
     padding: 2
   },
   gridEach: {
-    // border: '3px solid pink',
+    // border: '3px solid pink',//PINK
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: 2,
+    marginBottom: 2
   },
   mainBox: {
     width: '100%',
@@ -44,7 +46,23 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    // border: '3px solid blue'
+    marginBottom: 8,
+    // border: '3px solid blue'//BLUE
+  },
+  cardtext: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyItems: 'center',
+    height: '140px',
+    // border: '3px solid green'
+  },
+  title: {
+    marginBottom: 5,
+    marginTop: 4,
+    fontFamily: 'Raleway',
+    textAlign: 'center',
+    fontSize: '3rem',
+    fontWeight: 'bold'
   }
 }
 
@@ -52,8 +70,8 @@ export default function Aboutus() {
 
   return (
     <Box sx={styles.mainBox}>
-      <Typography sx={{ marginBottom: 5, marginTop: 2 }} variant="h2" component="h2" align="center" fontWeight="bold" >About Us</Typography>
-      <Grid container spacing={4} sx={styles.card} justify-content="center" >
+      <Typography sx={styles.title} component="h2"  >About Us</Typography>
+      <Grid container sx={styles.mainGrid} justify-content="center" >
         <Grid item xs={4} sx={styles.gridEach} >
           <Card sx={{ maxWidth: 400 }} elevation={10}>
             <CardActionArea>
@@ -68,7 +86,7 @@ export default function Aboutus() {
                 <Typography gutterBottom variant="h5" component="div">
                   Tony
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography sx={styles.cardtext} variant="body2" color="text.secondary">
                   Tony is a software developer who wrote his first lines of code for his mySpace profile, which sparked a curiosity for coding. He’s a United States Coast Guard veteran and is bringing his electrician’s mate skills of maintenance, repair and management of sophisticated equipment into the tech industry.
                 </Typography>
               </CardContent>
@@ -100,7 +118,7 @@ export default function Aboutus() {
                 <Typography gutterBottom variant="h5" component="div">
                   Sarah
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography sx={styles.cardtext} variant="body2" color="text.secondary">
                   Sarah is a software developer who is excited to join the tech industry with over 10 years of experience in customer service. She is looking forward to learning something new every day.
                 </Typography>
               </CardContent>
@@ -132,8 +150,8 @@ export default function Aboutus() {
                 <Typography gutterBottom variant="h5" component="div">
                   Danny
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Danny’s was a musician before becoming a software developer, and loves applying music with his critical thinking skills, and is eager to bring a broad perspective to coding.
+                <Typography sx={styles.cardtext} variant="body2" color="text.secondary">
+                  As a musician turned software developer, Danny leverages his artistic and technical skills to bring a multidimensional approach to his coding endeavors. With a deep appreciation for the power of music to inspire critical thinking, Danny is eager to infuse his work with a breadth of perspective and creativity.
                 </Typography>
               </CardContent>
             </CardActionArea>
@@ -164,7 +182,7 @@ export default function Aboutus() {
                 <Typography gutterBottom variant="h5" component="div">
                   Martha
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography sx={styles.cardtext} variant="body2" color="text.secondary">
                   Software Developer specializing in JavaScript with a background in finances and customer service for more than 12 years. Becoming a software developer means I get to challenge myself in new ways, I am passionate about representing the underrepresented, As a Latina, I want to showcase my skills and bridge the gap between communities of color and the tech industry.
                 </Typography>
               </CardContent>
@@ -196,7 +214,7 @@ export default function Aboutus() {
                 <Typography gutterBottom variant="h5" component="div">
                   Von
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography sx={styles.cardtext} variant="body2" color="text.secondary">
                   Von is a software engineer and veteran who served in the United States Navy for 8 years. She then obtained her Master’s degree in Data Science and Interaction design. Von likes exploring, learning, and is excited to bring her skills into the tech industry.
                 </Typography>
               </CardContent>
@@ -215,6 +233,6 @@ export default function Aboutus() {
           </Card>
         </Grid>
       </Grid>
-    </Box>
+    </Box >
   );
 }

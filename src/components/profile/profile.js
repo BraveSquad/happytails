@@ -146,7 +146,7 @@ const styles = {
     display: 'flex',
     fontSize: '1.3rem',
     width: '60%',
-    fontFamily: 'Raleway',
+    fontFamily: 'Caveat',
   },
   textFavoriteTitle: {
     display: 'flex',

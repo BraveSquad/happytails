@@ -1,14 +1,14 @@
 # Group Project: HappyTails
 
-- Discover and stay connected with hiking trails happening near you.
+- Where we connect you to your long life long bestfriend.
 
 ## Team Members
 
-- **Martha Ramirez-Quintanilla**
 - **Tony Regalado**
-- **Von Arzu**
 - **Danny Castro**
+- **Von Arzu**
 - **Sarah Teklemariam**
+- **Martha Ramirez-Quintanilla**
 
 ## Links
 

@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Box, CardMedia, Card } from '@mui/material';
+import { Box, CardMedia } from '@mui/material';
 import { CalendarHeader } from '../calendarHeader/calendarHeader';
 import { Day } from '../day/day';
 import { NewEvent } from '../newEvent/newEvent';
 import { DeleteEvent } from '../deleteEvent/deleteEvent';
 import { GetDates } from '../hooks/getDates';
 import axios from 'axios';
-import { map } from 'lodash';
 import { useSelector } from 'react-redux'
 import Dog from '../../../assets/images/beanie.jpg'
 import '../../scheduling/style.css';

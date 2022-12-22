@@ -5,10 +5,10 @@ import { Box, Button, Card, CardMedia, Typography, Stack } from '@mui/material';
 import LoadingSpinner from '../loading/loading';
 import { animalDetail } from '../../features/detailSlice';
 import { deleteFavorite } from '../../features/favoriteSlice';
-import Image from '../../assets/images/paw.jpg';
+// import Image from '../../assets/images/paw.jpg';
+import Cat from '../../assets/images/catlogo.png';
+import Dog from '../../assets/images/doglogo.jpg';
 import '../../assets/style/favorites.css'
-
-
 
 export default function Favorite(props) {
 
@@ -16,7 +16,6 @@ export default function Favorite(props) {
   const { isLoading } = props.user
   const dispatch = useDispatch();
   const favorites = useSelector(state => state.favorite.favoriteArray);
-
 
   function handleDetail(animal) {
     dispatch(animalDetail(animal))
@@ -53,17 +52,23 @@ export default function Favorite(props) {
     // console.log('Fav Updated!!', rest.data);
   };
 
+  // console.log("This will be the end of the world ")
 
   let favoritesArray = [];
-
 
   if (favorites !== undefined && favorites.length > 0) {
     favoritesArray = favorites.map((animal, idx) => (
       <Box key={idx} sx={styles.cardContainer}>
         <Card key={idx} sx={styles.card} elevation={5}>
-          {animal.primary_photo_cropped === null ? (
-            <CardMedia image={Image} sx={styles.cardMedia} />
-          ) : (<CardMedia image={animal.primary_photo_cropped.medium} sx={styles.cardMedia} />)}
+          {animal.primary_photo_cropped === null && animal.type === 'Dog' ? (
+            <CardMedia image={Dog} sx={styles.cardMedia} />
+          ) : (
+            animal.primary_photo_cropped === null && animal.type === 'Cat' ? (
+              <CardMedia image={Cat} sx={styles.cardMedia} />
+            ) : (
+              <CardMedia image={animal.primary_photo_cropped.medium} sx={styles.cardMedia} />
+            )
+          )}
           <Box sx={styles.informationBox}>
             <Box sx={styles.nameBox}>
               <Typography sx={styles.textAnimalName}>
@@ -89,7 +94,6 @@ export default function Favorite(props) {
   return (
     <>
       {isLoading ? (
-        // <div>...Loading</div>
         <LoadingSpinner />
       ) : (
         <Box sx={styles.favoritesBox}>
@@ -105,7 +109,8 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    border: '1px solid black'
   },
   favoritesBox: {
     display: 'flex',
@@ -119,6 +124,7 @@ const styles = {
     },
     'scrollbar-width': 'none',
     height: '700px',
+    // border: '1px solid black'
     // border: '2px solid green',
   },
   favoritesText: {

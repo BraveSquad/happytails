@@ -94,7 +94,7 @@ export default function ReviewTails(props) {
         url: '/review',
         data: newReview
       };
-      const reviewResponse = await axios(config);
+      await axios(config);
       // console.log('Review from DB: ', reviewResponse.data);
     }
   };
@@ -147,7 +147,7 @@ export default function ReviewTails(props) {
         data: newReview,
       };
 
-      const rest = await axios(config);
+      await axios(config);
 
       // console.log('UPDATED REVIEW!', rest.data);
 

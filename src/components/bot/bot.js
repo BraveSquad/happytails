@@ -10,7 +10,7 @@ const Messenger = () => {
         agent-id="f9cb2db6-4d08-4bbd-8d3c-c7ce76b5ede3"
         language-code="en"
         chat-icon="https://freesvg.org/img/paw-print.png"
-
+        wait-open="true"
       ></df-messenger>
     </>
   );

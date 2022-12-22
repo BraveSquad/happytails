@@ -14,7 +14,7 @@ export default function Footer(props) {
         </Typography>
       </Box>
       <Box sx={styles.middleBox}>
-        <Box sx={styles.middleBoxColumn}>
+        {/* <Box sx={styles.middleBoxColumn}>
           <Link>
             Link 1
           </Link>
@@ -55,7 +55,7 @@ export default function Footer(props) {
           <Link>
             Link 3
           </Link>
-        </Box>
+        </Box> */}
         <Box sx={styles.middleBoxColumn}>
           <NewsLetter />
           <Messenger />
@@ -145,7 +145,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-around',
-    marginRight: 4,
+    marginRight: 12,
     width: '15%'
     // border: '2px solid blue',
   },
