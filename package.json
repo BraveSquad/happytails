@@ -16,7 +16,6 @@
     "@mui/styled-engine-sc": "^5.10.16",
     "@petfinder/petfinder-js": "^1.0.6",
     "@reduxjs/toolkit": "^1.9.0",
-    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
     "aws-sdk": "^2.1271.0",
@@ -26,6 +25,8 @@
     "dialogflow": "^1.2.0",
     "dotenv": "^16.0.3",
     "install": "^0.13.0",
+    "jest": "^27.5.1",
+    "jest-fetch-mock": "^3.0.3",
     "pet-finder-api": "^1.0.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
@@ -48,7 +49,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --verbose --watch",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -68,5 +69,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5"
   }
 }

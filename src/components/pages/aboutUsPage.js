@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../header/header'
 import Footer from '../footer/footer'
-import About from '../aboutUs/aboutus'
+import About from '../aboutUs/aboutUs'
 import { Box } from '@mui/material';
 
 

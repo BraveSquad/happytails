@@ -20,6 +20,7 @@ function NewsLetterSubscribe() {
             {loading && <LoadingSpinner />}
             {!loading && (
               <NewsletterForm
+                data-testid='newsletter'
                 status={status}
                 message={message}
                 onValidate={(formData) => {

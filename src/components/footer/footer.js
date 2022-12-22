@@ -5,57 +5,15 @@ import PetsIcon from '@mui/icons-material/Pets';
 import NewsLetter from '../newsletter/newsletter';
 import Messenger from '../../components/bot/bot'
 
-export default function Footer(props) {
+export default function Footer() {
   return (
-    <Box elevation={5} sx={styles.mainBox}>
+    <Box data-testid='footer' elevation={5} sx={styles.mainBox}>
       <Box sx={styles.topBox}>
         <Typography sx={styles.topBoxText}>
           HappyTails <PetsIcon />
         </Typography>
       </Box>
       <Box sx={styles.middleBox}>
-        {/* <Box sx={styles.middleBoxColumn}>
-          <Link>
-            Link 1
-          </Link>
-          <Link>
-            Link 1
-          </Link>
-          <Link>
-            Link 1
-          </Link>
-          <Link>
-            Link 1
-          </Link>
-        </Box>
-        <Box sx={styles.middleBoxColumn}>
-          <Link>
-            Link 2
-          </Link>
-          <Link>
-            Link 2
-          </Link>
-          <Link>
-            Link 2
-          </Link>
-          <Link>
-            Link 2
-          </Link>
-        </Box>
-        <Box sx={styles.middleBoxColumn}>
-          <Link>
-            Link 3
-          </Link>
-          <Link>
-            Link 3
-          </Link>
-          <Link>
-            Link 3
-          </Link>
-          <Link>
-            Link 3
-          </Link>
-        </Box> */}
         <Box sx={styles.middleBoxColumn}>
           <NewsLetter />
           <Messenger />
@@ -68,7 +26,7 @@ export default function Footer(props) {
           </Typography>
         </Box>
         <Box sx={styles.mediaLinkBox}>
-          <Link sx={styles.mediaIcon} href="https://www.facebook.com/" target="_blank"> <FaFacebook /></Link>
+          <Link data-testid='facebook-link' sx={styles.mediaIcon} href="https://www.facebook.com/" target="_blank"> <FaFacebook /></Link>
           <Link sx={styles.mediaIcon} href="https://www.instagram.com" target="_blank"> <FaInstagram /></Link>
           <Link sx={styles.mediaIcon} href="https://www.twitter.com" target="_blank"> <FaTwitter /></Link>
           <Link sx={styles.mediaIcon} href="https://www.linkedIn.com" target="_blank"> <FaLinkedin /></Link>

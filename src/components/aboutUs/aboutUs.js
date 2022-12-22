@@ -6,7 +6,6 @@ import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import GitHub from "@mui/icons-material/GitHub";
-import Facebook from "@mui/icons-material/Facebook";
 import LinkedIn from "@mui/icons-material/LinkedIn";
 import { CardActionArea, Grid } from "@mui/material";
 import sarah from "../../assets/images/Sarah.jpg"
@@ -15,61 +14,10 @@ import Von from "../../assets/images/Von.jpg"
 import Tony from "../../assets/images/Tony.jpg"
 import Danny from "../../assets/images/Danny.jpg"
 
-
-const styles = {
-  mainGrid: {
-    // border: '3px solid black',//BLACK
-    display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
-    width: '90%'
-  },
-  grid: {
-    boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgb(60, 201, 226,0.39) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;',
-  },
-  cardButtons: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    padding: 2
-  },
-  gridEach: {
-    // border: '3px solid pink',//PINK
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 2,
-    marginBottom: 2
-  },
-  mainBox: {
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 8,
-    // border: '3px solid blue'//BLUE
-  },
-  cardtext: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyItems: 'center',
-    height: '140px',
-    // border: '3px solid green'
-  },
-  title: {
-    marginBottom: 5,
-    marginTop: 4,
-    fontFamily: 'Raleway',
-    textAlign: 'center',
-    fontSize: '3rem',
-    fontWeight: 'bold'
-  }
-}
-
-export default function Aboutus() {
+export default function AboutUs() {
 
   return (
-    <Box sx={styles.mainBox}>
+    <Box data-testid='about' sx={styles.mainBox}>
       <Typography sx={styles.title} component="h2"  >About Us</Typography>
       <Grid container sx={styles.mainGrid} justify-content="center" >
         <Grid item xs={4} sx={styles.gridEach} >
@@ -220,4 +168,55 @@ export default function Aboutus() {
       </Grid>
     </Box >
   );
+}
+
+
+const styles = {
+  mainGrid: {
+    // border: '3px solid black',//BLACK
+    display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
+    width: '90%'
+  },
+  grid: {
+    boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgb(60, 201, 226,0.39) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;',
+  },
+  cardButtons: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 2
+  },
+  gridEach: {
+    // border: '3px solid pink',//PINK
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 2,
+    marginBottom: 2
+  },
+  mainBox: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 8,
+    // border: '3px solid blue'//BLUE
+  },
+  cardtext: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyItems: 'center',
+    height: '140px',
+    // border: '3px solid green'
+  },
+  title: {
+    marginBottom: 5,
+    marginTop: 4,
+    fontFamily: 'Raleway',
+    textAlign: 'center',
+    fontSize: '3rem',
+    fontWeight: 'bold'
+  }
 }
