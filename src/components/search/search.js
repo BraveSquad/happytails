@@ -17,12 +17,12 @@ function Search() {
   // const [limit, setLimits] = useState(20);
   // const [page, setPages] = useState(1);
 
-  console.log('Search: ', search);
+  // console.log('Search: ', search);
 
 
   const handleLocation = (event) => {
     setLocation(event.target.value);
-    console.log('SET LOCATION: ', event.target.value);
+    // console.log('SET LOCATION: ', event.target.value);
     dispatch(setLocation(event.target.value));
   };
   const handleAge = (event) => {
@@ -31,7 +31,7 @@ function Search() {
   };
   const handleType = (event) => {
     setType(event.target.value);
-    console.log('handleType', event.target.value);
+    // console.log('handleType', event.target.value);
     dispatch(setType(event.target.value));
   };
   const handleBreed = (event) => {
@@ -39,11 +39,11 @@ function Search() {
     dispatch(setBreed(event.target.value));
   };
 
-  const handleSearch = (e) => {
-    // e.preventDefault();
-    console.log('handleSearch called -----> ');
-    GetPets({ type: search.type, breed: search.breed, age: search.age, location: search.location, limit: search.limit, page: search.page}, dispatch);
-  }
+  // const handleSearch = (e) => {
+  //   // e.preventDefault();
+  //   // console.log('handleSearch called -----> ');
+  //   GetPets({ type: search.type, breed: search.breed, age: search.age, location: search.location, limit: search.limit, page: search.page }, dispatch);
+  // }
 
   useEffect(() => {
   }, []);
@@ -94,7 +94,7 @@ function Search() {
           </FormControl>
           {/* <Button href='/animals' sx={styles.searchButton} onClick={handleSearch}>Search</Button> */}
           {/* <Button href='/animals' sx={styles.searchButton} onClick={GetPets({ type: type, breed: breed, age: age, location: location, limit: limit, page: page}, dispatch)}>Search</Button> */}
-          <Button href='/animals' sx={styles.searchButton} onClick={GetPets({ type: search.type, breed: search.breed, age: search.age, location: search.location, limit: search.limit, page: search.page}, dispatch)}>Search</Button>
+          <Button href='/animals' sx={styles.searchButton} onClick={GetPets({ type: search.type, breed: search.breed, age: search.age, location: search.location, limit: search.limit, page: search.page }, dispatch)}>Search</Button>
 
         </Box>
       </Box>

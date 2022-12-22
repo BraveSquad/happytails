@@ -6,28 +6,40 @@ import { NewEvent } from '../newEvent/newEvent';
 import { DeleteEvent } from '../deleteEvent/deleteEvent';
 import { GetDates } from '../hooks/getDates';
 import axios from 'axios';
+import { map } from 'lodash';
 import { useSelector } from 'react-redux'
 import Dog from '../../../assets/images/beanie.jpg'
 import '../../scheduling/style.css';
 
 
 export const Appointments = (props) => {
-  // console.log('APPT PROPS======================>', props)
   const [nav, setNav] = useState(0);
   const [clicked, setClicked] = useState();
-  // const [newTitle, setNewTitle] = useState();
   const [newDate, setNewDate] = useState();
-  // const [events, setEvents] = useState(
-  //   localStorage.getItem('events') ?
-  //     JSON.parse(localStorage.getItem('events')) :
-  //     []
-  // );
+
   const userAppts = useSelector(state => state.calendar.userAppts);
   const [events, setEvents] = useState(userAppts ? userAppts : []);
 
+  // console.log('userAppt', userAppts);
+  let handleDeleteAppt = async (appt) => {
+    // console.log('appt', appt);
+    const res = await props.auth0.getIdTokenClaims();
+    const jwt = res.__raw;
+
+    const config = {
+      headers: { Authorization: `Bearer ${jwt}` },
+      method: 'delete',
+      baseURL: process.env.REACT_APP_HEROKU_URL,
+      url: `/appt/${appt._id}`,
+      data: appt
+    };
+    // console.log('config', config);
+    await axios(config);
+    // console.log('appt deleted!!', rest.data);
+  };
 
 
-  console.log('events', userAppts)
+
   const handleCreateAppointment = async (newAppt) => {
     if (props.auth0.isAuthenticated) {
       const res = await props.auth0.getIdTokenClaims();
@@ -40,8 +52,8 @@ export const Appointments = (props) => {
         url: '/appt',
         data: newAppt
       };
-      const apptResponse = await axios(config);
-      console.log('Review from DB: ', apptResponse.data);
+      await axios(config);
+      // console.log('Review from DB: ', apptResponse.data);
     }
   };
 
@@ -50,7 +62,7 @@ export const Appointments = (props) => {
 
     // console.log('newAPPT', event)
     const newApptPost = {
-      userName: user.given_name,
+      userName: user.given_name || user.nickname,
       email: user.email,
       title: event,
       date: newDate
@@ -111,7 +123,7 @@ export const Appointments = (props) => {
                 onClick={() => {
                   if (d.value !== 'padding') {
                     setNewDate(d.date)
-                    console.log('d.date',)
+                    // console.log('d.date',)
                     setClicked(d.date);
                   }
                 }}
@@ -140,6 +152,8 @@ export const Appointments = (props) => {
             onClose={() => setClicked(null)}
             onDelete={() => {
               setEvents(events.filter(e => e.date !== clicked));
+              let obj = userAppts.find(x => x.date === clicked)
+              handleDeleteAppt(obj);
               setClicked(null);
             }}
 

@@ -3,7 +3,7 @@ import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa';
 import { Box, Link, Typography } from '@mui/material';
 import PetsIcon from '@mui/icons-material/Pets';
 import NewsLetter from '../newsletter/newsletter';
-
+import Messenger from '../../components/bot/bot'
 
 export default function Footer(props) {
   return (
@@ -58,6 +58,7 @@ export default function Footer(props) {
         </Box>
         <Box sx={styles.middleBoxColumn}>
           <NewsLetter />
+          <Messenger />
         </Box>
       </Box>
       <Box sx={styles.bottomBox}>
@@ -85,7 +86,7 @@ const styles = {
     alignItems: 'center',
     // height: '500px'
   },
-  topBox:{
+  topBox: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -108,7 +109,7 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     width: '90%',
-    height:  '200px',
+    height: '200px',
     marginTop: '30px',
     marginBottom: '10px',
     // border: '1px solid red',
