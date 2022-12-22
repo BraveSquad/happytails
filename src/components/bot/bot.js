@@ -5,6 +5,7 @@ const Messenger = () => {
     <>
       <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
       <df-messenger
+        data-testid='messenger'
         intent="WELCOME"
         chat-title="Paw Agent"
         agent-id="f9cb2db6-4d08-4bbd-8d3c-c7ce76b5ede3"

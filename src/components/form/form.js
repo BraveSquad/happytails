@@ -36,7 +36,7 @@ function Form() {
     return (
         <>
             {alert}
-            < Box >
+            <Box data-testid='form'>
                 <form>
                     <Grid container spacing={1}>
                         <Grid xs={12} sm={6} item>

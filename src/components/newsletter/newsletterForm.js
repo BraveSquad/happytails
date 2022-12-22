@@ -20,7 +20,7 @@ function NewsletterForm(props) {
     }
 
     return (
-        <Box sx={styles.mainBox}>
+        <Box data-testid='form' sx={styles.mainBox}>
             <Typography sx={styles.title}>
                 Subscribe to newsletter
             </Typography>

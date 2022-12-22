@@ -6,7 +6,7 @@ import '../../assets/style/header.css'
 
 function Banner() {
     return (
-        <BannerContainer className='header4'>
+        <BannerContainer data-testid='banner' className='header4'>
             <InformationSection>
                 <InformationColumn>
                     <InformationText>

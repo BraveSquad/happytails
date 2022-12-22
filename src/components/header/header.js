@@ -22,12 +22,7 @@ export default function Header() {
   const id = open ? 'simple-popper' : undefined;
 
   return (
-    <Box
-      // className='headerBox' 
-      // className='header2'
-      // className='header3'
-      className='header4'
-      sx={styles.mainBox}>
+    <Box data-testid='header' className='header4' sx={styles.mainBox}>
       <Box sx={styles.logoLinkBox}>
         <Link href="/" style={{ textDecoration: 'none' }}>
           <Typography sx={styles.logoLinkText} id='titleFont'>
