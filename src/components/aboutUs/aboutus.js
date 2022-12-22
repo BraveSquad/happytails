@@ -185,7 +185,7 @@ export default function Aboutus() {
                   Von
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Von is a software engineer and veteran who served in the United States Navy for 8 years. She then obtained her Master’s degree in Data Science and Interaction design. Von likes exploring, learning, and is excited to bring her skills into the tech industry.
+                Von is a software engineer and veteran who has served in the United States Navy. She obtained her Master’s degree in Data Science and Interaction Design and enrolled in coding bootcamps. Von enjoy’s exploring, learning, and is excited to further implement her skills in the tech industry.
                 </Typography>
               </CardContent>
             </CardActionArea>
